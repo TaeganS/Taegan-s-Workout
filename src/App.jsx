@@ -11,10 +11,12 @@ const DAILY_PHYSIO = [
 // ─── AB OPTIONS ───────────────────────────────────────────────────────────────
 const AB_OPTIONS = {
   floor:[
-    { id:"ab_dead_bug", name:"Dead Bug", sets:"3", reps:"8 each side", note:"Back flat into floor. Arms reach back as legs alternate. Breathe out on extension." },
+    { id:"ab_dead_bug", name:"Dead Bug", sets:"3", reps:"8 each side", note:"Back flat into floor. Arms reach back as legs alternate. Breathe out on extension. Best for APT correction." },
     { id:"ab_rkc", name:"RKC Plank", sets:"3", reps:"20–25s", note:"Squeeze glutes + quads + abs simultaneously. Elbows pull toward toes. Not passive." },
     { id:"ab_bird_dog", name:"Bird Dog", sets:"3", reps:"8 each side", note:"Opposite arm and leg. 3s hold. No hip rotation. Back flat." },
     { id:"ab_side_plank", name:"Side Plank (from knees)", sets:"2", reps:"20s each", note:"Elbow under shoulder. Hips stacked. Don't sag." },
+    { id:"ab_reverse_crunch", name:"Reverse Crunch", sets:"3", reps:"12–15", note:"Lie on back. Knees bent. Curl hips up toward chest — not legs swinging up. Slow lower. Hip flexion not spinal flexion." },
+    { id:"ab_tabletop_tap", name:"Tabletop Toe Tap", sets:"3", reps:"10 each side", note:"Lie on back. Both legs at 90° tabletop. Lower one heel slowly to tap floor. Back stays flat. Alternate sides. Dead bug variation — good for APT." },
   ],
   standing:[
     { id:"ab_pallof", name:"Pallof Press", sets:"3", reps:"10 each side", note:"Cable or band at chest. Press straight out. Hold 2s. Resist rotation. Anti-rotation core." },
@@ -22,6 +24,7 @@ const AB_OPTIONS = {
     { id:"ab_kb_worlds", name:"KB Around the Worlds", sets:"3", reps:"8 each direction", note:"Light KB. Pass around body in circle. Controlled — no swinging. Keep light given hypermobile shoulder." },
     { id:"ab_suitcase", name:"Suitcase Carry", sets:"3", reps:"20m each side", note:"Heavy-ish DB one hand. Walk without leaning. QL and oblique anti-lateral flexion." },
     { id:"ab_captains", name:"Captain's Chair Knee Raises", sets:"3", reps:"10–12", note:"Arms on pads, back against pad. Slow controlled knee raise. Slow lower. Do NOT swing." },
+    { id:"ab_side_bend", name:"DB Side Bend", sets:"3", reps:"12 each side", note:"Hold DB one hand. Bend directly to the side and return. NOTE: less effective than anti-lateral flexion work for your profile but included as your choice. Keep weight moderate." },
   ],
 };
 
@@ -306,47 +309,114 @@ function DailyPhysioBlock({ done, setDone }) {
 }
 
 // ── Ab Block ──────────────────────────────────────────────────────────────────
-function AbBlock({ abPair, done, setDone, accent }) {
-  const [showAll, setShowAll] = useState(false);
-  const allDone = abPair.every(id=>done[id]);
+function AbBlock({ done, setDone, accent, abLogs, setAbLogs, abNotes, onAbNoteSave, onAbModal }) {
   const allAbs = [...AB_OPTIONS.floor,...AB_OPTIONS.standing];
-  const defaultPair = abPair.map(id=>allAbs.find(a=>a.id===id)).filter(Boolean);
-  const displayList = showAll ? allAbs : defaultPair;
+  const [editingNote, setEditingNote] = useState(null);
+  const [expanded, setExpanded] = useState(null);
+  const selected = allAbs.filter(ex => done[ex.id]);
 
   return (
-    <div style={{background:"#10102a",borderRadius:20,padding:"15px 14px",marginBottom:12,border:`1px solid ${allDone?accent+"60":"#1e1e38"}`}}>
-      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:4}}>
-        <div style={{fontSize:10,color:accent,fontWeight:700,letterSpacing:"0.14em",textTransform:"uppercase"}}>Core / Abs</div>
-        <button onClick={()=>setShowAll(p=>!p)} style={{background:"#1a1a30",border:"none",borderRadius:8,padding:"4px 10px",color:"#555",fontSize:11,cursor:"pointer",fontFamily:"inherit"}}>{showAll?"Show less":"All options"}</button>
-      </div>
-      <div style={{fontSize:11,color:"#2a2a4a",marginBottom:12,fontStyle:"italic"}}>{showAll?"All options — pick any 2":"Today's suggested pair · tap 'All options' to swap"}</div>
-      <div style={{marginBottom:8,padding:"6px 10px",background:"#080814",borderRadius:8,border:"1px solid #1e1e38"}}>
-        <div style={{fontSize:9,color:"#3a3a5a",marginBottom:4,fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase"}}>Floor exercises</div>
-        <div style={{fontSize:10,color:"#2a2a4a"}}>Dead Bug · RKC Plank · Bird Dog · Side Plank</div>
-        <div style={{fontSize:9,color:"#3a3a5a",marginTop:6,marginBottom:4,fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase"}}>Standing / No mat</div>
-        <div style={{fontSize:10,color:"#2a2a4a"}}>Pallof Press · DB March · KB Around the Worlds · Suitcase Carry · Captain's Chair</div>
-      </div>
-      {displayList.map((ex,i)=>(
-        <div key={ex.id} style={{display:"flex",alignItems:"flex-start",justifyContent:"space-between",marginBottom:i<displayList.length-1?12:0,paddingBottom:i<displayList.length-1?12:0,borderBottom:i<displayList.length-1?"1px solid #1a1a30":"none"}}>
-          <div style={{flex:1,marginRight:12}}>
-            <div style={{fontSize:13,fontWeight:800,color:done[ex.id]?accent:"#fff",transition:"color 0.3s"}}>{ex.name}</div>
-            <div style={{fontSize:11,color:"#3a3a5a",marginTop:2}}>{ex.sets} sets · {ex.reps}</div>
-            <div style={{fontSize:11,color:"#1e1e38",marginTop:3,lineHeight:1.5,fontStyle:"italic"}}>{ex.note}</div>
+    <div style={{background:"#10102a",borderRadius:20,padding:"15px 14px",marginBottom:12,border:"1px solid #1e1e38"}}>
+      <div style={{fontSize:10,color:accent,fontWeight:700,letterSpacing:"0.14em",textTransform:"uppercase",marginBottom:4}}>Core / Abs — optional</div>
+      <div style={{fontSize:11,color:"#2a2a4a",marginBottom:12,fontStyle:"italic"}}>Select exercises below · log weight and reps if weighted · won't block session completion</div>
+
+      {/* Floor section */}
+      <div style={{fontSize:9,color:"#3a3a5a",fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:8}}>Floor</div>
+      {AB_OPTIONS.floor.map(ex=>(
+        <div key={ex.id} style={{marginBottom:8}}>
+          <div style={{display:"flex",alignItems:"center",gap:10,padding:"10px 12px",background:done[ex.id]?"#0a1a0a":"#080814",borderRadius:12,border:`1px solid ${done[ex.id]?accent+"50":"#1e1e38"}`,cursor:"pointer"}}
+            onClick={()=>setDone(p=>({...p,[ex.id]:!p[ex.id]}))}>
+            <div style={{width:20,height:20,borderRadius:6,background:done[ex.id]?accent:"#1a1a30",border:`1.5px solid ${done[ex.id]?accent:"#2a2a4a"}`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,transition:"all 0.2s"}}>
+              {done[ex.id]&&<ITick s={11}/>}
+            </div>
+            <div style={{flex:1}}>
+              <div style={{fontSize:13,fontWeight:700,color:done[ex.id]?accent:"#ccc"}}>{ex.name}</div>
+              <div style={{fontSize:11,color:"#2a2a4a",marginTop:1}}>{ex.sets} sets · {ex.reps}</div>
+            </div>
+            <button onClick={e=>{e.stopPropagation();setExpanded(expanded===ex.id?null:ex.id);}} style={{background:"#1a1a30",border:"none",borderRadius:8,width:28,height:28,display:"flex",alignItems:"center",justifyContent:"center",color:"#3a3a5a",cursor:"pointer",flexShrink:0}}>
+              <IInfo/>
+            </button>
           </div>
-          <button onClick={()=>setDone(p=>({...p,[ex.id]:!p[ex.id]}))} style={{background:done[ex.id]?accent+"20":"#0a0a18",border:`1.5px solid ${done[ex.id]?accent:"#161628"}`,borderRadius:12,width:44,height:44,display:"flex",alignItems:"center",justifyContent:"center",color:done[ex.id]?accent:"#3a3a5a",cursor:"pointer",flexShrink:0,transition:"all 0.2s"}}>
-            <ITick s={16}/>
-          </button>
+          {expanded===ex.id&&<div style={{background:"#080814",borderRadius:"0 0 10px 10px",padding:"8px 12px",fontSize:11,color:"#666",lineHeight:1.6,borderLeft:`3px solid ${accent}`,marginTop:-4}}>{ex.note}</div>}
+
+          {/* Log and notes when selected */}
+          {done[ex.id]&&(
+            <div style={{background:"#080814",borderRadius:"0 0 12px 12px",padding:"10px 12px",marginTop:-4,border:`1px solid ${accent}30`,borderTop:"none"}}>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:8}}>
+                <button onClick={()=>onAbModal({exId:ex.id,field:"kg"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.kg!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:40,color:abLogs[ex.id]?.kg!=null?"#fff":"#2a2a4a",fontSize:14,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
+                  {abLogs[ex.id]?.kg!=null?`${abLogs[ex.id].kg}kg`:"kg (optional)"}
+                </button>
+                <button onClick={()=>onAbModal({exId:ex.id,field:"reps"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.reps!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:40,color:abLogs[ex.id]?.reps!=null?"#fff":"#2a2a4a",fontSize:14,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
+                  {abLogs[ex.id]?.reps!=null?`${abLogs[ex.id].reps} reps`:"reps / time"}
+                </button>
+              </div>
+              {editingNote===ex.id ? (
+                <div>
+                  <textarea defaultValue={abNotes[ex.id]||""} id={`abnote_${ex.id}`} placeholder="Add notes..." style={{width:"100%",background:"#10102a",border:"1px solid #2a2a4a",borderRadius:8,padding:"8px",color:"#ccc",fontSize:11,fontFamily:"inherit",resize:"none",height:54,boxSizing:"border-box"}}/>
+                  <div style={{display:"flex",gap:6,marginTop:6}}>
+                    <button onClick={()=>setEditingNote(null)} style={{flex:1,background:"#1a1a30",border:"none",borderRadius:8,height:30,color:"#555",fontSize:11,cursor:"pointer",fontFamily:"inherit"}}>Cancel</button>
+                    <button onClick={()=>{ const val=document.getElementById(`abnote_${ex.id}`).value; onAbNoteSave(ex.id,val); setEditingNote(null); }} style={{flex:2,background:accent,border:"none",borderRadius:8,height:30,color:"#fff",fontSize:11,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>Save</button>
+                  </div>
+                </div>
+              ) : (
+                <div onClick={()=>setEditingNote(ex.id)} style={{cursor:"pointer",display:"flex",gap:6,alignItems:"flex-start"}}>
+                  <span style={{fontSize:10,color:"#2a2a4a"}}>📝</span>
+                  <span style={{fontSize:11,color:abNotes[ex.id]?"#777":"#2a2a4a",fontStyle:abNotes[ex.id]?"normal":"italic"}}>{abNotes[ex.id]||"Add notes..."}</span>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      ))}
+
+      {/* Standing section */}
+      <div style={{fontSize:9,color:"#3a3a5a",fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",marginTop:12,marginBottom:8}}>Standing / No mat</div>
+      {AB_OPTIONS.standing.map(ex=>(
+        <div key={ex.id} style={{marginBottom:8}}>
+          <div style={{display:"flex",alignItems:"center",gap:10,padding:"10px 12px",background:done[ex.id]?"#0a1a0a":"#080814",borderRadius:12,border:`1px solid ${done[ex.id]?accent+"50":"#1e1e38"}`,cursor:"pointer"}}
+            onClick={()=>setDone(p=>({...p,[ex.id]:!p[ex.id]}))}>
+            <div style={{width:20,height:20,borderRadius:6,background:done[ex.id]?accent:"#1a1a30",border:`1.5px solid ${done[ex.id]?accent:"#2a2a4a"}`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,transition:"all 0.2s"}}>
+              {done[ex.id]&&<ITick s={11}/>}
+            </div>
+            <div style={{flex:1}}>
+              <div style={{fontSize:13,fontWeight:700,color:done[ex.id]?accent:"#ccc"}}>{ex.name}</div>
+              <div style={{fontSize:11,color:"#2a2a4a",marginTop:1}}>{ex.sets} sets · {ex.reps}</div>
+            </div>
+            <button onClick={e=>{e.stopPropagation();setExpanded(expanded===ex.id?null:ex.id);}} style={{background:"#1a1a30",border:"none",borderRadius:8,width:28,height:28,display:"flex",alignItems:"center",justifyContent:"center",color:"#3a3a5a",cursor:"pointer",flexShrink:0}}>
+              <IInfo/>
+            </button>
+          </div>
+          {expanded===ex.id&&<div style={{background:"#080814",borderRadius:"0 0 10px 10px",padding:"8px 12px",fontSize:11,color:"#666",lineHeight:1.6,borderLeft:`3px solid ${accent}`,marginTop:-4}}>{ex.note}</div>}
+
+          {done[ex.id]&&(
+            <div style={{background:"#080814",borderRadius:"0 0 12px 12px",padding:"10px 12px",marginTop:-4,border:`1px solid ${accent}30`,borderTop:"none"}}>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:8}}>
+                <button onClick={()=>onAbModal({exId:ex.id,field:"kg"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.kg!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:40,color:abLogs[ex.id]?.kg!=null?"#fff":"#2a2a4a",fontSize:14,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
+                  {abLogs[ex.id]?.kg!=null?`${abLogs[ex.id].kg}kg`:"kg (optional)"}
+                </button>
+                <button onClick={()=>onAbModal({exId:ex.id,field:"reps"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.reps!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:40,color:abLogs[ex.id]?.reps!=null?"#fff":"#2a2a4a",fontSize:14,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
+                  {abLogs[ex.id]?.reps!=null?`${abLogs[ex.id].reps} reps`:"reps / time"}
+                </button>
+              </div>
+              {editingNote===ex.id ? (
+                <div>
+                  <textarea defaultValue={abNotes[ex.id]||""} id={`abnote_${ex.id}`} placeholder="Add notes..." style={{width:"100%",background:"#10102a",border:"1px solid #2a2a4a",borderRadius:8,padding:"8px",color:"#ccc",fontSize:11,fontFamily:"inherit",resize:"none",height:54,boxSizing:"border-box"}}/>
+                  <div style={{display:"flex",gap:6,marginTop:6}}>
+                    <button onClick={()=>setEditingNote(null)} style={{flex:1,background:"#1a1a30",border:"none",borderRadius:8,height:30,color:"#555",fontSize:11,cursor:"pointer",fontFamily:"inherit"}}>Cancel</button>
+                    <button onClick={()=>{ const val=document.getElementById(`abnote_${ex.id}`).value; onAbNoteSave(ex.id,val); setEditingNote(null); }} style={{flex:2,background:accent,border:"none",borderRadius:8,height:30,color:"#fff",fontSize:11,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>Save</button>
+                  </div>
+                </div>
+              ) : (
+                <div onClick={()=>setEditingNote(ex.id)} style={{cursor:"pointer",display:"flex",gap:6,alignItems:"flex-start"}}>
+                  <span style={{fontSize:10,color:"#2a2a4a"}}>📝</span>
+                  <span style={{fontSize:11,color:abNotes[ex.id]?"#777":"#2a2a4a",fontStyle:abNotes[ex.id]?"normal":"italic"}}>{abNotes[ex.id]||"Add notes..."}</span>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       ))}
     </div>
-  );
-}
-
-// ── Save exercise note
-async function saveExerciseNote(exerciseId, noteText) {
-  await supabase.from('exercise_notes').upsert(
-    { exercise_id: exerciseId, note_text: noteText },
-    { onConflict: 'exercise_id' }
   );
 }
 
@@ -509,6 +579,9 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
   const [logs,setLogs]=useState(initLogs);
   const [modal,setModal]=useState(null);
   const [editingNote,setEditingNote]=useState(null);
+  const [abLogs,setAbLogs]=useState(()=>{ const d={}; [...AB_OPTIONS.floor,...AB_OPTIONS.standing].forEach(e=>{d[e.id]={kg:null,reps:null};}); return d; });
+  const [abNotes,setAbNotes]=useState({});
+  const [abModal,setAbModal]=useState(null);
   const [expanded,setExpanded]=useState(null);
   const [phase,setPhase]=useState("main");
 
@@ -517,7 +590,7 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
   const doneSets=Object.values(logs).reduce((a,ex)=>a+ex.sets.filter(s=>s.done).length,0);
   const allMainDone=doneSets===totalSets;
   const suggestedAbsDone=session.abPair.every(id=>abDone[id]);
-  const canFinish=allMainDone&&suggestedAbsDone;
+  const canFinish=allMainDone;
 
   const handleSave=useCallback(val=>{
     if(!modal) return;
@@ -716,14 +789,21 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
           );
         })}
 
-        <AbBlock abPair={session.abPair} done={abDone} setDone={setAbDone} accent={session.accent}/>
+        <AbBlock done={abDone} setDone={setAbDone} accent={session.accent} abLogs={abLogs} setAbLogs={setAbLogs} abNotes={abNotes} onAbNoteSave={async(exId,note)=>{ setAbNotes(p=>({...p,[exId]:note})); await saveExerciseNote("ab_"+exId, note); }} onAbModal={(m)=>setAbModal(m)}/>
 
         {canFinish
           ?<button onClick={finish} style={{width:"100%",background:"linear-gradient(135deg,#e91e8c,#9c27b0)",border:"none",borderRadius:18,height:66,color:"#fff",fontSize:18,fontWeight:900,cursor:"pointer",fontFamily:"inherit",boxShadow:"0 8px 40px rgba(233,30,140,0.5)"}}>Complete Session 🎉</button>
-          :<div style={{textAlign:"center",fontSize:12,color:"#1e1e38",padding:"10px 0"}}>{!allMainDone?`${totalSets-doneSets} working sets left`:"Tick both core exercises →"}</div>
+          :<div style={{textAlign:"center",fontSize:12,color:"#1e1e38",padding:"10px 0"}}>{`${totalSets-doneSets} working sets left`}</div>
         }
       </div>
 
+      {abModal&&<Numpad
+        label={abModal.field==="kg"?"Weight (kg)":"Reps / Time"}
+        sublabel={null}
+        initial={abLogs[abModal.exId]?.[abModal.field]}
+        onSave={val=>setAbLogs(p=>({...p,[abModal.exId]:{...p[abModal.exId],[abModal.field]:val}}))}
+        onClose={()=>setAbModal(null)}
+      />}
       {modal&&<Numpad
         label={modal.field==="kg"?"Weight (kg)":"Reps"}
         sublabel={modal.setType==="warmup"
