@@ -342,12 +342,20 @@ function AbBlock({ done, setDone, accent, abLogs, setAbLogs, abNotes, onAbNoteSa
           {/* Log and notes when selected */}
           {done[ex.id]&&(
             <div style={{background:"#080814",borderRadius:"0 0 12px 12px",padding:"10px 12px",marginTop:-4,border:`1px solid ${accent}30`,borderTop:"none"}}>
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:8}}>
-                <button onClick={()=>onAbModal({exId:ex.id,field:"kg"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.kg!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:40,color:abLogs[ex.id]?.kg!=null?"#fff":"#2a2a4a",fontSize:14,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
-                  {abLogs[ex.id]?.kg!=null?`${abLogs[ex.id].kg}kg`:"kg (optional)"}
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:6,marginBottom:4}}>
+                <div style={{fontSize:9,color:"#2a2a4a",textAlign:"center"}}>SETS</div>
+                <div style={{fontSize:9,color:"#2a2a4a",textAlign:"center"}}>KG (optional)</div>
+                <div style={{fontSize:9,color:"#2a2a4a",textAlign:"center"}}>REPS / TIME</div>
+              </div>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginBottom:8}}>
+                <button onClick={()=>onAbModal({exId:ex.id,field:"sets"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.sets!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:44,color:abLogs[ex.id]?.sets!=null?"#fff":"#2a2a4a",fontSize:16,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
+                  {abLogs[ex.id]?.sets!=null?`${abLogs[ex.id].sets}`:"—"}
                 </button>
-                <button onClick={()=>onAbModal({exId:ex.id,field:"reps"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.reps!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:40,color:abLogs[ex.id]?.reps!=null?"#fff":"#2a2a4a",fontSize:14,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
-                  {abLogs[ex.id]?.reps!=null?`${abLogs[ex.id].reps} reps`:"reps / time"}
+                <button onClick={()=>onAbModal({exId:ex.id,field:"kg"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.kg!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:44,color:abLogs[ex.id]?.kg!=null?"#fff":"#2a2a4a",fontSize:16,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
+                  {abLogs[ex.id]?.kg!=null?`${abLogs[ex.id].kg}`:"—"}
+                </button>
+                <button onClick={()=>onAbModal({exId:ex.id,field:"reps"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.reps!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:44,color:abLogs[ex.id]?.reps!=null?"#fff":"#2a2a4a",fontSize:16,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
+                  {abLogs[ex.id]?.reps!=null?`${abLogs[ex.id].reps}`:"—"}
                 </button>
               </div>
               {editingNote===ex.id ? (
@@ -390,12 +398,20 @@ function AbBlock({ done, setDone, accent, abLogs, setAbLogs, abNotes, onAbNoteSa
 
           {done[ex.id]&&(
             <div style={{background:"#080814",borderRadius:"0 0 12px 12px",padding:"10px 12px",marginTop:-4,border:`1px solid ${accent}30`,borderTop:"none"}}>
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:8}}>
-                <button onClick={()=>onAbModal({exId:ex.id,field:"kg"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.kg!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:40,color:abLogs[ex.id]?.kg!=null?"#fff":"#2a2a4a",fontSize:14,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
-                  {abLogs[ex.id]?.kg!=null?`${abLogs[ex.id].kg}kg`:"kg (optional)"}
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:6,marginBottom:4}}>
+                <div style={{fontSize:9,color:"#2a2a4a",textAlign:"center"}}>SETS</div>
+                <div style={{fontSize:9,color:"#2a2a4a",textAlign:"center"}}>KG (optional)</div>
+                <div style={{fontSize:9,color:"#2a2a4a",textAlign:"center"}}>REPS / TIME</div>
+              </div>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginBottom:8}}>
+                <button onClick={()=>onAbModal({exId:ex.id,field:"sets"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.sets!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:44,color:abLogs[ex.id]?.sets!=null?"#fff":"#2a2a4a",fontSize:16,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
+                  {abLogs[ex.id]?.sets!=null?`${abLogs[ex.id].sets}`:"—"}
                 </button>
-                <button onClick={()=>onAbModal({exId:ex.id,field:"reps"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.reps!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:40,color:abLogs[ex.id]?.reps!=null?"#fff":"#2a2a4a",fontSize:14,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
-                  {abLogs[ex.id]?.reps!=null?`${abLogs[ex.id].reps} reps`:"reps / time"}
+                <button onClick={()=>onAbModal({exId:ex.id,field:"kg"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.kg!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:44,color:abLogs[ex.id]?.kg!=null?"#fff":"#2a2a4a",fontSize:16,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
+                  {abLogs[ex.id]?.kg!=null?`${abLogs[ex.id].kg}`:"—"}
+                </button>
+                <button onClick={()=>onAbModal({exId:ex.id,field:"reps"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.reps!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:44,color:abLogs[ex.id]?.reps!=null?"#fff":"#2a2a4a",fontSize:16,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
+                  {abLogs[ex.id]?.reps!=null?`${abLogs[ex.id].reps}`:"—"}
                 </button>
               </div>
               {editingNote===ex.id ? (
@@ -579,7 +595,7 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
   const [logs,setLogs]=useState(initLogs);
   const [modal,setModal]=useState(null);
   const [editingNote,setEditingNote]=useState(null);
-  const [abLogs,setAbLogs]=useState(()=>{ const d={}; [...AB_OPTIONS.floor,...AB_OPTIONS.standing].forEach(e=>{d[e.id]={kg:null,reps:null};}); return d; });
+  const [abLogs,setAbLogs]=useState(()=>{ const d={}; [...AB_OPTIONS.floor,...AB_OPTIONS.standing].forEach(e=>{d[e.id]={kg:null,reps:null,sets:null};}); return d; });
   const [abNotes,setAbNotes]=useState({});
   const [abModal,setAbModal]=useState(null);
   const [expanded,setExpanded]=useState(null);
