@@ -97,7 +97,196 @@ const GYM_SESSIONS = [
     ],
   },
   {
-    id:"wed", day:"Wednesday", label:"Back & Arms", accent:"#e91e8c",
+    id:"thu", day:"Thursday", label:"Back & Arms", accent:"#e91e8c",
+    abPair:["ab_suitcase","ab_kb_worlds"],
+    exercises:[
+      { id:"lat_pull_wed", name:"Narrow-Grip Lat Pulldown", type:"compound",
+        note:"SETUP: narrow/neutral grip. Thighs under pads. BEFORE YOU PULL: depress shoulder blades — tuck them into your back pockets. Hold that. MOVEMENT: pull bar to upper chest, slight 10° lean back only. Slow controlled return. COMMON MISTAKE: using arms only without engaging lats. THINK: lead with elbows not hands. FEEL: wide stretch in lats at the top, contraction across mid-back at the bottom. Right scapula: keep it depressed throughout every rep.",
+        warmup:{ note:"50% weight × 10 reps", defaultKg:null, defaultReps:10 },
+        sets:[{range:"8–12"},{range:"8–12"},{range:"8–12"}] },
+      { id:"chest_row_wed", name:"Chest-Supported Row Machine", type:"compound",
+        note:"SETUP: adjust seat so handles are at mid-chest height when leaning forward. Lean chest fully into the pad — this removes ALL lower back involvement. MOVEMENT: pull handles toward your lower chest. Lead with elbows, not hands. Squeeze shoulder blades together at the end. SLOW return — 4 seconds, full arm extension. COMMON MISTAKE: lifting your chest off the pad to get more range — keep it in contact throughout. FEEL: mid-back, rhomboids and rear delt. You will likely go heavier here than single-arm row because your trunk is fully supported.",
+        warmup:{ note:"Light weight × 10 reps", defaultKg:null, defaultReps:10 },
+        sets:[{range:"8–12"},{range:"8–12"},{range:"8–12"}] },
+      { id:"hammer_wed", name:"Hammer Curl (cable, neutral grip)", type:"isolation",
+        note:"SETUP: rope or DBs, neutral grip (thumbs pointing up). MOVEMENT: elbows pinned at sides throughout. Curl up smoothly. SLOW return — 3 seconds down. STOP 10° short of full extension at the bottom (elbow hypermobility). COMMON MISTAKE: swinging at the bottom or elbows drifting forward at the top. FEEL: outer side of the upper arm and into the forearm (brachialis). Arm thickness comes from this muscle.",
+        warmup:{ note:"Light × 12 reps", defaultKg:null, defaultReps:12 },
+        sets:[{range:"12–15"},{range:"12–15"},{range:"12–15"}] },
+      { id:"tricep_rope_wed", name:"Tricep Pushdown — rope (cable)", type:"isolation",
+        note:"SETUP: rope attachment at high cable. Step back slightly. MOVEMENT: elbows pinned at sides — completely fixed. Push rope down and slightly apart at the bottom. STOP 5° before lockout (elbow hypermobility). SLOW return — 3 seconds up. COMMON MISTAKE: elbows drifting up, or bending forward to use body weight. Stand tall throughout. FEEL: only the back of the upper arm.",
+        warmup:{ note:"Light × 12 reps", defaultKg:null, defaultReps:12 },
+        sets:[{range:"12–15"},{range:"12–15"},{range:"12–15"}] },
+    ],
+  },
+  {
+    id:"sat", day:"Saturday", label:"Lower B — Quad/Glute", accent:"#7b1fa2",
+    abPair:["ab_dead_bug","ab_captains"],
+    exercises:[
+      { id:"hip_thrust_sat", name:"Hip Thrust (Smith or banded floor)", type:"compound",
+        note:"SMITH: bench at mid-scapula, drive through heels, ribs down, 1s hold at top. BANDED FLOOR: band above knees, feet flat, drive hips up from floor. Both: glutes hard at top. Choose based on availability. This is your primary glute max exercise — go heavy.",
+        warmup:{ note:"Bodyweight glute bridge × 15 — feel glutes fire", defaultKg:0, defaultReps:15 },
+        sets:[{range:"8–12"},{range:"8–12"},{range:"8–12"}] },
+      { id:"goblet_sat", name:"Heel Elevated Goblet Squat [PHYSIO]", type:"compound",
+        note:"SETUP: heels elevated on plate or block, feet hip-width. DB held vertically at chest, elbows pointing down. MOVEMENT: squat STRAIGHT DOWN — hips go down, not back. STOP before pelvis tucks under. SLOW lowering — 4 seconds down. COMMON MISTAKE: sending bum backwards and leaning forward — your physio specifically corrected this pattern. FEEL: quads working hard.",
+        warmup:{ note:"Bodyweight tripod squat × 8 — straight down, groove the pattern", defaultKg:0, defaultReps:8 },
+        sets:[{range:"8–12"},{range:"8–12"},{range:"8–12"}] },
+      { id:"bulgarian_sat", name:"Bulgarian Split Squat (DB)", type:"compound",
+        note:"SETUP: rear foot on bench, front foot far enough forward that shin stays vertical when you lower. DBs at sides. MOVEMENT: lower straight down — front knee tracks over 2nd toe, not caving inward. STOP 3–4cm before back knee touches floor. Push through front heel to stand. COMMON MISTAKE: knee caving inward on the way up — drop weight immediately if this happens. FEEL: front leg glute and quad working hard.",
+        warmup:{ note:"Bodyweight × 6 each side — feel balance and track the knee", defaultKg:0, defaultReps:6 },
+        sets:[{range:"8–12"},{range:"8–12"},{range:"8–12"}] },
+      { id:"adductor_sat", name:"Adductor Machine", type:"isolation",
+        note:"SETUP: pads just above knees. Set starting position to MID-RANGE — not fully open. MOVEMENT: press legs together smoothly. Hold 1 second at full contraction. SLOW return — stop before reaching fully open position. Do NOT push to end range — hip hypermobility. FEEL: inner thigh contraction. Adductor magnus is one of the largest glute-assisting muscles.",
+        warmup:{ note:"Light × 12 reps", defaultKg:null, defaultReps:12 },
+        sets:[{range:"12–15"},{range:"12–15"},{range:"12–15"}] },
+    ],
+  },
+  {
+    id:"sun", day:"Sunday", label:"Back & Scapular", accent:"#0891b2",
+    abPair:["ab_pallof","ab_bird_dog"],
+    exercises:[
+      { id:"cable_row_sun", name:"Seated Cable Row (wide neutral grip)", type:"compound",
+        note:"SETUP: wide neutral grip, sit tall, slight knee bend, arms extended. BEFORE YOU PULL: retract shoulder blades — pinch them together and DOWN. Hold that. MOVEMENT: pull elbows to sides, pause 1 second at chest. SLOW return — 4 seconds, let arms extend fully. COMMON MISTAKE: pulling with biceps and letting shoulder blades wing forward — if biceps are more tired than your back, this is happening. RIGHT SCAPULA: consciously press it down and back every single rep — this is your winging correction work. FEEL: rhomboids and mid-trapezius contracting between shoulder blades.",
+        warmup:{ note:"50% working weight × 10 reps", defaultKg:null, defaultReps:10 },
+        sets:[{range:"8–12"},{range:"8–12"},{range:"8–12"}] },
+      { id:"lat_pull_sun", name:"Narrow-Grip Lat Pulldown", type:"compound",
+        note:"Narrow/neutral grip. Depress shoulder blades FIRST. Pull to upper chest. 10° lean back only. Complements cable row — horizontal + vertical pull.",
+        warmup:{ note:"50% weight × 10 reps", defaultKg:null, defaultReps:10 },
+        sets:[{range:"8–12"},{range:"8–12"},{range:"8–12"}] },
+      { id:"face_pulls_sun", name:"Face Pulls (rope, eye height)", type:"isolation",
+        note:"SETUP: rope at eye height. Step back far enough to feel cable tension. MOVEMENT: pull rope toward forehead — elbows must stay HIGH and wide, above shoulder height throughout. At the end position rotate hands outward so thumbs point behind you. Slow return. COMMON MISTAKE: letting elbows drop below shoulder height (becomes a row) or skipping the external rotation at the end. WEIGHT: keep light — this is joint health, not strength. FEEL: rear deltoid and rotator cuff behind the shoulder. If you feel neck or upper trap, elbows are too low.",
+        warmup:{ note:"Very light × 12 reps", defaultKg:null, defaultReps:12 },
+        sets:[{range:"12–15"},{range:"12–15"},{range:"12–15"}] },
+      { id:"ytw_sun", name:"Y-T-W Raises (prone on incline bench)", type:"isolation",
+        note:"SETUP: face down on incline bench, arms hanging. MOVEMENT — three letters: Y: raise arms diagonally above head, thumbs up. T: raise arms straight out to sides horizontally. W: elbows bent 90°, raise so elbows are at shoulder height. Hold each position 1 second at the top. WEIGHT: 0.5–2kg maximum — neurological retraining not strength. COMMON MISTAKE: lifting with neck or upper traps instead of lower and mid traps — if your neck strains, drop to bodyweight. RIGHT SIDE: give extra focus — this is your primary scapular winging correction exercise. FEEL: muscles between and below shoulder blades, never your neck.",
+        warmup:{ note:"Bodyweight × 6 each letter — feel lower traps, not neck", defaultKg:0, defaultReps:6 },
+        sets:[{range:"10 each"},{range:"10 each"},{range:"10 each"}] },
+    ],
+  },
+];
+
+const HOME_SESSIONS = [
+  {
+    id:"wed", day:"Wednesday", label:"Active Rest — Walk + Run", accent:"#10b981", type:"active_rest",
+    canRun: true,
+    walkNote:"40+ min brisk walk. HR 100–125. Outside preferred. This is your run day if you feel up to it.",
+    runProtocol:[
+      { weeks:"Wk 1–2", structure:"Walk only", detail:"40 min brisk walk. No running yet — connective tissue base.", icon:"🚶" },
+      { weeks:"Wk 3–4", structure:"1 min jog / 4 min walk", detail:"× 5 intervals. Slow jog — hold a full sentence. Joints must feel fine next day.", icon:"🏃" },
+      { weeks:"Wk 5–6", structure:"2 min jog / 3 min walk", detail:"× 5 intervals. Same slow pace — extend time, don't speed up.", icon:"🏃" },
+      { weeks:"Wk 7–8", structure:"3 min jog / 2 min walk", detail:"× 5 intervals. More jogging than walking.", icon:"🏃" },
+      { weeks:"Wk 9–10", structure:"5 min jog / 2 min walk", detail:"× 4 intervals. Joints should feel comfortable.", icon:"🏃" },
+      { weeks:"Wk 11–12", structure:"8 min jog / 2 min walk", detail:"× 3 intervals. Nearly continuous.", icon:"🏃" },
+      { weeks:"Post Phase 1", structure:"Build to 30 min continuous", detail:"Add 1–2 min per session. JOINT RULE: if aching the next day, repeat that week before progressing.", icon:"🏅" },
+    ],
+  },
+  {
+    id:"fri", day:"Friday", label:"Active Rest — Walk Only", accent:"#6b7280", type:"active_rest",
+    canRun: false,
+    walkNote:"40+ min easy walk. Walk only today — protects Saturday legs. HR 100–120. No running.",
+    runProtocol: null,
+  },
+];
+
+import { createClient } from "@supabase/supabase-js";
+import { useState, useCallback, useEffect } from "react";
+
+// ─── DAILY PHYSIO ─────────────────────────────────────────────────────────────
+const DAILY_PHYSIO = [
+  { id:"dp1", name:"Wall Push-Ups", sets:"3", reps:"10", note:"Hands shoulder-width on wall. Slow push. Feel shoulder blades SPREAD apart at end — serratus anterior activating. Winging correction muscle." },
+  { id:"dp2", name:"External Rotation + Abduction", sets:"3", reps:"12", note:"Elbow at 90°. Rotate forearm outward (external rotation). Then arm out to shoulder height (abduction). 1–2kg only. Feel back of shoulder — rotator cuff." },
+  { id:"dp3", name:"Thoracic Mobility — foam roller", sets:"2", reps:"10 per side", note:"Lie on foam roller across mid-back. Arms raise up and down overhead slowly — 10 reps each side. Opens thoracic spine. Don't force range." },
+];
+
+// ─── AB OPTIONS ───────────────────────────────────────────────────────────────
+const AB_OPTIONS = {
+  floor:[
+    { id:"ab_dead_bug", name:"Dead Bug", sets:"3", reps:"8 each side", note:"Back flat into floor. Arms reach back as legs alternate. Breathe out on extension. Best for APT correction." },
+    { id:"ab_rkc", name:"RKC Plank", sets:"3", reps:"20–25s", note:"Squeeze glutes + quads + abs simultaneously. Elbows pull toward toes. Not passive." },
+    { id:"ab_bird_dog", name:"Bird Dog", sets:"3", reps:"8 each side", note:"Opposite arm and leg. 3s hold. No hip rotation. Back flat." },
+    { id:"ab_side_plank", name:"Side Plank (from knees)", sets:"2", reps:"20s each", note:"Elbow under shoulder. Hips stacked. Don't sag." },
+    { id:"ab_reverse_crunch", name:"Reverse Crunch", sets:"3", reps:"12–15", note:"Lie on back. Knees bent. Curl hips up toward chest — not legs swinging up. Slow lower. Hip flexion not spinal flexion." },
+    { id:"ab_tabletop_tap", name:"Tabletop Toe Tap", sets:"3", reps:"10 each side", note:"Lie on back. Both legs at 90° tabletop. Lower one heel slowly to tap floor. Back stays flat. Alternate sides. Dead bug variation — good for APT." },
+  ],
+  standing:[
+    { id:"ab_pallof", name:"Pallof Press", sets:"3", reps:"10 each side", note:"Cable or band at chest. Press straight out. Hold 2s. Resist rotation. Anti-rotation core." },
+    { id:"ab_march", name:"DB March", sets:"3", reps:"20 steps", note:"Hold DB at sides. March on spot driving knees up. Core resists rotation. Dynamic anti-rotation." },
+    { id:"ab_kb_worlds", name:"KB Around the Worlds", sets:"3", reps:"8 each direction", note:"Light KB. Pass around body in circle. Controlled — no swinging. Keep light given hypermobile shoulder." },
+    { id:"ab_suitcase", name:"Suitcase Carry", sets:"3", reps:"20m each side", note:"Heavy-ish DB one hand. Walk without leaning. QL and oblique anti-lateral flexion." },
+    { id:"ab_captains", name:"Captain's Chair Knee Raises", sets:"3", reps:"10–12", note:"Arms on pads, back against pad. Slow controlled knee raise. Slow lower. Do NOT swing." },
+    { id:"ab_side_bend", name:"DB Side Bend", sets:"3", reps:"12 each side", note:"Hold DB one hand. Bend directly to the side and return. NOTE: less effective than anti-lateral flexion work for your profile but included as your choice. Keep weight moderate." },
+  ],
+};
+
+// ─── SESSIONS ────────────────────────────────────────────────────────────────
+
+// ─── PHYSIO TAB ───────────────────────────────────────────────────────────────
+const PHYSIO_EXERCISES = [
+  { id:"p_wall_push", category:"daily", name:"Wall Push-Ups", sets:"3", reps:"10", note:"Hands shoulder-width on wall. Slow push. Feel shoulder blades SPREAD apart at end — serratus anterior. Winging correction muscle." },
+  { id:"p_ext_rot", category:"daily", name:"External Rotation + Abduction", sets:"3", reps:"12", note:"Elbow at 90°. Rotate forearm outward then arm out to shoulder height. 1–2kg only. Feel back of shoulder — rotator cuff." },
+  { id:"p_thoracic", category:"daily", name:"Thoracic Mobility (foam roller)", sets:"2", reps:"10 per side", note:"Lie on foam roller across mid-back. Arms raise up and down overhead slowly. Opens thoracic spine. Don't force range." },
+  { id:"p_single_bridge", category:"glute", name:"Single-Leg Glute Bridge (band)", sets:"2", reps:"12 each side", note:"Band just above knees. One foot flat, other leg extended. Drive hips up through grounded heel. Hips level — don't let one side drop. Lower slowly. Feel glute of grounded leg." },
+  { id:"p_dead_bug", category:"core", name:"Dead Bug", sets:"3", reps:"8 each side", note:"Back flat into floor throughout. Breathe out as leg extends. APT correction." },
+  { id:"p_bird_dog", category:"core", name:"Bird Dog", sets:"3", reps:"8 each side", note:"Opposite arm and leg. 3s hold. No hip rotation. Back flat." },
+  { id:"p_rkc", category:"core", name:"RKC Plank", sets:"3", reps:"20s", note:"Squeeze glutes + quads + abs simultaneously. Elbows toward toes. Not passive." },
+  { id:"p_clamshell", category:"hip", name:"Clamshells (band or BW)", sets:"2", reps:"15 each side", note:"Side-lying, feet together. Open top knee. Hips stacked — don't roll back. Feel glute med." },
+  { id:"p_pigeon", category:"stretch", name:"Pigeon Stretch", sets:"3", reps:"30s each side", note:"Hip on floor or bench. Lean forward gently. Deep glute and hip rotator. Don't force range." },
+  { id:"p_hip_flexor", category:"stretch", name:"Hip Flexor Stretch", sets:"2", reps:"30s each side", note:"Kneeling lunge. Gently press hips forward. Counteracts anterior pelvic tilt." },
+];
+const PHYSIO_CATEGORIES = [
+  { id:"daily", label:"Daily Physio", color:"#f59e0b" },
+  { id:"glute", label:"Glute Activation", color:"#059669" },
+  { id:"core", label:"Core", color:"#e91e8c" },
+  { id:"hip", label:"Hip Stability", color:"#0891b2" },
+  { id:"stretch", label:"Stretches", color:"#7b1fa2" },
+];
+
+const GYM_SESSIONS = [
+  {
+    id:"mon", day:"Monday", label:"Shoulders & Arms", accent:"#1565c0",
+    abPair:["ab_pallof","ab_march"],
+    exercises:[
+      { id:"lat_raise", name:"Seated Lateral Raise (DB or plate)", type:"isolation",
+        note:"SETUP: seated, back supported. DB or plate. Lead with your elbow not your hand — imagine pouring a jug of water sideways. STOP exactly at shoulder height, not above. COMMON MISTAKE: shrugging neck or upper trap instead of lifting with lateral delt. If your neck tenses, the weight is too heavy. FEEL: burning in the side of the shoulder only.",
+        warmup:{ note:"Very light × 12 reps — lateral delt only", defaultKg:null, defaultReps:12 },
+        sets:[{range:"12–15"},{range:"12–15"},{range:"12–15"}] },
+      { id:"rear_delt", name:"Rear Delt (reverse pec deck machine)", type:"isolation",
+        note:"SETUP: seat adjusted so handles are at shoulder height. Arms slightly bent throughout — never lock elbows. MOVEMENT: drive elbows back and out in a wide arc. Slow controlled return. COMMON MISTAKE: pulling with biceps or shrugging. FEEL: squeeze behind the shoulder at the end of each rep. Machine only — no bent-over version due to lower back instability.",
+        warmup:{ note:"Very light × 12 reps", defaultKg:null, defaultReps:12 },
+        sets:[{range:"12–15"},{range:"12–15"},{range:"12–15"}] },
+      { id:"tricep_bar", name:"Straight Bar Tricep Pushdown (cable)", type:"isolation",
+        note:"SETUP: straight bar at cable machine, grip shoulder-width overhand. MOVEMENT: elbows completely pinned at sides — they must not move at all. Push bar down. STOP 5° before lockout — never snap to full extension (elbow hypermobility). SLOW return — 3 seconds up. COMMON MISTAKE: elbows drifting forward, turning this into a shoulder exercise. FEEL: only the back of the upper arm.",
+        warmup:{ note:"Light × 12 reps", defaultKg:null, defaultReps:12 },
+        sets:[{range:"12–15"},{range:"12–15"},{range:"12–15"}] },
+      { id:"bicep_mon", name:"Cable Bicep Curl", type:"isolation",
+        note:"SETUP: straight or EZ bar cable at low pulley. Stand close. MOVEMENT: elbows pinned at sides, do not drift forward. Curl up smoothly. SLOW return — 3 seconds down. STOP 10–15° before full arm extension at the bottom — hypermobile elbow risk. COMMON MISTAKE: swinging body or elbows drifting forward at the top. FEEL: full bicep working from bottom to top of each rep.",
+        warmup:{ note:"Light × 12 reps", defaultKg:null, defaultReps:12 },
+        sets:[{range:"12–15"},{range:"12–15"},{range:"12–15"}] },
+    ],
+  },
+  {
+    id:"tue", day:"Tuesday", label:"Lower A — Posterior Chain", accent:"#059669",
+    abPair:["ab_rkc","ab_captains"],
+    exercises:[
+      { id:"rdl_tue", name:"Romanian Deadlift (cable or DB)", type:"compound",
+        note:"SETUP: cable or DBs, standing tall, slight soft bend in knees. MOVEMENT: push hips BACK — imagine a rope around your hips pulling them toward the wall behind you. Weight lowers because hips go back, not because you bend forward. STOP when you feel strong hamstring stretch, before pelvis tucks under. SLOW lowering — 4 seconds down. Stand to neutral at top. COMMON MISTAKE: bending knees too much (becomes a squat) or rounding lower back at the bottom. HYPERMOBILITY: stop at the first point of tension, do not push to end range.",
+        warmup:{ note:"50% weight × 10 reps", defaultKg:null, defaultReps:10 },
+        sets:[{range:"8–12"},{range:"8–12"},{range:"8–12"}] },
+      { id:"heel_split_tue", name:"Heel Elevated Split Squat [PHYSIO]", type:"compound",
+        note:"SETUP: front foot heel on plate or block, rear foot flat on floor. MOVEMENT: lower STRAIGHT DOWN — not leaning forward. VMO (inner quad) should fire hard. Both legs. STOP before knee goes to end range. COMMON MISTAKE: leaning forward or letting front knee cave. FEEL: front thigh (VMO) working, knee stable throughout.",
+        warmup:{ note:"Bodyweight × 6 each side — feel VMO load", defaultKg:0, defaultReps:6 },
+        sets:[{range:"8–12"},{range:"8–12"},{range:"8–12"}] },
+      { id:"hip_abd_tue", name:"Cable Hip Abduction", type:"isolation",
+        note:"SETUP: cable at ankle, stand side-on to machine. Hold machine lightly for balance only. MOVEMENT: leg moves directly out to the side — not forward, not back. Pelvis stays completely level — no leaning away from the cable. Slow return. COMMON MISTAKE: leaning your whole body away to get more range — this defeats the purpose entirely. FEEL: burning on the outside of the hip (glute med). Your most important hip stabiliser for hypermobility.",
+        warmup:{ note:"Light × 12 reps each side", defaultKg:null, defaultReps:12 },
+        sets:[{range:"12–15"},{range:"12–15"}] },
+      { id:"ham_curl_tue", name:"Seated Hamstring Curl", type:"isolation",
+        note:"SETUP: knee joint aligned with machine pivot point. Ankle pad just above the heel. MOVEMENT: curl legs up smoothly. Pause 1 second at top. SLOW lowering — 4 seconds down. STOP 10° short of full extension at the bottom — never snap to straight (knee hypermobility). COMMON MISTAKE: hips lifting off the seat to get more range — keep glutes on the seat throughout. FEEL: hamstring tension throughout, especially on the slow lowering phase.",
+        warmup:{ note:"Light × 12 reps", defaultKg:null, defaultReps:12 },
+        sets:[{range:"12–15"},{range:"12–15"},{range:"12–15"}] },
+    ],
+  },
+  {
+    id:"thu", day:"Thursday", label:"Back & Arms", accent:"#e91e8c",
     abPair:["ab_suitcase","ab_kb_worlds"],
     exercises:[
       { id:"lat_pull_wed", name:"Narrow-Grip Lat Pulldown", type:"compound",
@@ -183,10 +372,6 @@ const HOME_SESSIONS = [
       { id:"thu_clamshell", name:"Clamshells (band or BW)", sets:2, reps:"15 each side", hold:"slow", note:"Side-lying. Open top knee. Hips stacked. Feel glute med." },
       { id:"thu_pigeon", name:"Pigeon Stretch", sets:3, reps:"30s each side", hold:"hold", note:"Hip on floor or bench. Lean forward gently. Don't force range." },
     ],
-  },
-  {
-    id:"fri", day:"Friday", label:"Rest Day", accent:"#6b7280", type:"rest",
-    optionalWalk:true,
   },
 ];
 
@@ -676,7 +861,7 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
   const doneSets=Object.values(logs).reduce((a,ex)=>a+ex.sets.filter(s=>s.done).length,0);
   const allMainDone=doneSets===totalSets;
   const suggestedAbsDone=session.abPair.every(id=>abDone[id]);
-  const canFinish=allMainDone;
+  const canFinish=true;
 
   const handleSave=useCallback(val=>{
     if(!modal) return;
@@ -709,7 +894,10 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
     <div style={{minHeight:"100vh",background:"#080814",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:24,fontFamily:"'DM Sans',sans-serif"}}>
       <div style={{fontSize:80,marginBottom:16}}>🎉</div>
       <h2 style={{color:"#fff",fontSize:30,fontWeight:900,margin:0,textAlign:"center"}}>Session done!</h2>
-      <p style={{color:"#555",fontSize:14,textAlign:"center",margin:"8px 0 28px"}}>{session.day} · {session.label}</p>
+      <p style={{color:"#555",fontSize:14,textAlign:"center",margin:"8px 0 16px"}}>{session.day} · {session.label}</p>
+      <button onClick={()=>setPhase("main")} style={{background:"#10102a",border:"1px solid #1e1e38",borderRadius:14,padding:"12px 28px",color:"#888",fontSize:13,fontWeight:600,cursor:"pointer",fontFamily:"inherit",marginBottom:16}}>
+        ✏️ Edit / update this session
+      </button>
       <div style={{background:"#10102a",borderRadius:20,padding:20,width:"100%",maxWidth:380,border:`1px solid ${session.accent}40`,marginBottom:24}}>
         <div style={{fontSize:10,color:session.accent,fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:12}}>What you lifted</div>
         {session.exercises.map(ex=>(
@@ -1092,6 +1280,116 @@ function RestDay({ session, history, onSave, onBack }) {
 
 // ── Root ──────────────────────────────────────────────────────────────────────
 
+
+// ── Active Rest Screen ────────────────────────────────────────────────────────
+function ActiveRestScreen({ session, history, onSave, onBack }) {
+  const prev = history[session.id] || {};
+  const [walkDone, setWalkDone] = useState(false);
+  const [runDone, setRunDone] = useState(false);
+  const [runWeek, setRunWeek] = useState(prev.runWeek ?? 3);
+  const [expandedRun, setExpandedRun] = useState(false);
+  const [phase, setPhase] = useState("main");
+
+  const finish = () => {
+    onSave(session.id, { date: new Date().toISOString(), walked: walkDone, runWeek });
+    setPhase("done");
+  };
+
+  if (phase === "done") return (
+    <div style={{minHeight:"100vh",background:"#080814",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:24,fontFamily:"'DM Sans',sans-serif"}}>
+      <div style={{fontSize:80,marginBottom:16}}>{runDone?"🏃":"🚶"}</div>
+      <h2 style={{color:"#fff",fontSize:28,fontWeight:900,margin:0,textAlign:"center"}}>{session.day} done!</h2>
+      <p style={{color:"#555",fontSize:14,textAlign:"center",margin:"8px 0 32px"}}>{runDone?"Run + walk":"Walk"} completed</p>
+      <button onClick={onBack} style={{background:`linear-gradient(135deg,${session.accent},#e91e8c)`,color:"#fff",border:"none",borderRadius:16,padding:"16px 52px",fontSize:16,fontWeight:900,cursor:"pointer",fontFamily:"inherit"}}>Back</button>
+    </div>
+  );
+
+  return (
+    <div style={{minHeight:"100vh",background:"#080814",fontFamily:"'DM Sans',sans-serif",paddingBottom:80}}>
+      <div style={{background:`linear-gradient(180deg,${session.accent}28 0%,#080814 100%)`,padding:"48px 18px 16px"}}>
+        <div style={{display:"flex",alignItems:"center",gap:12}}>
+          <button onClick={onBack} style={{background:"#1e1e38",border:"none",borderRadius:10,width:36,height:36,display:"flex",alignItems:"center",justifyContent:"center",color:"#aaa",cursor:"pointer"}}><IBack/></button>
+          <div>
+            <div style={{fontSize:10,color:session.accent,fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase"}}>{session.day} · Active Rest</div>
+            <div style={{fontSize:19,fontWeight:900,color:"#fff"}}>{session.label}</div>
+          </div>
+        </div>
+      </div>
+
+      <div style={{padding:"12px 14px"}}>
+        {/* Walk tick */}
+        <div style={{background:"#10102a",borderRadius:20,padding:"16px 16px",marginBottom:12,border:`1px solid ${walkDone?session.accent+"60":"#1e1e38"}`}}>
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+            <div style={{flex:1,marginRight:14}}>
+              <div style={{fontSize:10,color:session.accent,fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:4}}>Walk</div>
+              <div style={{fontSize:16,fontWeight:800,color:"#fff"}}>40+ Min Walk</div>
+              <div style={{fontSize:12,color:"#3a3a5a",marginTop:4,lineHeight:1.5}}>{session.walkNote}</div>
+            </div>
+            <button onClick={()=>setWalkDone(p=>!p)} style={{background:walkDone?session.accent+"25":"#0a0a18",border:`1.5px solid ${walkDone?session.accent:"#161628"}`,borderRadius:14,width:52,height:52,display:"flex",alignItems:"center",justifyContent:"center",color:walkDone?session.accent:"#3a3a5a",cursor:"pointer",flexShrink:0,transition:"all 0.2s"}}>
+              <ITick s={20}/>
+            </button>
+          </div>
+        </div>
+
+        {/* Run protocol — only on Wednesday */}
+        {session.canRun && session.runProtocol && (
+          <div style={{background:"#10102a",borderRadius:20,padding:"16px 16px",marginBottom:12,border:`1px solid ${runDone?"#10b98160":"#1e1e38"}`}}>
+            <div style={{fontSize:10,color:session.accent,fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:10}}>Run — optional</div>
+            <div style={{background:"#080814",borderRadius:14,padding:"12px 14px",marginBottom:12,border:"1px solid #1e1e38"}}>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
+                <div style={{fontSize:12,fontWeight:700,color:"#aaa"}}>Current week protocol</div>
+                <button onClick={()=>setExpandedRun(p=>!p)} style={{background:"#1a1a30",border:"none",borderRadius:8,padding:"4px 10px",color:session.accent,fontSize:11,fontWeight:600,cursor:"pointer",fontFamily:"inherit"}}>{expandedRun?"Hide":"All weeks"}</button>
+              </div>
+              {(()=>{
+                const wk = session.runProtocol[Math.min(runWeek-1, session.runProtocol.length-1)];
+                return (
+                  <div style={{background:"#10102a",borderRadius:12,padding:"12px 14px",border:`1px solid ${session.accent}40`}}>
+                    <div style={{display:"flex",justifyContent:"space-between",marginBottom:6}}>
+                      <div style={{fontSize:10,color:session.accent,fontWeight:700,textTransform:"uppercase"}}>{wk.weeks}</div>
+                      <span style={{fontSize:20}}>{wk.icon}</span>
+                    </div>
+                    <div style={{fontSize:15,fontWeight:800,color:"#fff",marginBottom:4}}>{wk.structure}</div>
+                    <div style={{fontSize:12,color:"#666",lineHeight:1.5}}>{wk.detail}</div>
+                    <div style={{display:"flex",gap:8,marginTop:12}}>
+                      <button onClick={()=>setRunWeek(p=>Math.max(1,p-1))} style={{flex:1,background:"#080814",border:"1px solid #1e1e38",borderRadius:10,padding:"8px 0",color:"#555",fontSize:12,cursor:"pointer",fontFamily:"inherit"}}>← Back</button>
+                      <button onClick={()=>setRunWeek(p=>Math.min(session.runProtocol.length,p+1))} style={{flex:1,background:session.accent+"20",border:`1px solid ${session.accent}50`,borderRadius:10,padding:"8px 0",color:session.accent,fontSize:12,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>Next week →</button>
+                    </div>
+                  </div>
+                );
+              })()}
+              {expandedRun&&(
+                <div style={{marginTop:10}}>
+                  {session.runProtocol.map((wk,i)=>(
+                    <div key={i} onClick={()=>{setRunWeek(i+1);setExpandedRun(false);}} style={{background:runWeek===i+1?"#10102a":"transparent",borderRadius:10,padding:"8px 12px",marginBottom:5,border:`1px solid ${runWeek===i+1?session.accent+"50":"#1e1e38"}`,cursor:"pointer"}}>
+                      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                        <div>
+                          <div style={{fontSize:10,color:runWeek===i+1?session.accent:"#3a3a5a",fontWeight:600}}>{wk.weeks}</div>
+                          <div style={{fontSize:12,fontWeight:700,color:runWeek===i+1?"#fff":"#555"}}>{wk.structure}</div>
+                        </div>
+                        <span>{wk.icon}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+              <div style={{fontSize:12,color:"#3a3a5a"}}>Tick if you ran today</div>
+              <button onClick={()=>setRunDone(p=>!p)} style={{background:runDone?"#10b98125":"#0a0a18",border:`1.5px solid ${runDone?"#10b981":"#161628"}`,borderRadius:14,width:52,height:52,display:"flex",alignItems:"center",justifyContent:"center",color:runDone?"#10b981":"#3a3a5a",cursor:"pointer",transition:"all 0.2s"}}>
+                <ITick s={20}/>
+              </button>
+            </div>
+          </div>
+        )}
+
+        <button onClick={finish} style={{width:"100%",background:`linear-gradient(135deg,${session.accent},#059669)`,border:"none",borderRadius:18,height:62,color:"#fff",fontSize:17,fontWeight:900,cursor:"pointer",fontFamily:"inherit",marginTop:8}}>
+          Log {session.day} ✓
+        </button>
+      </div>
+    </div>
+  );
+}
+
 // ── Physio Screen ─────────────────────────────────────────────────────────────
 function PhysioScreen({ physioDone, onToggle, onBack, currentWeek }) {
   const totalEx = PHYSIO_EXERCISES.length;
@@ -1202,6 +1500,7 @@ export default function App() {
     if(gym) return <GymSession session={gym} history={history} exerciseNotes={exerciseNotes} onNoteSave={async(exId,note)=>{ setExerciseNotes(p=>({...p,[exId]:note})); await saveExerciseNote(exId,note); }} onSave={handleSave} onBack={()=>setActive(null)}/>;
     if(home&&home.type==="rest") return <RestDay session={home} history={history} onSave={handleSave} onBack={()=>setActive(null)}/>;
     if(home&&home.type==="home") return <RunSession session={home} history={history} onSave={handleSave} onBack={()=>setActive(null)}/>;
+    if(home&&home.type==="active_rest") return <ActiveRestScreen session={home} history={history} onSave={handleSave} onBack={()=>setActive(null)}/>;
   }
   if(physioTab) return <PhysioScreen physioDone={physioDone} onToggle={handlePhysioToggle} onBack={()=>setPhysioTab(false)} currentWeek={currentWeek}/>;
   return <HomeScreen onSelect={setActive} history={history} travelWeek={travelWeek} setTravelWeek={setTravelWeek} currentWeek={currentWeek} onWeekChange={handleWeekChange} onPhysioTab={()=>setPhysioTab(true)} physioDone={physioDone}/>;
