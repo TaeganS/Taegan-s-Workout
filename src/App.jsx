@@ -29,6 +29,28 @@ const AB_OPTIONS = {
 };
 
 // ─── SESSIONS ────────────────────────────────────────────────────────────────
+
+// ─── PHYSIO TAB ───────────────────────────────────────────────────────────────
+const PHYSIO_EXERCISES = [
+  { id:"p_wall_push", category:"daily", name:"Wall Push-Ups", sets:"3", reps:"10", note:"Hands shoulder-width on wall. Slow push. Feel shoulder blades SPREAD apart at end — serratus anterior. Winging correction muscle." },
+  { id:"p_ext_rot", category:"daily", name:"External Rotation + Abduction", sets:"3", reps:"12", note:"Elbow at 90°. Rotate forearm outward then arm out to shoulder height. 1–2kg only. Feel back of shoulder — rotator cuff." },
+  { id:"p_thoracic", category:"daily", name:"Thoracic Mobility (foam roller)", sets:"2", reps:"10 per side", note:"Lie on foam roller across mid-back. Arms raise up and down overhead slowly. Opens thoracic spine. Don't force range." },
+  { id:"p_single_bridge", category:"glute", name:"Single-Leg Glute Bridge (band)", sets:"2", reps:"12 each side", note:"Band just above knees. One foot flat, other leg extended. Drive hips up through grounded heel. Hips level — don't let one side drop. Lower slowly. Feel glute of grounded leg." },
+  { id:"p_dead_bug", category:"core", name:"Dead Bug", sets:"3", reps:"8 each side", note:"Back flat into floor throughout. Breathe out as leg extends. APT correction." },
+  { id:"p_bird_dog", category:"core", name:"Bird Dog", sets:"3", reps:"8 each side", note:"Opposite arm and leg. 3s hold. No hip rotation. Back flat." },
+  { id:"p_rkc", category:"core", name:"RKC Plank", sets:"3", reps:"20s", note:"Squeeze glutes + quads + abs simultaneously. Elbows toward toes. Not passive." },
+  { id:"p_clamshell", category:"hip", name:"Clamshells (band or BW)", sets:"2", reps:"15 each side", note:"Side-lying, feet together. Open top knee. Hips stacked — don't roll back. Feel glute med." },
+  { id:"p_pigeon", category:"stretch", name:"Pigeon Stretch", sets:"3", reps:"30s each side", note:"Hip on floor or bench. Lean forward gently. Deep glute and hip rotator. Don't force range." },
+  { id:"p_hip_flexor", category:"stretch", name:"Hip Flexor Stretch", sets:"2", reps:"30s each side", note:"Kneeling lunge. Gently press hips forward. Counteracts anterior pelvic tilt." },
+];
+const PHYSIO_CATEGORIES = [
+  { id:"daily", label:"Daily Physio", color:"#f59e0b" },
+  { id:"glute", label:"Glute Activation", color:"#059669" },
+  { id:"core", label:"Core", color:"#e91e8c" },
+  { id:"hip", label:"Hip Stability", color:"#0891b2" },
+  { id:"stretch", label:"Stretches", color:"#7b1fa2" },
+];
+
 const GYM_SESSIONS = [
   {
     id:"mon", day:"Monday", label:"Shoulders & Arms", accent:"#1565c0",
@@ -53,25 +75,21 @@ const GYM_SESSIONS = [
     ],
   },
   {
-    id:"tue", day:"Tuesday", label:"Lower A — Glute/Ham", accent:"#059669",
+    id:"tue", day:"Tuesday", label:"Lower A — Posterior Chain", accent:"#059669",
     abPair:["ab_rkc","ab_captains"],
     exercises:[
-      { id:"hip_thrust_tue", name:"Hip Thrust (DB weighted or Smith machine)", type:"compound",
-        note:"DB VERSION (fastest for Tuesday mornings): sit against bench, DB held horizontally across hip creases with both hands. Drive through heels. At top: glutes HARD + ribs DOWN — no lower back arch. 1s hold. Aim for 10–12 reps with DB. SMITH VERSION: bar at mid-scapula, same cues. No barbell on Tuesday mornings — too slow to set up.",
-        warmup:{ note:"Bodyweight × 15 — feel glutes fire before any load", defaultKg:0, defaultReps:15 },
-        sets:[{range:"8–12"},{range:"8–12"},{range:"8–12"}] },
       { id:"rdl_tue", name:"Romanian Deadlift (cable or DB)", type:"compound",
         note:"SETUP: cable or DBs, standing tall, slight soft bend in knees. MOVEMENT: push hips BACK — imagine a rope around your hips pulling them toward the wall behind you. Weight lowers because hips go back, not because you bend forward. STOP when you feel strong hamstring stretch, before pelvis tucks under. SLOW lowering — 4 seconds down. Stand to neutral at top. COMMON MISTAKE: bending knees too much (becomes a squat) or rounding lower back at the bottom. HYPERMOBILITY: stop at the first point of tension, do not push to end range.",
         warmup:{ note:"50% weight × 10 reps", defaultKg:null, defaultReps:10 },
         sets:[{range:"8–12"},{range:"8–12"},{range:"8–12"}] },
       { id:"heel_split_tue", name:"Heel Elevated Split Squat [PHYSIO]", type:"compound",
-        note:"SETUP: front foot heel on plate or block, rear foot flat on floor. MOVEMENT: lower STRAIGHT DOWN — not leaning forward. Physio correction: your weight should go through the front heel, not the toes. VMO (inner quad) should fire hard. Both legs. STOP before knee goes to end range. COMMON MISTAKE: leaning forward or letting front knee cave. 2 sets only on Tuesday — time constraint. Full 3 sets on Saturday. FEEL: front thigh (VMO) working, knee stable throughout.",
+        note:"SETUP: front foot heel on plate or block, rear foot flat on floor. MOVEMENT: lower STRAIGHT DOWN — not leaning forward. VMO (inner quad) should fire hard. Both legs. STOP before knee goes to end range. COMMON MISTAKE: leaning forward or letting front knee cave. FEEL: front thigh (VMO) working, knee stable throughout.",
         warmup:{ note:"Bodyweight × 6 each side — feel VMO load", defaultKg:0, defaultReps:6 },
-        sets:[{range:"8–12"},{range:"8–12"}] },
-      { id:"hip_abd_tue", name:"Bench Cable Hip Abduction", type:"isolation",
-        note:"SETUP: cable at ankle, stand side-on to machine. Hold machine lightly for balance only. MOVEMENT: leg moves directly out to the side — not forward, not back. Pelvis stays completely level — no leaning away from the cable. Slow return. COMMON MISTAKE: leaning your whole body away to get more range — this defeats the purpose entirely. FEEL: burning on the outside of the hip (glute med). This is your most important hip stabiliser for hypermobility.",
+        sets:[{range:"8–12"},{range:"8–12"},{range:"8–12"}] },
+      { id:"hip_abd_tue", name:"Cable Hip Abduction", type:"isolation",
+        note:"SETUP: cable at ankle, stand side-on to machine. Hold machine lightly for balance only. MOVEMENT: leg moves directly out to the side — not forward, not back. Pelvis stays completely level — no leaning away from the cable. Slow return. COMMON MISTAKE: leaning your whole body away to get more range — this defeats the purpose entirely. FEEL: burning on the outside of the hip (glute med). Your most important hip stabiliser for hypermobility.",
         warmup:{ note:"Light × 12 reps each side", defaultKg:null, defaultReps:12 },
-        sets:[{range:"12–15"},{range:"12–15"},{range:"12–15"}] },
+        sets:[{range:"12–15"},{range:"12–15"}] },
       { id:"ham_curl_tue", name:"Seated Hamstring Curl", type:"isolation",
         note:"SETUP: knee joint aligned with machine pivot point. Ankle pad just above the heel. MOVEMENT: curl legs up smoothly. Pause 1 second at top. SLOW lowering — 4 seconds down. STOP 10° short of full extension at the bottom — never snap to straight (knee hypermobility). COMMON MISTAKE: hips lifting off the seat to get more range — keep glutes on the seat throughout. FEEL: hamstring tension throughout, especially on the slow lowering phase.",
         warmup:{ note:"Light × 12 reps", defaultKg:null, defaultReps:12 },
@@ -105,23 +123,19 @@ const GYM_SESSIONS = [
     abPair:["ab_dead_bug","ab_captains"],
     exercises:[
       { id:"hip_thrust_sat", name:"Hip Thrust (Smith or banded floor)", type:"compound",
-        note:"SMITH: bench at mid-scapula, drive through heels, ribs down, 1s hold. BANDED FLOOR: band above knees, feet flat, drive hips up from floor. Both: glutes hard at top. Choose based on availability.",
+        note:"SMITH: bench at mid-scapula, drive through heels, ribs down, 1s hold at top. BANDED FLOOR: band above knees, feet flat, drive hips up from floor. Both: glutes hard at top. Choose based on availability. This is your primary glute max exercise — go heavy.",
         warmup:{ note:"Bodyweight glute bridge × 15 — feel glutes fire", defaultKg:0, defaultReps:15 },
         sets:[{range:"8–12"},{range:"8–12"},{range:"8–12"}] },
       { id:"goblet_sat", name:"Heel Elevated Goblet Squat [PHYSIO]", type:"compound",
-        note:"SETUP: heels elevated on plate or block, feet hip-width. DB held vertically at chest, elbows pointing down. MOVEMENT: squat STRAIGHT DOWN — hips go down, not back. Think of lowering yourself between your heels. STOP before pelvis tucks under (lower back rounds at the bottom). SLOW lowering — 4 seconds down. COMMON MISTAKE: sending bum backwards and leaning forward — your physio specifically corrected this pattern. FEEL: quads working hard. If mostly glutes, feet are too wide or you are sitting back too much.",
+        note:"SETUP: heels elevated on plate or block, feet hip-width. DB held vertically at chest, elbows pointing down. MOVEMENT: squat STRAIGHT DOWN — hips go down, not back. STOP before pelvis tucks under. SLOW lowering — 4 seconds down. COMMON MISTAKE: sending bum backwards and leaning forward — your physio specifically corrected this pattern. FEEL: quads working hard.",
         warmup:{ note:"Bodyweight tripod squat × 8 — straight down, groove the pattern", defaultKg:0, defaultReps:8 },
         sets:[{range:"8–12"},{range:"8–12"},{range:"8–12"}] },
       { id:"bulgarian_sat", name:"Bulgarian Split Squat (DB)", type:"compound",
-        note:"SETUP: rear foot on bench, front foot far enough forward that shin stays vertical when you lower. DBs at sides. MOVEMENT: lower straight down — front knee tracks over 2nd toe, not caving inward. STOP 3–4cm before back knee touches floor. Push through front heel to stand. COMMON MISTAKE: knee caving inward on the way up — drop weight immediately if this happens. Keep torso upright, do not lean forward. FEEL: front leg glute and quad working hard. If mostly back hip flexor, front foot is too close to the bench.",
+        note:"SETUP: rear foot on bench, front foot far enough forward that shin stays vertical when you lower. DBs at sides. MOVEMENT: lower straight down — front knee tracks over 2nd toe, not caving inward. STOP 3–4cm before back knee touches floor. Push through front heel to stand. COMMON MISTAKE: knee caving inward on the way up — drop weight immediately if this happens. FEEL: front leg glute and quad working hard.",
         warmup:{ note:"Bodyweight × 6 each side — feel balance and track the knee", defaultKg:0, defaultReps:6 },
         sets:[{range:"8–12"},{range:"8–12"},{range:"8–12"}] },
-      { id:"kickback_sat", name:"Single-Leg Cable Kickback", type:"isolation",
-        note:"SETUP: cable at ankle, stand facing the machine. Slight forward lean from hips — about 15°. MOVEMENT: kick leg straight back in a small controlled arc (30–40° only). Hips must stay square — no rotating the hip open for more range. Squeeze glute hard at the end point, hold 1 second. Slow return. COMMON MISTAKE: swinging for momentum or rotating hip to cheat more range — both remove the glute entirely. FEEL: isolated glute contraction at the end of each rep. If you feel lower back, you are leaning too far forward.",
-        warmup:{ note:"Light × 12 reps each side", defaultKg:null, defaultReps:12 },
-        sets:[{range:"12–15"},{range:"12–15"},{range:"12–15"}] },
       { id:"adductor_sat", name:"Adductor Machine", type:"isolation",
-        note:"SETUP: pads just above knees. Set starting position to MID-RANGE — not fully open. MOVEMENT: press legs together smoothly. Hold 1 second at full contraction. SLOW return — stop before reaching fully open position. Do NOT push to the end of the machine range — hip hypermobility means end-range loads the hip capsule unsafely. COMMON MISTAKE: bouncing at the open position. FEEL: inner thigh contraction. The adductor magnus is one of the largest glute-assisting muscles — this contributes more to glute development than most people realise.",
+        note:"SETUP: pads just above knees. Set starting position to MID-RANGE — not fully open. MOVEMENT: press legs together smoothly. Hold 1 second at full contraction. SLOW return — stop before reaching fully open position. Do NOT push to end range — hip hypermobility. FEEL: inner thigh contraction. Adductor magnus is one of the largest glute-assisting muscles.",
         warmup:{ note:"Light × 12 reps", defaultKg:null, defaultReps:12 },
         sets:[{range:"12–15"},{range:"12–15"},{range:"12–15"}] },
     ],
@@ -152,7 +166,7 @@ const GYM_SESSIONS = [
 
 const HOME_SESSIONS = [
   {
-    id:"thu", day:"Thursday", label:"Run + Home Physio", accent:"#d97706", type:"home",
+    id:"thu", day:"Thursday", label:"Run or Walk", accent:"#d97706", type:"home",
     runProtocol:[
       { weeks:"Wk 1–2", structure:"Walk only", detail:"40 min brisk walk. HR 100–125. No running yet — connective tissue base.", icon:"🚶" },
       { weeks:"Wk 3–4", structure:"1 min jog / 4 min walk", detail:"× 5 intervals = 25 min. Slow jog — hold a full sentence. Joints must feel fine next day.", icon:"🏃" },
@@ -228,6 +242,38 @@ async function fetchHistory() {
     noteRows.forEach(n => { exerciseNotes[n.exercise_id] = n.note_text; });
   }
   return { sessions: history, notes: exerciseNotes };
+}
+
+async function loadWeekNumber() {
+  try {
+    const { data } = await supabase.from('app_settings').select('value').eq('key','current_week').single();
+    return data ? parseInt(data.value) : 1;
+  } catch { return 1; }
+}
+async function saveWeekNumber(week) {
+  await supabase.from('app_settings').upsert({ key:'current_week', value:String(week) }, { onConflict:'key' });
+}
+async function loadPhysioProgress() {
+  const monday = new Date();
+  monday.setDate(monday.getDate() - ((monday.getDay()+6)%7));
+  monday.setHours(0,0,0,0);
+  try {
+    const { data } = await supabase.from('physio_completions').select('*').gte('week_start', monday.toISOString().split('T')[0]);
+    const done = {};
+    if (data) data.forEach(r => { done[r.exercise_id] = true; });
+    return done;
+  } catch { return {}; }
+}
+async function savePhysioCompletion(exerciseId, isDone) {
+  const monday = new Date();
+  monday.setDate(monday.getDate() - ((monday.getDay()+6)%7));
+  monday.setHours(0,0,0,0);
+  const weekStart = monday.toISOString().split('T')[0];
+  if (isDone) {
+    await supabase.from('physio_completions').upsert({ exercise_id: exerciseId, week_start: weekStart }, { onConflict: 'exercise_id,week_start' });
+  } else {
+    await supabase.from('physio_completions').delete().eq('exercise_id', exerciseId).eq('week_start', weekStart);
+  }
 }
 
 async function persistSession(sessionId, data) {
@@ -437,7 +483,7 @@ function AbBlock({ done, setDone, accent, abLogs, setAbLogs, abNotes, onAbNoteSa
 }
 
 // ── Home Screen ───────────────────────────────────────────────────────────────
-function HomeScreen({ onSelect, history, travelWeek, setTravelWeek }) {
+function HomeScreen({ onSelect, history, travelWeek, setTravelWeek, currentWeek, onWeekChange, onPhysioTab, physioDone }) {
   const weekAgo = new Date(Date.now()-7*86400000);
   const allSessions = [...GYM_SESSIONS,...HOME_SESSIONS.filter(s=>s.type!=="rest")];
   const doneCount = allSessions.filter(s=>history[s.id]?.date&&new Date(history[s.id].date)>weekAgo).length;
@@ -467,6 +513,30 @@ function HomeScreen({ onSelect, history, travelWeek, setTravelWeek }) {
         <div style={{background:"#1a1a2e",borderRadius:8,height:6,overflow:"hidden"}}>
           <div style={{height:"100%",width:`${(doneCount/allSessions.length)*100}%`,background:"linear-gradient(90deg,#e91e8c,#9c27b0)",borderRadius:8,transition:"width 0.6s"}}/>
         </div>
+
+        {/* Week tracker */}
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginTop:16,background:"#0a0a18",borderRadius:12,padding:"10px 14px",border:"1px solid #1e1e38"}}>
+          <button onClick={()=>onWeekChange(Math.max(1,currentWeek-1))} style={{background:"#1e1e38",border:"none",borderRadius:8,width:32,height:32,color:"#555",fontSize:18,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}}>‹</button>
+          <div style={{textAlign:"center"}}>
+            <div style={{fontSize:10,color:"#3a3a5a",fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase"}}>Current week</div>
+            <div style={{fontSize:22,fontWeight:900,color:"#e91e8c",letterSpacing:"-0.04em"}}>Week {currentWeek}</div>
+          </div>
+          <button onClick={()=>onWeekChange(currentWeek+1)} style={{background:"#1e1e38",border:"none",borderRadius:8,width:32,height:32,color:"#e91e8c",fontSize:18,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}}>›</button>
+        </div>
+      </div>
+
+      {/* Physio tab button */}
+      <div style={{margin:"0 16px 14px"}}>
+        <button onClick={onPhysioTab} style={{width:"100%",background:"#10102a",border:`1px solid ${Object.values(physioDone).filter(Boolean).length>0?"#f59e0b50":"#1e1e38"}`,borderRadius:16,padding:"13px 16px",cursor:"pointer",fontFamily:"inherit",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+          <div style={{display:"flex",alignItems:"center",gap:10}}>
+            <span style={{fontSize:20}}>🏥</span>
+            <div style={{textAlign:"left"}}>
+              <div style={{fontSize:11,color:"#f59e0b",fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase"}}>Physio tab</div>
+              <div style={{fontSize:12,color:"#3a3a5a"}}>{Object.values(physioDone).filter(Boolean).length}/{PHYSIO_EXERCISES.length} exercises this week · tap to log</div>
+            </div>
+          </div>
+          <span style={{color:"#3a3a5a",fontSize:16}}>›</span>
+        </button>
       </div>
 
       {/* Travel week toggle */}
@@ -682,7 +752,7 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
       </div>
 
       <div style={{padding:"8px 14px"}}>
-        <DailyPhysioBlock done={dpDone} setDone={setDpDone}/>
+        <div style={{background:'#10102a',borderRadius:12,padding:'10px 14px',marginBottom:12,border:'1px solid #f59e0b20',display:'flex',alignItems:'center',gap:10}}><span style={{fontSize:16}}>🏥</span><div style={{flex:1}}><div style={{fontSize:10,color:'#f59e0b',fontWeight:700,letterSpacing:'0.1em',textTransform:'uppercase'}}>Physio reminder</div><div style={{fontSize:11,color:'#2a2a4a'}}>Log your physio exercises in the Physio tab at your leisure</div></div></div>
 
         <div style={{background:"#10102a",borderRadius:12,padding:"9px 13px",marginBottom:12,display:"flex",gap:14,flexWrap:"wrap"}}>
           <div style={{display:"flex",alignItems:"center",gap:5}}><div style={{width:6,height:6,borderRadius:"50%",background:session.accent}}/><span style={{fontSize:11,color:"#3a3a5a"}}>Compound: 8–12 reps</span></div>
@@ -873,7 +943,7 @@ function RunSession({ session, history, onSave, onBack }) {
       </div>
 
       <div style={{padding:"16px 14px"}}>
-        <DailyPhysioBlock done={dpDone} setDone={setDpDone}/>
+        <div style={{background:'#10102a',borderRadius:12,padding:'10px 14px',marginBottom:12,border:'1px solid #f59e0b20',display:'flex',alignItems:'center',gap:10}}><span style={{fontSize:16}}>🏥</span><div style={{flex:1}}><div style={{fontSize:10,color:'#f59e0b',fontWeight:700,letterSpacing:'0.1em',textTransform:'uppercase'}}>Physio reminder</div><div style={{fontSize:11,color:'#2a2a4a'}}>Log your physio exercises in the Physio tab at your leisure</div></div></div>
 
         <div style={{background:"#10102a",borderRadius:20,padding:"15px 14px",marginBottom:12,border:`1px solid ${runDone?session.accent+"60":"#1e1e38"}`}}>
           <div style={{fontSize:10,color:session.accent,fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:10}}>Running Protocol — Week {runWeek}</div>
@@ -1021,21 +1091,103 @@ function RestDay({ session, history, onSave, onBack }) {
 }
 
 // ── Root ──────────────────────────────────────────────────────────────────────
+
+// ── Physio Screen ─────────────────────────────────────────────────────────────
+function PhysioScreen({ physioDone, onToggle, onBack, currentWeek }) {
+  const totalEx = PHYSIO_EXERCISES.length;
+  const doneCount = Object.values(physioDone).filter(Boolean).length;
+  const [expanded, setExpanded] = useState(null);
+
+  // Last week completion stored in state for display
+  const pct = Math.round((doneCount/totalEx)*100);
+
+  return (
+    <div style={{minHeight:"100vh",background:"#080814",fontFamily:"'DM Sans',sans-serif",paddingBottom:80}}>
+      <div style={{background:"linear-gradient(180deg,#1a1400 0%,#080814 100%)",padding:"48px 18px 16px",position:"sticky",top:0,zIndex:10,backdropFilter:"blur(12px)"}}>
+        <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:12}}>
+          <button onClick={onBack} style={{background:"#1e1e38",border:"none",borderRadius:10,width:36,height:36,display:"flex",alignItems:"center",justifyContent:"center",color:"#aaa",cursor:"pointer"}}><IBack/></button>
+          <div>
+            <div style={{fontSize:10,color:"#f59e0b",fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase"}}>Week {currentWeek}</div>
+            <div style={{fontSize:19,fontWeight:900,color:"#fff",letterSpacing:"-0.03em"}}>Physio</div>
+          </div>
+          <div style={{marginLeft:"auto",fontSize:12,color:"#2a2a4a"}}>{doneCount}/{totalEx} this week</div>
+        </div>
+        <div style={{background:"#1a1a2e",borderRadius:6,height:5,overflow:"hidden"}}>
+          <div style={{height:"100%",width:`${pct}%`,background:"linear-gradient(90deg,#f59e0b,#e91e8c)",borderRadius:6,transition:"width 0.4s"}}/>
+        </div>
+        <div style={{marginTop:6,fontSize:11,color:"#2a2a4a"}}>Tick off at your own pace · resets every Monday</div>
+      </div>
+
+      <div style={{padding:"8px 14px"}}>
+        <div style={{background:"#10102a",borderRadius:14,padding:"12px 14px",marginBottom:16,border:"1px solid #f59e0b20"}}>
+          <div style={{fontSize:11,color:"#f59e0b",fontWeight:600,marginBottom:4}}>How to use this tab</div>
+          <div style={{fontSize:11,color:"#3a3a5a",lineHeight:1.6}}>These are your physio-prescribed exercises. Do them whenever you can throughout the week — morning, lunch, evening, whenever. They reset every Monday so you start fresh each week.</div>
+        </div>
+
+        {PHYSIO_CATEGORIES.map(cat=>{
+          const exercises = PHYSIO_EXERCISES.filter(e=>e.category===cat.id);
+          const catDone = exercises.filter(e=>physioDone[e.id]).length;
+          return (
+            <div key={cat.id} style={{marginBottom:16}}>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}>
+                <div style={{fontSize:10,color:cat.color,fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase"}}>{cat.label}</div>
+                <div style={{fontSize:11,color:"#2a2a4a"}}>{catDone}/{exercises.length}</div>
+              </div>
+              {exercises.map((ex,i)=>{
+                const done = physioDone[ex.id]||false;
+                const isOpen = expanded===ex.id;
+                return (
+                  <div key={ex.id} style={{marginBottom:8}}>
+                    <div style={{display:"flex",alignItems:"center",gap:10,padding:"12px 14px",background:done?"#0a120a":"#10102a",borderRadius:14,border:`1px solid ${done?cat.color+"50":"#1e1e38"}`,transition:"all 0.2s"}}>
+                      <button onClick={()=>onToggle(ex.id,!done)} style={{width:24,height:24,borderRadius:7,background:done?cat.color:"#1a1a30",border:`1.5px solid ${done?cat.color:"#2a2a4a"}`,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",flexShrink:0,transition:"all 0.2s"}}>
+                        {done&&<ITick s={13}/>}
+                      </button>
+                      <div style={{flex:1,cursor:"pointer"}} onClick={()=>onToggle(ex.id,!done)}>
+                        <div style={{fontSize:14,fontWeight:700,color:done?cat.color:"#fff",transition:"color 0.2s"}}>{ex.name}</div>
+                        <div style={{fontSize:11,color:"#2a2a4a",marginTop:2}}>{ex.sets} sets · {ex.reps}</div>
+                      </div>
+                      <button onClick={()=>setExpanded(isOpen?null:ex.id)} style={{background:"#1a1a30",border:"none",borderRadius:8,width:28,height:28,display:"flex",alignItems:"center",justifyContent:"center",color:isOpen?cat.color:"#3a3a5a",cursor:"pointer"}}>
+                        <IInfo/>
+                      </button>
+                    </div>
+                    {isOpen&&<div style={{background:"#080814",borderRadius:"0 0 12px 12px",padding:"10px 14px",fontSize:12,color:"#666",lineHeight:1.6,borderLeft:`3px solid ${cat.color}`,marginTop:-4}}>{ex.note}</div>}
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [history,setHistory]=useState({});
   const [exerciseNotes,setExerciseNotes]=useState({});
   const [loading,setLoading]=useState(true);
   const [active,setActive]=useState(null);
   const [travelWeek,setTravelWeek]=useState(false);
+  const [currentWeek,setCurrentWeek]=useState(1);
+  const [physioTab,setPhysioTab]=useState(false);
+  const [physioDone,setPhysioDone]=useState({});
 
   useEffect(()=>{
-    fetchHistory().then(result=>{ setHistory(result.sessions||{}); setExerciseNotes(result.notes||{}); setLoading(false); });
+    Promise.all([fetchHistory(),loadWeekNumber(),loadPhysioProgress()]).then(([result,week,physio])=>{
+      setHistory(result.sessions||{});
+      setExerciseNotes(result.notes||{});
+      setCurrentWeek(week||1);
+      setPhysioDone(physio||{});
+      setLoading(false);
+    });
   },[]);
 
   const handleSave=async(id,data)=>{
     setHistory(p=>({...p,[id]:data}));
     await persistSession(id,data);
   };
+  const handleWeekChange=async(w)=>{ setCurrentWeek(w); await saveWeekNumber(w); };
+  const handlePhysioToggle=async(exId,done)=>{ setPhysioDone(p=>({...p,[exId]:done})); await savePhysioCompletion(exId,done); };
 
   if(loading) return (
     <div style={{minHeight:"100vh",background:"#080814",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",fontFamily:"'DM Sans',sans-serif"}}>
@@ -1051,5 +1203,6 @@ export default function App() {
     if(home&&home.type==="rest") return <RestDay session={home} history={history} onSave={handleSave} onBack={()=>setActive(null)}/>;
     if(home&&home.type==="home") return <RunSession session={home} history={history} onSave={handleSave} onBack={()=>setActive(null)}/>;
   }
-  return <HomeScreen onSelect={setActive} history={history} travelWeek={travelWeek} setTravelWeek={setTravelWeek}/>;
+  if(physioTab) return <PhysioScreen physioDone={physioDone} onToggle={handlePhysioToggle} onBack={()=>setPhysioTab(false)} currentWeek={currentWeek}/>;
+  return <HomeScreen onSelect={setActive} history={history} travelWeek={travelWeek} setTravelWeek={setTravelWeek} currentWeek={currentWeek} onWeekChange={handleWeekChange} onPhysioTab={()=>setPhysioTab(true)} physioDone={physioDone}/>;
 }
