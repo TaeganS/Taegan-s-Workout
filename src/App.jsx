@@ -24,6 +24,7 @@ const AB_OPTIONS = {
     { id:"ab_kb_worlds", name:"KB Around the Worlds", sets:"3", reps:"8 each direction", note:"Light KB. Pass around body in circle. Controlled — no swinging. Keep light given hypermobile shoulder." },
     { id:"ab_suitcase", name:"Suitcase Carry", sets:"3", reps:"20m each side", note:"Heavy-ish DB one hand. Walk without leaning. QL and oblique anti-lateral flexion." },
     { id:"ab_captains", name:"Captain's Chair Knee Raises", sets:"3", reps:"10–12", note:"Arms on pads, back against pad. Slow controlled knee raise. Slow lower. Do NOT swing." },
+    { id:"ab_woodchop", name:"Cable Woodchop", sets:"3", reps:"10 each side", note:"Cable at high position. Stand side-on. Pull diagonally across body from high to low. Rotate through trunk. Keep hips square. Anti-rotation with rotation — good for obliques without APT reinforcement." },
     { id:"ab_side_bend", name:"DB Side Bend", sets:"3", reps:"12 each side", note:"Hold DB one hand. Bend directly to the side and return. NOTE: less effective than anti-lateral flexion work for your profile but included as your choice. Keep weight moderate." },
   ],
 };
@@ -53,8 +54,8 @@ const PHYSIO_CATEGORIES = [
 
 const GYM_SESSIONS = [
   {
-    id:"mon", day:"Monday", label:"Shoulders & Arms", accent:"#1565c0",
-    abPair:["ab_pallof","ab_march"],
+    id:"mon", day:"Monday", label:"Shoulders & Arms", hasGluteFinisher:true, accent:"#1565c0",
+    abPair:["ab_pallof","ab_march","ab_kb_worlds"],
     exercises:[
       { id:"lat_raise", name:"Seated Lateral Raise (DB or plate)", type:"isolation",
         note:"SETUP: seated, back supported. DB or plate. Lead with your elbow not your hand — imagine pouring a jug of water sideways. STOP exactly at shoulder height, not above. COMMON MISTAKE: shrugging neck or upper trap instead of lifting with lateral delt. If your neck tenses, the weight is too heavy. FEEL: burning in the side of the shoulder only.",
@@ -75,8 +76,8 @@ const GYM_SESSIONS = [
     ],
   },
   {
-    id:"tue", day:"Tuesday", label:"Lower A — Posterior Chain", accent:"#059669",
-    abPair:["ab_rkc","ab_captains"],
+    id:"tue", day:"Tuesday", label:"Lower A — Posterior Chain", accent:"#059669", hasGluteFinisher:true,
+    abPair:["ab_dead_bug","ab_rkc"],
     exercises:[
       { id:"rdl_tue", name:"Romanian Deadlift (cable or DB)", type:"compound",
         note:"SETUP: cable or DBs, standing tall, slight soft bend in knees. MOVEMENT: push hips BACK — imagine a rope around your hips pulling them toward the wall behind you. Weight lowers because hips go back, not because you bend forward. STOP when you feel strong hamstring stretch, before pelvis tucks under. SLOW lowering — 4 seconds down. Stand to neutral at top. COMMON MISTAKE: bending knees too much (becomes a squat) or rounding lower back at the bottom. HYPERMOBILITY: stop at the first point of tension, do not push to end range.",
@@ -97,8 +98,8 @@ const GYM_SESSIONS = [
     ],
   },
   {
-    id:"thu", day:"Thursday", label:"Back & Arms", accent:"#e91e8c",
-    abPair:["ab_suitcase","ab_kb_worlds"],
+    id:"thu", day:"Thursday", label:"Back & Arms", hasGluteFinisher:true, accent:"#e91e8c",
+    abPair:["ab_pallof","ab_kb_worlds","ab_captains"],
     exercises:[
       { id:"lat_pull_wed", name:"Narrow-Grip Lat Pulldown", type:"compound",
         note:"SETUP: narrow/neutral grip. Thighs under pads. BEFORE YOU PULL: depress shoulder blades — tuck them into your back pockets. Hold that. MOVEMENT: pull bar to upper chest, slight 10° lean back only. Slow controlled return. COMMON MISTAKE: using arms only without engaging lats. THINK: lead with elbows not hands. FEEL: wide stretch in lats at the top, contraction across mid-back at the bottom. Right scapula: keep it depressed throughout every rep.",
@@ -120,7 +121,7 @@ const GYM_SESSIONS = [
   },
   {
     id:"sat", day:"Saturday", label:"Lower B — Quad/Glute", accent:"#7b1fa2",
-    abPair:["ab_dead_bug","ab_captains"],
+    abPair:["ab_rkc","ab_tabletop_tap"],
     exercises:[
       { id:"hip_thrust_sat", name:"Hip Thrust (Smith or banded floor)", type:"compound",
         note:"SMITH: bench at mid-scapula, drive through heels, ribs down, 1s hold at top. BANDED FLOOR: band above knees, feet flat, drive hips up from floor. Both: glutes hard at top. Choose based on availability. This is your primary glute max exercise — go heavy.",
@@ -141,8 +142,8 @@ const GYM_SESSIONS = [
     ],
   },
   {
-    id:"sun", day:"Sunday", label:"Back & Scapular", accent:"#0891b2",
-    abPair:["ab_pallof","ab_bird_dog"],
+    id:"sun", day:"Sunday", label:"Back & Scapular", hasGluteFinisher:true, accent:"#0891b2",
+    abPair:["ab_pallof","ab_kb_worlds"],
     exercises:[
       { id:"cable_row_sun", name:"Seated Cable Row (wide neutral grip)", type:"compound",
         note:"SETUP: wide neutral grip, sit tall, slight knee bend, arms extended. BEFORE YOU PULL: retract shoulder blades — pinch them together and DOWN. Hold that. MOVEMENT: pull elbows to sides, pause 1 second at chest. SLOW return — 4 seconds, let arms extend fully. COMMON MISTAKE: pulling with biceps and letting shoulder blades wing forward — if biceps are more tired than your back, this is happening. RIGHT SCAPULA: consciously press it down and back every single rep — this is your winging correction work. FEEL: rhomboids and mid-trapezius contracting between shoulder blades.",
@@ -243,7 +244,7 @@ const PHYSIO_CATEGORIES = [
 const GYM_SESSIONS = [
   {
     id:"mon", day:"Monday", label:"Shoulders & Arms", accent:"#1565c0",
-    abPair:["ab_pallof","ab_march"],
+    abPair:["ab_pallof","ab_march","ab_kb_worlds"],
     exercises:[
       { id:"lat_raise", name:"Seated Lateral Raise (DB or plate)", type:"isolation",
         note:"SETUP: seated, back supported. DB or plate. Lead with your elbow not your hand — imagine pouring a jug of water sideways. STOP exactly at shoulder height, not above. COMMON MISTAKE: shrugging neck or upper trap instead of lifting with lateral delt. If your neck tenses, the weight is too heavy. FEEL: burning in the side of the shoulder only.",
@@ -265,7 +266,7 @@ const GYM_SESSIONS = [
   },
   {
     id:"tue", day:"Tuesday", label:"Lower A — Posterior Chain", accent:"#059669",
-    abPair:["ab_rkc","ab_captains"],
+    abPair:["ab_dead_bug","ab_rkc"],
     exercises:[
       { id:"rdl_tue", name:"Romanian Deadlift (cable or DB)", type:"compound",
         note:"SETUP: cable or DBs, standing tall, slight soft bend in knees. MOVEMENT: push hips BACK — imagine a rope around your hips pulling them toward the wall behind you. Weight lowers because hips go back, not because you bend forward. STOP when you feel strong hamstring stretch, before pelvis tucks under. SLOW lowering — 4 seconds down. Stand to neutral at top. COMMON MISTAKE: bending knees too much (becomes a squat) or rounding lower back at the bottom. HYPERMOBILITY: stop at the first point of tension, do not push to end range.",
@@ -287,7 +288,7 @@ const GYM_SESSIONS = [
   },
   {
     id:"thu", day:"Thursday", label:"Back & Arms", accent:"#e91e8c",
-    abPair:["ab_suitcase","ab_kb_worlds"],
+    abPair:["ab_pallof","ab_kb_worlds","ab_captains"],
     exercises:[
       { id:"lat_pull_wed", name:"Narrow-Grip Lat Pulldown", type:"compound",
         note:"SETUP: narrow/neutral grip. Thighs under pads. BEFORE YOU PULL: depress shoulder blades — tuck them into your back pockets. Hold that. MOVEMENT: pull bar to upper chest, slight 10° lean back only. Slow controlled return. COMMON MISTAKE: using arms only without engaging lats. THINK: lead with elbows not hands. FEEL: wide stretch in lats at the top, contraction across mid-back at the bottom. Right scapula: keep it depressed throughout every rep.",
@@ -309,7 +310,7 @@ const GYM_SESSIONS = [
   },
   {
     id:"sat", day:"Saturday", label:"Lower B — Quad/Glute", accent:"#7b1fa2",
-    abPair:["ab_dead_bug","ab_captains"],
+    abPair:["ab_rkc","ab_tabletop_tap"],
     exercises:[
       { id:"hip_thrust_sat", name:"Hip Thrust (Smith or banded floor)", type:"compound",
         note:"SMITH: bench at mid-scapula, drive through heels, ribs down, 1s hold at top. BANDED FLOOR: band above knees, feet flat, drive hips up from floor. Both: glutes hard at top. Choose based on availability. This is your primary glute max exercise — go heavy.",
@@ -331,7 +332,7 @@ const GYM_SESSIONS = [
   },
   {
     id:"sun", day:"Sunday", label:"Back & Scapular", accent:"#0891b2",
-    abPair:["ab_pallof","ab_bird_dog"],
+    abPair:["ab_pallof","ab_kb_worlds"],
     exercises:[
       { id:"cable_row_sun", name:"Seated Cable Row (wide neutral grip)", type:"compound",
         note:"SETUP: wide neutral grip, sit tall, slight knee bend, arms extended. BEFORE YOU PULL: retract shoulder blades — pinch them together and DOWN. Hold that. MOVEMENT: pull elbows to sides, pause 1 second at chest. SLOW return — 4 seconds, let arms extend fully. COMMON MISTAKE: pulling with biceps and letting shoulder blades wing forward — if biceps are more tired than your back, this is happening. RIGHT SCAPULA: consciously press it down and back every single rep — this is your winging correction work. FEEL: rhomboids and mid-trapezius contracting between shoulder blades.",
@@ -429,14 +430,43 @@ async function fetchHistory() {
   return { sessions: history, notes: exerciseNotes };
 }
 
-async function loadWeekNumber() {
+// Calendar-based week tracking — set once, calculates automatically forever
+async function loadProgramStartDate() {
   try {
-    const { data } = await supabase.from('app_settings').select('value').eq('key','current_week').single();
-    return data ? parseInt(data.value) : 1;
-  } catch { return 1; }
+    const { data } = await supabase.from('app_settings').select('value').eq('key','program_start_date').single();
+    return data ? data.value : null;
+  } catch { return null; }
 }
-async function saveWeekNumber(week) {
-  await supabase.from('app_settings').upsert({ key:'current_week', value:String(week) }, { onConflict:'key' });
+async function saveProgramStartDate(dateStr) {
+  await supabase.from('app_settings').upsert({ key:'program_start_date', value:dateStr }, { onConflict:'key' });
+}
+async function loadWeekOverride() {
+  try {
+    const { data } = await supabase.from('app_settings').select('value').eq('key','week_override').single();
+    return data ? JSON.parse(data.value) : null; // {week: N, setAt: dateStr}
+  } catch { return null; }
+}
+async function saveWeekOverride(week) {
+  const payload = JSON.stringify({ week, setAt: new Date().toISOString().split('T')[0] });
+  await supabase.from('app_settings').upsert({ key:'week_override', value:payload }, { onConflict:'key' });
+}
+function calculateCurrentWeek(startDateStr, overrideData) {
+  if (!startDateStr) return 1;
+  const start = new Date(startDateStr);
+  const today = new Date();
+  start.setHours(0,0,0,0);
+  today.setHours(0,0,0,0);
+  const daysSinceStart = Math.floor((today - start) / (1000*60*60*24));
+  const calendarWeek = Math.max(1, Math.floor(daysSinceStart / 7) + 1);
+  // If there's an override (manual repeat-a-week), apply offset from when it was set
+  if (overrideData && overrideData.week) {
+    const overrideSetDate = new Date(overrideData.setAt);
+    overrideSetDate.setHours(0,0,0,0);
+    const daysSinceOverride = Math.floor((today - overrideSetDate) / (1000*60*60*24));
+    const weeksSinceOverride = Math.floor(daysSinceOverride / 7);
+    return overrideData.week + weeksSinceOverride;
+  }
+  return calendarWeek;
 }
 async function loadPhysioProgress() {
   const monday = new Date();
@@ -540,135 +570,178 @@ function DailyPhysioBlock({ done, setDone }) {
 }
 
 // ── Ab Block ──────────────────────────────────────────────────────────────────
-function AbBlock({ done, setDone, accent, abLogs, setAbLogs, abNotes, onAbNoteSave, onAbModal }) {
-  const allAbs = [...AB_OPTIONS.floor,...AB_OPTIONS.standing];
-  const [editingNote, setEditingNote] = useState(null);
-  const [expanded, setExpanded] = useState(null);
-  const selected = allAbs.filter(ex => done[ex.id]);
+
+// ── Glute Finisher Block (editable sets) ────────────────────────────────────
+function GluteFinisherBlock({ accent, finisherLogs, setFinisherLogs, onModal, prevFinisher }) {
+  const [expanded, setExpanded] = useState(false);
+  const addSet = () => setFinisherLogs(p => ({ ...p, sets: [...p.sets, { kg:null, reps:null, done:false }] }));
+  const removeSet = () => setFinisherLogs(p => ({ ...p, sets: p.sets.length > 1 ? p.sets.slice(0,-1) : p.sets }));
+  const toggleSet = (si) => setFinisherLogs(p => ({ ...p, sets: p.sets.map((s,i)=>i===si?{...s,done:!s.done}:s) }));
+  const allDone = finisherLogs.sets.length > 0 && finisherLogs.sets.every(s => s.done);
 
   return (
-    <div style={{background:"#10102a",borderRadius:20,padding:"15px 14px",marginBottom:12,border:"1px solid #1e1e38"}}>
-      <div style={{fontSize:10,color:accent,fontWeight:700,letterSpacing:"0.14em",textTransform:"uppercase",marginBottom:4}}>Core / Abs — optional</div>
-      <div style={{fontSize:11,color:"#2a2a4a",marginBottom:12,fontStyle:"italic"}}>Select exercises below · log weight and reps if weighted · won't block session completion</div>
-
-      {/* Floor section */}
-      <div style={{fontSize:9,color:"#3a3a5a",fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:8}}>Floor</div>
-      {AB_OPTIONS.floor.map(ex=>(
-        <div key={ex.id} style={{marginBottom:8}}>
-          <div style={{display:"flex",alignItems:"center",gap:10,padding:"10px 12px",background:done[ex.id]?"#0a1a0a":"#080814",borderRadius:12,border:`1px solid ${done[ex.id]?accent+"50":"#1e1e38"}`,cursor:"pointer"}}
-            onClick={()=>setDone(p=>({...p,[ex.id]:!p[ex.id]}))}>
-            <div style={{width:20,height:20,borderRadius:6,background:done[ex.id]?accent:"#1a1a30",border:`1.5px solid ${done[ex.id]?accent:"#2a2a4a"}`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,transition:"all 0.2s"}}>
-              {done[ex.id]&&<ITick s={11}/>}
-            </div>
-            <div style={{flex:1}}>
-              <div style={{fontSize:13,fontWeight:700,color:done[ex.id]?accent:"#ccc"}}>{ex.name}</div>
-              <div style={{fontSize:11,color:"#2a2a4a",marginTop:1}}>{ex.sets} sets · {ex.reps}</div>
-            </div>
-            <button onClick={e=>{e.stopPropagation();setExpanded(expanded===ex.id?null:ex.id);}} style={{background:"#1a1a30",border:"none",borderRadius:8,width:28,height:28,display:"flex",alignItems:"center",justifyContent:"center",color:"#3a3a5a",cursor:"pointer",flexShrink:0}}>
-              <IInfo/>
-            </button>
+    <div style={{background:"#10102a",borderRadius:20,padding:"15px 13px",marginBottom:12,border:`1px solid ${allDone?"#7b1fa260":"#1e1e38"}`,transition:"border-color 0.3s"}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:10}}>
+        <div style={{flex:1,marginRight:8}}>
+          <div style={{display:"flex",alignItems:"center",gap:7,marginBottom:3}}>
+            <span style={{fontSize:14}}>🍑</span>
+            <div style={{fontSize:15,fontWeight:800,color:allDone?"#7b1fa2":"#fff"}}>DB Hip Thrust — Finisher</div>
           </div>
-          {expanded===ex.id&&<div style={{background:"#080814",borderRadius:"0 0 10px 10px",padding:"8px 12px",fontSize:11,color:"#666",lineHeight:1.6,borderLeft:`3px solid ${accent}`,marginTop:-4}}>{ex.note}</div>}
+          <div style={{fontSize:10,color:"#1e1e38",paddingLeft:21}}>Glute frequency work · editable sets · physio recommended</div>
+        </div>
+        <button onClick={()=>setExpanded(p=>!p)} style={{background:"#181830",border:"none",borderRadius:8,width:30,height:30,display:"flex",alignItems:"center",justifyContent:"center",color:expanded?"#7b1fa2":"#3a3a5a",cursor:"pointer",flexShrink:0}}>
+          <IInfo/>
+        </button>
+      </div>
 
-          {/* Log and notes when selected */}
-          {done[ex.id]&&(
-            <div style={{background:"#080814",borderRadius:"0 0 12px 12px",padding:"10px 12px",marginTop:-4,border:`1px solid ${accent}30`,borderTop:"none"}}>
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:6,marginBottom:4}}>
-                <div style={{fontSize:9,color:"#2a2a4a",textAlign:"center"}}>SETS</div>
-                <div style={{fontSize:9,color:"#2a2a4a",textAlign:"center"}}>KG (optional)</div>
-                <div style={{fontSize:9,color:"#2a2a4a",textAlign:"center"}}>REPS / TIME</div>
-              </div>
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginBottom:8}}>
-                <button onClick={()=>onAbModal({exId:ex.id,field:"sets"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.sets!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:44,color:abLogs[ex.id]?.sets!=null?"#fff":"#2a2a4a",fontSize:16,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
-                  {abLogs[ex.id]?.sets!=null?`${abLogs[ex.id].sets}`:"—"}
-                </button>
-                <button onClick={()=>onAbModal({exId:ex.id,field:"kg"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.kg!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:44,color:abLogs[ex.id]?.kg!=null?"#fff":"#2a2a4a",fontSize:16,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
-                  {abLogs[ex.id]?.kg!=null?`${abLogs[ex.id].kg}`:"—"}
-                </button>
-                <button onClick={()=>onAbModal({exId:ex.id,field:"reps"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.reps!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:44,color:abLogs[ex.id]?.reps!=null?"#fff":"#2a2a4a",fontSize:16,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
-                  {abLogs[ex.id]?.reps!=null?`${abLogs[ex.id].reps}`:"—"}
-                </button>
-              </div>
-              {editingNote===ex.id ? (
-                <div>
-                  <textarea defaultValue={abNotes[ex.id]||""} id={`abnote_${ex.id}`} placeholder="Add notes..." style={{width:"100%",background:"#10102a",border:"1px solid #2a2a4a",borderRadius:8,padding:"8px",color:"#ccc",fontSize:11,fontFamily:"inherit",resize:"none",height:54,boxSizing:"border-box"}}/>
-                  <div style={{display:"flex",gap:6,marginTop:6}}>
-                    <button onClick={()=>setEditingNote(null)} style={{flex:1,background:"#1a1a30",border:"none",borderRadius:8,height:30,color:"#555",fontSize:11,cursor:"pointer",fontFamily:"inherit"}}>Cancel</button>
-                    <button onClick={()=>{ const val=document.getElementById(`abnote_${ex.id}`).value; onAbNoteSave(ex.id,val); setEditingNote(null); }} style={{flex:2,background:accent,border:"none",borderRadius:8,height:30,color:"#fff",fontSize:11,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>Save</button>
-                  </div>
-                </div>
-              ) : (
-                <div onClick={()=>setEditingNote(ex.id)} style={{cursor:"pointer",display:"flex",gap:6,alignItems:"flex-start"}}>
-                  <span style={{fontSize:10,color:"#2a2a4a"}}>📝</span>
-                  <span style={{fontSize:11,color:abNotes[ex.id]?"#777":"#2a2a4a",fontStyle:abNotes[ex.id]?"normal":"italic"}}>{abNotes[ex.id]||"Add notes..."}</span>
-                </div>
-              )}
+      {expanded&&<div style={{background:"#080814",borderRadius:10,padding:"10px 12px",marginBottom:12,fontSize:12,color:"#666",lineHeight:1.6,borderLeft:"3px solid #7b1fa2"}}>
+        Sit against bench, DB held horizontally across hip creases with both hands. Drive through heels. Glutes hard + ribs down at top — no lower back arch. Default 2 sets — increase to 3 using the + button below if you have time and energy. This is frequency work, not your main glute stimulus — keep it light and quick.
+      </div>}
+
+      {prevFinisher&&prevFinisher.sets?.length>0&&(
+        <div style={{display:"flex",gap:5,marginBottom:10,flexWrap:"wrap"}}>
+          {prevFinisher.sets.map((s,si)=>(
+            <div key={si} style={{fontSize:10,color:"#2a2a4a",background:"#080814",padding:"2px 8px",borderRadius:20,border:"1px solid #1a1a30"}}>
+              Last S{si+1}:{s.kg??'—'}kg×{s.reps??'—'}
             </div>
-          )}
+          ))}
+        </div>
+      )}
+
+      <div style={{display:"grid",gridTemplateColumns:"52px 1fr 1fr 40px",gap:6,marginBottom:4}}>
+        {["","KG","REPS","✓"].map((h,i)=><div key={i} style={{fontSize:9,color:"#2a2a4a",textAlign:"center"}}>{h}</div>)}
+      </div>
+
+      {finisherLogs.sets.map((s,si)=>(
+        <div key={si} style={{display:"grid",gridTemplateColumns:"52px 1fr 1fr 40px",gap:6,marginBottom:6,alignItems:"center"}}>
+          <div style={{fontSize:11,color:"#7b1fa2",fontWeight:700,textAlign:"center"}}>S{si+1}</div>
+          <button onClick={()=>onModal({field:"kg",si})} style={{background:s.done?"#7b1fa218":"#0a0a18",border:`1.5px solid ${s.done?"#7b1fa260":"#161628"}`,borderRadius:12,height:44,color:s.kg!=null?"#fff":"#1e1e38",fontSize:15,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
+            {s.kg!=null?`${s.kg}`:"—"}
+          </button>
+          <button onClick={()=>onModal({field:"reps",si})} style={{background:s.done?"#7b1fa218":"#0a0a18",border:`1.5px solid ${s.done?"#7b1fa260":"#161628"}`,borderRadius:12,height:44,color:s.reps!=null?"#fff":"#1e1e38",fontSize:15,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
+            {s.reps!=null?`${s.reps}`:"—"}
+          </button>
+          <button onClick={()=>toggleSet(si)} style={{background:s.done?"#7b1fa2":"#0a0a18",border:`1.5px solid ${s.done?"#7b1fa2":"#161628"}`,borderRadius:12,height:44,display:"flex",alignItems:"center",justifyContent:"center",color:"#fff",cursor:"pointer"}}>
+            {s.done&&<ITick s={14}/>}
+          </button>
         </div>
       ))}
 
-      {/* Standing section */}
-      <div style={{fontSize:9,color:"#3a3a5a",fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",marginTop:12,marginBottom:8}}>Standing / No mat</div>
-      {AB_OPTIONS.standing.map(ex=>(
-        <div key={ex.id} style={{marginBottom:8}}>
-          <div style={{display:"flex",alignItems:"center",gap:10,padding:"10px 12px",background:done[ex.id]?"#0a1a0a":"#080814",borderRadius:12,border:`1px solid ${done[ex.id]?accent+"50":"#1e1e38"}`,cursor:"pointer"}}
-            onClick={()=>setDone(p=>({...p,[ex.id]:!p[ex.id]}))}>
-            <div style={{width:20,height:20,borderRadius:6,background:done[ex.id]?accent:"#1a1a30",border:`1.5px solid ${done[ex.id]?accent:"#2a2a4a"}`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,transition:"all 0.2s"}}>
-              {done[ex.id]&&<ITick s={11}/>}
-            </div>
-            <div style={{flex:1}}>
-              <div style={{fontSize:13,fontWeight:700,color:done[ex.id]?accent:"#ccc"}}>{ex.name}</div>
-              <div style={{fontSize:11,color:"#2a2a4a",marginTop:1}}>{ex.sets} sets · {ex.reps}</div>
-            </div>
-            <button onClick={e=>{e.stopPropagation();setExpanded(expanded===ex.id?null:ex.id);}} style={{background:"#1a1a30",border:"none",borderRadius:8,width:28,height:28,display:"flex",alignItems:"center",justifyContent:"center",color:"#3a3a5a",cursor:"pointer",flexShrink:0}}>
-              <IInfo/>
-            </button>
-          </div>
-          {expanded===ex.id&&<div style={{background:"#080814",borderRadius:"0 0 10px 10px",padding:"8px 12px",fontSize:11,color:"#666",lineHeight:1.6,borderLeft:`3px solid ${accent}`,marginTop:-4}}>{ex.note}</div>}
-
-          {done[ex.id]&&(
-            <div style={{background:"#080814",borderRadius:"0 0 12px 12px",padding:"10px 12px",marginTop:-4,border:`1px solid ${accent}30`,borderTop:"none"}}>
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:6,marginBottom:4}}>
-                <div style={{fontSize:9,color:"#2a2a4a",textAlign:"center"}}>SETS</div>
-                <div style={{fontSize:9,color:"#2a2a4a",textAlign:"center"}}>KG (optional)</div>
-                <div style={{fontSize:9,color:"#2a2a4a",textAlign:"center"}}>REPS / TIME</div>
-              </div>
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginBottom:8}}>
-                <button onClick={()=>onAbModal({exId:ex.id,field:"sets"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.sets!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:44,color:abLogs[ex.id]?.sets!=null?"#fff":"#2a2a4a",fontSize:16,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
-                  {abLogs[ex.id]?.sets!=null?`${abLogs[ex.id].sets}`:"—"}
-                </button>
-                <button onClick={()=>onAbModal({exId:ex.id,field:"kg"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.kg!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:44,color:abLogs[ex.id]?.kg!=null?"#fff":"#2a2a4a",fontSize:16,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
-                  {abLogs[ex.id]?.kg!=null?`${abLogs[ex.id].kg}`:"—"}
-                </button>
-                <button onClick={()=>onAbModal({exId:ex.id,field:"reps"})} style={{background:"#10102a",border:`1px solid ${abLogs[ex.id]?.reps!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:44,color:abLogs[ex.id]?.reps!=null?"#fff":"#2a2a4a",fontSize:16,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
-                  {abLogs[ex.id]?.reps!=null?`${abLogs[ex.id].reps}`:"—"}
-                </button>
-              </div>
-              {editingNote===ex.id ? (
-                <div>
-                  <textarea defaultValue={abNotes[ex.id]||""} id={`abnote_${ex.id}`} placeholder="Add notes..." style={{width:"100%",background:"#10102a",border:"1px solid #2a2a4a",borderRadius:8,padding:"8px",color:"#ccc",fontSize:11,fontFamily:"inherit",resize:"none",height:54,boxSizing:"border-box"}}/>
-                  <div style={{display:"flex",gap:6,marginTop:6}}>
-                    <button onClick={()=>setEditingNote(null)} style={{flex:1,background:"#1a1a30",border:"none",borderRadius:8,height:30,color:"#555",fontSize:11,cursor:"pointer",fontFamily:"inherit"}}>Cancel</button>
-                    <button onClick={()=>{ const val=document.getElementById(`abnote_${ex.id}`).value; onAbNoteSave(ex.id,val); setEditingNote(null); }} style={{flex:2,background:accent,border:"none",borderRadius:8,height:30,color:"#fff",fontSize:11,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>Save</button>
-                  </div>
-                </div>
-              ) : (
-                <div onClick={()=>setEditingNote(ex.id)} style={{cursor:"pointer",display:"flex",gap:6,alignItems:"flex-start"}}>
-                  <span style={{fontSize:10,color:"#2a2a4a"}}>📝</span>
-                  <span style={{fontSize:11,color:abNotes[ex.id]?"#777":"#2a2a4a",fontStyle:abNotes[ex.id]?"normal":"italic"}}>{abNotes[ex.id]||"Add notes..."}</span>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      ))}
+      <div style={{display:"flex",gap:8,marginTop:8}}>
+        <button onClick={removeSet} style={{flex:1,background:"#080814",border:"1px solid #1e1e38",borderRadius:10,height:36,color:"#555",fontSize:13,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>− Remove set</button>
+        <button onClick={addSet} style={{flex:1,background:"#7b1fa220",border:"1px solid #7b1fa250",borderRadius:10,height:36,color:"#7b1fa2",fontSize:13,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>+ Add set</button>
+      </div>
     </div>
   );
 }
 
+function AbBlock({ done, setDone, accent, abLogs, setAbLogs, abNotes, onAbNoteSave, onAbModal, abPair }) {
+  const allAbs = [...AB_OPTIONS.floor,...AB_OPTIONS.standing];
+  const [editingNote, setEditingNote] = useState(null);
+  const [showSwaps, setShowSwaps] = useState(false);
+  const [expanded, setExpanded] = useState(null);
+
+  const plannedExercises = abPair.map(id => allAbs.find(a => a.id === id)).filter(Boolean);
+  const swapGroups = [
+    { label:"Floor — bodyweight", color:"#e91e8c", ids:["ab_dead_bug","ab_rkc","ab_bird_dog","ab_side_plank","ab_reverse_crunch","ab_tabletop_tap"] },
+    { label:"Cable machine", color:"#0891b2", ids:["ab_pallof","ab_woodchop"] },
+    { label:"Standing — no cable", color:"#059669", ids:["ab_march","ab_kb_worlds","ab_captains"] },
+  ];
+
+  const renderExercise = (ex, isSwap=false) => {
+    const isDone = done[ex.id];
+    const log = abLogs[ex.id] || { kg:null, reps:null, sets:null };
+    const isOpen = expanded === ex.id;
+    return (
+      <div key={ex.id} style={{marginBottom:10}}>
+        <div style={{display:"flex",alignItems:"center",gap:10,padding:"10px 12px",
+          background:isDone?(accent+"18"):"#080814",borderRadius:12,
+          border:`1px solid ${isDone?accent+"50":"#1e1e38"}`,cursor:"pointer",transition:"all 0.2s"}}
+          onClick={()=>setDone(p=>({...p,[ex.id]:!p[ex.id]}))}>
+          <div style={{width:20,height:20,borderRadius:6,background:isDone?accent:"#1a1a30",
+            border:`1.5px solid ${isDone?accent:"#2a2a4a"}`,display:"flex",alignItems:"center",
+            justifyContent:"center",flexShrink:0,transition:"all 0.2s"}}>
+            {isDone&&<ITick s={11}/>}
+          </div>
+          <div style={{flex:1}}>
+            <div style={{fontSize:13,fontWeight:700,color:isDone?accent:"#ccc"}}>{ex.name}</div>
+            <div style={{fontSize:11,color:"#2a2a4a",marginTop:1}}>3 sets · {ex.reps}</div>
+          </div>
+          <button onClick={e=>{e.stopPropagation();setExpanded(isOpen?null:ex.id);}} style={{background:"#1a1a30",border:"none",borderRadius:8,width:28,height:28,display:"flex",alignItems:"center",justifyContent:"center",color:isOpen?accent:"#3a3a5a",cursor:"pointer"}}>
+            <IInfo/>
+          </button>
+        </div>
+        {isOpen&&<div style={{background:"#080814",borderRadius:"0 0 10px 10px",padding:"8px 12px",fontSize:11,color:"#666",lineHeight:1.6,borderLeft:`3px solid ${accent}`,marginTop:-4}}>{ex.note}</div>}
+        {isDone&&(
+          <div style={{background:"#080814",borderRadius:"0 0 12px 12px",padding:"10px 12px",marginTop:-4,border:`1px solid ${accent}20`,borderTop:"none"}}>
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:6,marginBottom:4}}>
+              <div style={{fontSize:9,color:"#2a2a4a",textAlign:"center"}}>SETS</div>
+              <div style={{fontSize:9,color:"#2a2a4a",textAlign:"center"}}>KG (optional)</div>
+              <div style={{fontSize:9,color:"#2a2a4a",textAlign:"center"}}>REPS / TIME</div>
+            </div>
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginBottom:8}}>
+              {["sets","kg","reps"].map(field=>(
+                <button key={field} onClick={()=>onAbModal({exId:ex.id,field})} style={{background:"#10102a",border:`1px solid ${log[field]!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:44,color:log[field]!=null?"#fff":"#2a2a4a",fontSize:15,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
+                  {log[field]!=null?`${log[field]}`:"—"}
+                </button>
+              ))}
+            </div>
+            {editingNote===ex.id ? (
+              <div>
+                <textarea defaultValue={abNotes[ex.id]||""} id={`abnote_${ex.id}`} placeholder="Add notes..." style={{width:"100%",background:"#10102a",border:"1px solid #2a2a4a",borderRadius:8,padding:"8px",color:"#ccc",fontSize:11,fontFamily:"inherit",resize:"none",height:54,boxSizing:"border-box"}}/>
+                <div style={{display:"flex",gap:6,marginTop:6}}>
+                  <button onClick={()=>setEditingNote(null)} style={{flex:1,background:"#1a1a30",border:"none",borderRadius:8,height:30,color:"#555",fontSize:11,cursor:"pointer",fontFamily:"inherit"}}>Cancel</button>
+                  <button onClick={()=>{ const val=document.getElementById(`abnote_${ex.id}`).value; onAbNoteSave(ex.id,val); setEditingNote(null); }} style={{flex:2,background:accent,border:"none",borderRadius:8,height:30,color:"#fff",fontSize:11,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>Save</button>
+                </div>
+              </div>
+            ) : (
+              <div onClick={()=>setEditingNote(ex.id)} style={{cursor:"pointer",display:"flex",gap:6,alignItems:"flex-start"}}>
+                <span style={{fontSize:10,color:"#2a2a4a"}}>📝</span>
+                <span style={{fontSize:11,color:abNotes[ex.id]?"#777":"#2a2a4a",fontStyle:abNotes[ex.id]?"normal":"italic"}}>{abNotes[ex.id]||"Add notes..."}</span>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div style={{background:"#10102a",borderRadius:20,padding:"15px 14px",marginBottom:12,border:"1px solid #1e1e38"}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:4}}>
+        <div style={{fontSize:10,color:accent,fontWeight:700,letterSpacing:"0.14em",textTransform:"uppercase"}}>Core / Abs — optional</div>
+        <button onClick={()=>setShowSwaps(p=>!p)} style={{background:"#1a1a30",border:"none",borderRadius:8,padding:"4px 10px",color:"#555",fontSize:11,cursor:"pointer",fontFamily:"inherit"}}>
+          {showSwaps?"Hide swaps":"Swap options"}
+        </button>
+      </div>
+      <div style={{fontSize:11,color:"#2a2a4a",marginBottom:12,fontStyle:"italic"}}>Today's planned exercises · 3 sets each · tap to log</div>
+
+      {/* Planned exercises */}
+      {plannedExercises.map(ex => renderExercise(ex))}
+
+      {/* Swap groups dropdown */}
+      {showSwaps&&(
+        <div style={{marginTop:12,borderTop:"1px solid #1a1a30",paddingTop:12}}>
+          <div style={{fontSize:10,color:"#3a3a5a",fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:10}}>Swap options — grouped by equipment</div>
+          {swapGroups.map(group=>(
+            <div key={group.label} style={{marginBottom:12}}>
+              <div style={{fontSize:10,color:group.color,fontWeight:700,letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:6}}>{group.label}</div>
+              {group.ids.map(id=>{
+                const ex = allAbs.find(a=>a.id===id);
+                if (!ex) return null;
+                return renderExercise(ex, true);
+              })}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+
 // ── Home Screen ───────────────────────────────────────────────────────────────
-function HomeScreen({ onSelect, history, travelWeek, setTravelWeek, currentWeek, onWeekChange, onPhysioTab, physioDone }) {
+function HomeScreen({ onSelect, history, travelWeek, setTravelWeek, currentWeek, onRepeatWeek, onPhysioTab, physioDone }) {
   const weekAgo = new Date(Date.now()-7*86400000);
   const allSessions = [...GYM_SESSIONS,...HOME_SESSIONS.filter(s=>s.type!=="rest")];
   const doneCount = allSessions.filter(s=>history[s.id]?.date&&new Date(history[s.id].date)>weekAgo).length;
@@ -699,14 +772,18 @@ function HomeScreen({ onSelect, history, travelWeek, setTravelWeek, currentWeek,
           <div style={{height:"100%",width:`${(doneCount/allSessions.length)*100}%`,background:"linear-gradient(90deg,#e91e8c,#9c27b0)",borderRadius:8,transition:"width 0.6s"}}/>
         </div>
 
-        {/* Week tracker */}
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginTop:16,background:"#0a0a18",borderRadius:12,padding:"10px 14px",border:"1px solid #1e1e38"}}>
-          <button onClick={()=>onWeekChange(Math.max(1,currentWeek-1))} style={{background:"#1e1e38",border:"none",borderRadius:8,width:32,height:32,color:"#555",fontSize:18,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}}>‹</button>
-          <div style={{textAlign:"center"}}>
-            <div style={{fontSize:10,color:"#3a3a5a",fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase"}}>Current week</div>
-            <div style={{fontSize:22,fontWeight:900,color:"#e91e8c",letterSpacing:"-0.04em"}}>Week {currentWeek}</div>
+        {/* Week tracker — auto-calculated from calendar */}
+        <div style={{marginTop:16,background:"#0a0a18",borderRadius:12,padding:"12px 14px",border:"1px solid #1e1e38"}}>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+            <div>
+              <div style={{fontSize:10,color:"#3a3a5a",fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase"}}>Current week</div>
+              <div style={{fontSize:22,fontWeight:900,color:"#e91e8c",letterSpacing:"-0.04em"}}>Week {currentWeek}</div>
+            </div>
+            <button onClick={()=>{ if(window.confirm("Repeat this week instead of advancing? Use this if joints are aching and you need another week at the same level.")) onRepeatWeek(); }} style={{background:"#1e1e38",border:"none",borderRadius:10,padding:"8px 12px",color:"#888",fontSize:11,fontWeight:600,cursor:"pointer",fontFamily:"inherit"}}>
+              ↻ Repeat week
+            </button>
           </div>
-          <button onClick={()=>onWeekChange(currentWeek+1)} style={{background:"#1e1e38",border:"none",borderRadius:8,width:32,height:32,color:"#e91e8c",fontSize:18,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}}>›</button>
+          <div style={{fontSize:10,color:"#2a2a4a",marginTop:6}}>Advances automatically every Monday — no need to update it</div>
         </div>
       </div>
 
@@ -853,6 +930,14 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
   const [abLogs,setAbLogs]=useState(()=>{ const d={}; [...AB_OPTIONS.floor,...AB_OPTIONS.standing].forEach(e=>{d[e.id]={kg:null,reps:null,sets:null};}); return d; });
   const [abNotes,setAbNotes]=useState({});
   const [abModal,setAbModal]=useState(null);
+  const [finisherLogs,setFinisherLogs]=useState(()=>{
+    const prevF = prev?.finisher;
+    if (prevF && prevF.sets && prevF.sets.length) {
+      return { sets: prevF.sets.map(s=>({ kg:s.kg, reps:s.reps, done:false })) };
+    }
+    return { sets: [{kg:null,reps:null,done:false},{kg:null,reps:null,done:false}] };
+  });
+  const [finisherModal,setFinisherModal]=useState(null);
   const [expanded,setExpanded]=useState(null);
   const [phase,setPhase]=useState("main");
 
@@ -886,6 +971,9 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
         sets:logs[ex.id].sets.map(s=>({kg:s.kg,reps:s.reps})),
       };
     });
+    if(session.hasGluteFinisher){
+      result.finisher={ sets: finisherLogs.sets.map(s=>({kg:s.kg,reps:s.reps})) };
+    }
     onSave(session.id,result);
     setPhase("done");
   };
@@ -940,7 +1028,7 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
       </div>
 
       <div style={{padding:"8px 14px"}}>
-        <div style={{background:'#10102a',borderRadius:12,padding:'10px 14px',marginBottom:12,border:'1px solid #f59e0b20',display:'flex',alignItems:'center',gap:10}}><span style={{fontSize:16}}>🏥</span><div style={{flex:1}}><div style={{fontSize:10,color:'#f59e0b',fontWeight:700,letterSpacing:'0.1em',textTransform:'uppercase'}}>Physio reminder</div><div style={{fontSize:11,color:'#2a2a4a'}}>Log your physio exercises in the Physio tab at your leisure</div></div></div>
+        
 
         <div style={{background:"#10102a",borderRadius:12,padding:"9px 13px",marginBottom:12,display:"flex",gap:14,flexWrap:"wrap"}}>
           <div style={{display:"flex",alignItems:"center",gap:5}}><div style={{width:6,height:6,borderRadius:"50%",background:session.accent}}/><span style={{fontSize:11,color:"#3a3a5a"}}>Compound: 8–12 reps</span></div>
@@ -1063,7 +1151,17 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
           );
         })}
 
-        <AbBlock done={abDone} setDone={setAbDone} accent={session.accent} abLogs={abLogs} setAbLogs={setAbLogs} abNotes={abNotes} onAbNoteSave={async(exId,note)=>{ setAbNotes(p=>({...p,[exId]:note})); await saveExerciseNote("ab_"+exId, note); }} onAbModal={(m)=>setAbModal(m)}/>
+        {session.hasGluteFinisher&&(
+          <GluteFinisherBlock
+            accent={session.accent}
+            finisherLogs={finisherLogs}
+            setFinisherLogs={setFinisherLogs}
+            onModal={(m)=>setFinisherModal(m)}
+            prevFinisher={prev?.finisher}
+          />
+        )}
+
+        <AbBlock done={abDone} setDone={setAbDone} accent={session.accent} abLogs={abLogs} setAbLogs={setAbLogs} abNotes={abNotes} onAbNoteSave={async(exId,note)=>{ setAbNotes(p=>({...p,[exId]:note})); await saveExerciseNote("ab_"+exId, note); }} onAbModal={(m)=>setAbModal(m)} abPair={session.abPair||[]}/>
 
         {canFinish
           ?<button onClick={finish} style={{width:"100%",background:"linear-gradient(135deg,#e91e8c,#9c27b0)",border:"none",borderRadius:18,height:66,color:"#fff",fontSize:18,fontWeight:900,cursor:"pointer",fontFamily:"inherit",boxShadow:"0 8px 40px rgba(233,30,140,0.5)"}}>Complete Session 🎉</button>
@@ -1077,6 +1175,13 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
         initial={abLogs[abModal.exId]?.[abModal.field]}
         onSave={val=>setAbLogs(p=>({...p,[abModal.exId]:{...p[abModal.exId],[abModal.field]:val}}))}
         onClose={()=>setAbModal(null)}
+      />}
+      {finisherModal&&<Numpad
+        label={finisherModal.field==="kg"?"Weight (kg)":"Reps"}
+        sublabel="DB Hip Thrust Finisher"
+        initial={finisherLogs.sets[finisherModal.si]?.[finisherModal.field]}
+        onSave={val=>setFinisherLogs(p=>({...p,sets:p.sets.map((s,i)=>i===finisherModal.si?{...s,[finisherModal.field]:val}:s)}))}
+        onClose={()=>setFinisherModal(null)}
       />}
       {modal&&<Numpad
         label={modal.field==="kg"?"Weight (kg)":"Reps"}
@@ -1131,7 +1236,7 @@ function RunSession({ session, history, onSave, onBack }) {
       </div>
 
       <div style={{padding:"16px 14px"}}>
-        <div style={{background:'#10102a',borderRadius:12,padding:'10px 14px',marginBottom:12,border:'1px solid #f59e0b20',display:'flex',alignItems:'center',gap:10}}><span style={{fontSize:16}}>🏥</span><div style={{flex:1}}><div style={{fontSize:10,color:'#f59e0b',fontWeight:700,letterSpacing:'0.1em',textTransform:'uppercase'}}>Physio reminder</div><div style={{fontSize:11,color:'#2a2a4a'}}>Log your physio exercises in the Physio tab at your leisure</div></div></div>
+        
 
         <div style={{background:"#10102a",borderRadius:20,padding:"15px 14px",marginBottom:12,border:`1px solid ${runDone?session.accent+"60":"#1e1e38"}`}}>
           <div style={{fontSize:10,color:session.accent,fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:10}}>Running Protocol — Week {runWeek}</div>
@@ -1467,30 +1572,67 @@ export default function App() {
   const [active,setActive]=useState(null);
   const [travelWeek,setTravelWeek]=useState(false);
   const [currentWeek,setCurrentWeek]=useState(1);
+  const [programStartDate,setProgramStartDate]=useState(null);
+  const [weekOverride,setWeekOverride]=useState(null);
   const [physioTab,setPhysioTab]=useState(false);
   const [physioDone,setPhysioDone]=useState({});
+  const [showStartDatePrompt,setShowStartDatePrompt]=useState(false);
 
   useEffect(()=>{
-    Promise.all([fetchHistory(),loadWeekNumber(),loadPhysioProgress()]).then(([result,week,physio])=>{
+    Promise.all([fetchHistory(),loadProgramStartDate(),loadWeekOverride(),loadPhysioProgress()]).then(([result,startDate,override,physio])=>{
       setHistory(result.sessions||{});
       setExerciseNotes(result.notes||{});
-      setCurrentWeek(week||1);
       setPhysioDone(physio||{});
+      if(startDate){
+        setProgramStartDate(startDate);
+        setWeekOverride(override);
+        setCurrentWeek(calculateCurrentWeek(startDate,override));
+      } else {
+        setShowStartDatePrompt(true);
+      }
       setLoading(false);
     });
   },[]);
+
+  const handleSetStartDate=async(dateStr)=>{
+    await saveProgramStartDate(dateStr);
+    setProgramStartDate(dateStr);
+    setCurrentWeek(calculateCurrentWeek(dateStr,null));
+    setShowStartDatePrompt(false);
+  };
+
+  const handleRepeatWeek=async()=>{
+    await saveWeekOverride(currentWeek);
+    setWeekOverride({week:currentWeek,setAt:new Date().toISOString().split('T')[0]});
+  };
 
   const handleSave=async(id,data)=>{
     setHistory(p=>({...p,[id]:data}));
     await persistSession(id,data);
   };
-  const handleWeekChange=async(w)=>{ setCurrentWeek(w); await saveWeekNumber(w); };
   const handlePhysioToggle=async(exId,done)=>{ setPhysioDone(p=>({...p,[exId]:done})); await savePhysioCompletion(exId,done); };
 
   if(loading) return (
     <div style={{minHeight:"100vh",background:"#080814",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",fontFamily:"'DM Sans',sans-serif"}}>
       <div style={{fontSize:40,marginBottom:16}}>💪</div>
       <div style={{color:"#555",fontSize:14}}>Loading your program...</div>
+    </div>
+  );
+
+  if(showStartDatePrompt) return (
+    <div style={{minHeight:"100vh",background:"#080814",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:24,fontFamily:"'DM Sans',sans-serif"}}>
+      <div style={{fontSize:50,marginBottom:16}}>📅</div>
+      <h2 style={{color:"#fff",fontSize:22,fontWeight:900,textAlign:"center",margin:"0 0 8px"}}>When did Week 1 start?</h2>
+      <p style={{color:"#555",fontSize:13,textAlign:"center",margin:"0 0 28px",maxWidth:280,lineHeight:1.5}}>This sets your program clock. From here the app calculates your current week automatically — you'll never need to update it manually.</p>
+      <input
+        type="date"
+        id="startDateInput"
+        defaultValue={new Date().toISOString().split('T')[0]}
+        style={{background:"#10102a",border:"1px solid #2a2a4a",borderRadius:12,padding:"14px 16px",color:"#fff",fontSize:16,fontFamily:"inherit",marginBottom:20,width:240,textAlign:"center"}}
+      />
+      <button onClick={()=>{ const val=document.getElementById('startDateInput').value; if(val) handleSetStartDate(val); }} style={{background:"linear-gradient(135deg,#e91e8c,#9c27b0)",border:"none",borderRadius:16,padding:"16px 48px",color:"#fff",fontSize:16,fontWeight:900,cursor:"pointer",fontFamily:"inherit"}}>
+        Start tracking
+      </button>
     </div>
   );
 
@@ -1503,5 +1645,5 @@ export default function App() {
     if(home&&home.type==="active_rest") return <ActiveRestScreen session={home} history={history} onSave={handleSave} onBack={()=>setActive(null)}/>;
   }
   if(physioTab) return <PhysioScreen physioDone={physioDone} onToggle={handlePhysioToggle} onBack={()=>setPhysioTab(false)} currentWeek={currentWeek}/>;
-  return <HomeScreen onSelect={setActive} history={history} travelWeek={travelWeek} setTravelWeek={setTravelWeek} currentWeek={currentWeek} onWeekChange={handleWeekChange} onPhysioTab={()=>setPhysioTab(true)} physioDone={physioDone}/>;
+  return <HomeScreen onSelect={setActive} history={history} travelWeek={travelWeek} setTravelWeek={setTravelWeek} currentWeek={currentWeek} onRepeatWeek={handleRepeatWeek} onPhysioTab={()=>setPhysioTab(true)} physioDone={physioDone}/>;
 }
