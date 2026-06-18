@@ -830,11 +830,7 @@ function HomeScreen({ onSelect, history, travelWeek, setTravelWeek, currentWeek,
         )}
       </div>
 
-      <div style={{margin:"0 16px 14px",background:"#10102a",borderRadius:16,padding:"12px 15px",border:"1px solid #f59e0b30"}}>
-        <div style={{fontSize:10,color:"#f59e0b",fontWeight:700,letterSpacing:"0.14em",textTransform:"uppercase",marginBottom:6}}>Daily physio — every session</div>
-        <div style={{fontSize:12,color:"#3a3a5a"}}>Wall push-ups · External rotation + abduction · Thoracic foam roller</div>
-        <div style={{fontSize:11,color:"#2a2a4a",marginTop:3}}>~8 min · appears at top of every session · do it first</div>
-      </div>
+
 
       <div style={{margin:"0 16px 14px",background:"#10102a",borderRadius:16,padding:"12px 15px",border:"1px solid #1e1e38"}}>
         <div style={{fontSize:10,color:"#e91e8c",fontWeight:700,letterSpacing:"0.14em",textTransform:"uppercase",marginBottom:8}}>Progress rule</div>
@@ -1368,12 +1364,7 @@ function RestDay({ session, history, onSave, onBack }) {
           </div>
         </div>
 
-        {/* Daily physio reminder */}
-        <div style={{background:"#10102a",borderRadius:16,padding:"14px 16px",marginBottom:20,border:"1px solid #f59e0b20"}}>
-          <div style={{fontSize:10,color:"#f59e0b",fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:4}}>Daily physio reminder</div>
-          <div style={{fontSize:12,color:"#3a3a5a"}}>Wall push-ups · External rotation · Thoracic foam roller</div>
-          <div style={{fontSize:11,color:"#2a2a4a",marginTop:3}}>8 min · can be done at home before school or in the evening</div>
-        </div>
+
 
         <button onClick={finish} style={{width:"100%",background:"linear-gradient(135deg,#374151,#6b7280)",border:"none",borderRadius:18,height:62,color:"#fff",fontSize:17,fontWeight:900,cursor:"pointer",fontFamily:"inherit"}}>
           Log Friday {walkDone?"(rest + walk) ✓":"(rest) ✓"}
