@@ -573,16 +573,15 @@ function HomeScreen({ onSelect, history, travelWeek, setTravelWeek, currentWeek,
   // Normal week order
   const normalOrder = [...GYM_SESSIONS,...HOME_SESSIONS].sort((a,b)=>dayOrder.indexOf(a.id)-dayOrder.indexOf(b.id));
 
-  // Travel week: Mon Shoulders, Tue Lower A, Wed Back & Arms, Thu Lower B, Fri Back & Scapular — Sat/Sun away
-  const travelSessionIds = ["mon","tue","wed","sat","sun"]; // sat=Lower B, sun=Back & Scap shown as Thu/Fri
+  // Travel week: Mon Shoulders, Tue LoUpper A, Tue Lower A, Wed Full Body, Thu Upper B, Fri Lower B — Sat/Sun away
+  const travelSessionIds = ["mon","tue","thu","sun","sat"];
   const travelSchedule = [
-    { ...GYM_SESSIONS.find(s=>s.id==="mon"), travelDay:"Monday" },
-    { ...GYM_SESSIONS.find(s=>s.id==="tue"), travelDay:"Tuesday" },
-    { ...GYM_SESSIONS.find(s=>s.id==="wed"), travelDay:"Wednesday" },
-    { ...HOME_SESSIONS.find(s=>s.id==="thu"), travelDay:"Thursday — Run SKIPPED this week" },
-    { ...GYM_SESSIONS.find(s=>s.id==="sat"), travelDay:"Thursday — Lower B (moved from Sat)" },
-    { ...GYM_SESSIONS.find(s=>s.id==="sun"), travelDay:"Friday — Back & Scapular (moved from Sun)" },
-    { id:"fri_travel", day:"Friday", label:"Rest / Travel", accent:"#6b7280", type:"travel_rest", travelDay:"Saturday + Sunday" },
+    { ...GYM_SESSIONS.find(s=>s.id==="mon"), travelDay:"Monday — Upper A" },
+    { ...GYM_SESSIONS.find(s=>s.id==="tue"), travelDay:"Tuesday — Lower A" },
+    { ...GYM_SESSIONS.find(s=>s.id==="thu"), travelDay:"Wednesday — Full Body (moved from Thu)" },
+    { ...GYM_SESSIONS.find(s=>s.id==="sun"), travelDay:"Thursday — Upper B (moved from Sun)" },
+    { ...GYM_SESSIONS.find(s=>s.id==="sat"), travelDay:"Friday — Lower B (moved from Sat)" },
+    { id:"weekend_away", day:"Saturday + Sunday", label:"Away — rest and recover 🌍", accent:"#6b7280", type:"travel_rest", travelDay:"Weekend away" },
   ];
 
   return (
@@ -642,13 +641,13 @@ function HomeScreen({ onSelect, history, travelWeek, setTravelWeek, currentWeek,
         {travelWeek&&(
           <div style={{marginTop:12,background:"#0a0a00",borderRadius:12,padding:"10px 12px",border:"1px solid #f59e0b30"}}>
             <div style={{fontSize:10,color:"#f59e0b",fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:8}}>This week's schedule</div>
-            {[["Mon","Shoulders & Arms"],["Tue","Lower A — Glute/Ham"],["Wed","Back & Arms"],["Thu","Lower B (moved from Sat)"],["Fri","Back & Scapular (moved from Sun)"],["Sat–Sun","Away — rest + recover 🌍"],["Run","Skipped this week — resume next Thursday"]].map(([day,sess])=>(
+            {[["Mon","Upper A — Back & Biceps"],["Tue","Lower A — Posterior Chain"],["Wed","Full Body (moved from Thu)"],["Thu","Upper B (moved from Sun)"],["Fri","Lower B (moved from Sat)"],["Sat + Sun","Away — rest and recover 🌍"]].map(([day,sess])=>(
               <div key={day} style={{display:"flex",gap:12,marginBottom:5,alignItems:"center"}}>
                 <div style={{fontSize:10,color:"#f59e0b",fontWeight:700,width:32,flexShrink:0}}>{day}</div>
                 <div style={{fontSize:11,color:"#888"}}>{sess}</div>
               </div>
             ))}
-            <div style={{fontSize:10,color:"#3a3a5a",marginTop:8,fontStyle:"italic"}}>Lower A Tue → Lower B Thu = 48h. Workable because posterior chain vs quad dominant split.</div>
+            <div style={{fontSize:10,color:"#3a3a5a",marginTop:8,fontStyle:"italic"}}>Lower A Tue → Lower B Fri = 72h. Full Body Wed → Upper B Thu = 24h (upper only, fine). Good recovery across the week.</div>
           </div>
         )}
       </div>
