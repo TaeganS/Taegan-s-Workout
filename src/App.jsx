@@ -255,7 +255,7 @@ async function fetchHistory() {
 
 // Calendar-based week tracking — set once, calculates automatically forever
 async function saveSetLog(sessionId, exerciseId, setType, setIndex, kg, reps) {
-  const today = new Date().toISOString().split('T')[0];
+  const today = (()=>{ const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; })();
   await supabase.from('workout_logs').upsert(
     { session_id: sessionId, session_date: today, exercise_id: exerciseId, set_type: setType, set_index: setIndex, kg, reps },
     { onConflict: 'session_id,session_date,exercise_id,set_type,set_index' }
@@ -263,7 +263,7 @@ async function saveSetLog(sessionId, exerciseId, setType, setIndex, kg, reps) {
 }
 
 async function loadSessionDraft(sessionId) {
-  const today = new Date().toISOString().split('T')[0];
+  const today = (()=>{ const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; })();
   try {
     const { data } = await supabase.from('workout_logs')
       .select('*')
@@ -289,7 +289,7 @@ async function loadWeekOverride() {
   } catch { return null; }
 }
 async function saveWeekOverride(week) {
-  const payload = JSON.stringify({ week, setAt: new Date().toISOString().split('T')[0] });
+  const payload = JSON.stringify({ week, setAt: (()=>{ const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; })() });
   await supabase.from('app_settings').upsert({ key:'week_override', value:payload }, { onConflict:'key' });
 }
 function calculateCurrentWeek(startDateStr, overrideData) {
@@ -334,7 +334,7 @@ async function savePhysioCompletion(exerciseId, isDone) {
 }
 
 async function persistSession(sessionId, data) {
-  const today = new Date().toISOString().split('T')[0];
+  const today = (()=>{ const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; })();
   await supabase.from('session_completions').upsert(
     { session_id: sessionId, session_date: today, run_week: data.runWeek || null, walked: data.walked || false },
     { onConflict: 'session_id,session_date' }
@@ -745,6 +745,48 @@ function HomeScreen({ onSelect, history, travelWeek, setTravelWeek, currentWeek,
 
 // ── Gym Session ───────────────────────────────────────────────────────────────
 
+
+// ── Legacy exercise ID fallback map ──────────────────────────────────────────
+// When an exercise ID has no previous data, check these legacy IDs from older program versions
+const LEGACY_ID_MAP = {
+  "kickstand_rdl_tue": ["rdl_tue"],
+  "leg_press_tue":     ["heel_split_tue"],
+  "hip_abd_tue":       ["hip_abd_tue"],
+  "lat_pull_mon":      ["lat_pull_wed","lat_pull_sun"],
+  "single_row_mon":    ["single_row_wed","chest_row_wed"],
+  "face_pull_mon":     ["face_pull_sun"],
+  "cable_curl_mon":    ["cable_curl_mon"],
+  "hip_thrust_thu":    ["hip_thrust_sat","hip_thrust_tue"],
+  "step_up_thu":       ["kickback_sat"],
+  "cable_row_thu":     ["cable_row_sun"],
+  "tricep_ext_thu":    ["rope_push_wed"],
+  "lat_raise_thu":     ["lateral_raise_mon"],
+  "goblet_sat":        ["goblet_sat"],
+  "bulgarian_sat":     ["bulgarian_sat"],
+  "adductor_sat":      ["adductor_sat"],
+  "hip_abd_sat":       ["hip_abd_sat"],
+  "lat_pull_sun":      ["lat_pull_wed"],
+  "lat_raise_sun":     ["lateral_raise_mon"],
+  "rear_delt_sun":     ["rear_delt_mon"],
+  "tricep_push_sun":   ["rope_push_wed","tricep_push_sun"],
+  "hammer_curl_sun":   ["hammer_curl_wed"],
+  "ytw_sun":           ["ytw_sun"],
+};
+
+function getPrevLogs(history, sessionId, exerciseId) {
+  const direct = history[sessionId]?.logs?.[exerciseId];
+  if (direct) return direct;
+  // Check legacy IDs across all sessions
+  const fallbacks = LEGACY_ID_MAP[exerciseId] || [];
+  for (const legacyId of fallbacks) {
+    for (const sid of Object.keys(history)) {
+      const found = history[sid]?.logs?.[legacyId];
+      if (found) return found;
+    }
+  }
+  return null;
+}
+
 // ── Progressive overload suggestion ──────────────────────────────────────────
 function getOverloadSuggestion(ex, prevLogs) {
   if (!prevLogs) return null;
@@ -799,7 +841,7 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
   const initLogs = (draft=[])=>{
     const logs={};
     session.exercises.forEach(ex=>{
-      const p=prev?.logs?.[ex.id];
+      const p=getPrevLogs(history, session.id, ex.id);
       logs[ex.id]={
         warmup:{ kg:p?.warmup?.kg??ex.warmup.defaultKg, reps:p?.warmup?.reps??ex.warmup.defaultReps, done:false },
         sets:ex.sets.map((_,si)=>{
@@ -964,7 +1006,7 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
           const allDone=exLog.sets.every(s=>s.done);
           const isOpen=expanded===ex.id;
           const isCompound=ex.type==="compound";
-          const overload = getOverloadSuggestion(ex, prev?.logs?.[ex.id]);
+          const overload = getOverloadSuggestion(ex, getPrevLogs(history, session.id, ex.id));
           return (
             <div key={ex.id} style={{background:"#10102a",borderRadius:20,padding:"15px 13px",marginBottom:12,border:`1px solid ${allDone?session.accent+"60":"#1e1e38"}`,transition:"border-color 0.3s"}}>
               {overload&&(
@@ -1532,7 +1574,7 @@ export default function App() {
 
   const handleRepeatWeek=async()=>{
     await saveWeekOverride(currentWeek);
-    setWeekOverride({week:currentWeek,setAt:new Date().toISOString().split('T')[0]});
+    setWeekOverride({week:currentWeek,setAt:(()=>{ const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; })()});
   };
 
   const handleSave=async(id,data)=>{
@@ -1556,7 +1598,7 @@ export default function App() {
       <input
         type="date"
         id="startDateInput"
-        defaultValue={new Date().toISOString().split('T')[0]}
+        defaultValue={(()=>{ const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; })()}
         style={{background:"#10102a",border:"1px solid #2a2a4a",borderRadius:12,padding:"14px 16px",color:"#fff",fontSize:16,fontFamily:"inherit",marginBottom:20,width:240,textAlign:"center"}}
       />
       <button onClick={()=>{ const val=document.getElementById('startDateInput').value; if(val) handleSetStartDate(val); }} style={{background:"linear-gradient(135deg,#e91e8c,#9c27b0)",border:"none",borderRadius:16,padding:"16px 48px",color:"#fff",fontSize:16,fontWeight:900,cursor:"pointer",fontFamily:"inherit"}}>
