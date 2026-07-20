@@ -12,7 +12,7 @@ const DAILY_PHYSIO = [
 const AB_OPTIONS = {
   floor:[
     { id:"ab_dead_bug", name:"Dead Bug", sets:"3", reps:"8 each side", note:"Back flat into floor. Arms reach back as legs alternate. Breathe out on extension. Best for APT correction." },
-    { id:"ab_rkc","ab_captains", name:"RKC Plank", sets:"3", reps:"20–25s", note:"Squeeze glutes + quads + abs simultaneously. Elbows pull toward toes. Not passive." },
+    { id:"ab_rkc", name:"RKC Plank", sets:"3", reps:"20–25s", note:"Squeeze glutes + quads + abs simultaneously. Elbows pull toward toes. Not passive." },
     { id:"ab_bird_dog", name:"Bird Dog", sets:"3", reps:"8 each side", note:"Opposite arm and leg. 3s hold. No hip rotation. Back flat." },
     { id:"ab_side_plank", name:"Side Plank (from knees)", sets:"2", reps:"20s each", note:"Elbow under shoulder. Hips stacked. Don't sag." },
     { id:"ab_reverse_crunch", name:"Reverse Crunch", sets:"3", reps:"12–15", note:"Lie on back. Knees bent. Curl hips up toward chest — not legs swinging up. Slow lower. Hip flexion not spinal flexion." },
