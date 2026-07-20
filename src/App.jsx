@@ -12,7 +12,7 @@ const DAILY_PHYSIO = [
 const AB_OPTIONS = {
   floor:[
     { id:"ab_dead_bug", name:"Dead Bug", sets:"3", reps:"8 each side", note:"Back flat into floor. Arms reach back as legs alternate. Breathe out on extension. Best for APT correction." },
-    { id:"ab_rkc", name:"RKC Plank", sets:"3", reps:"20–25s", note:"Squeeze glutes + quads + abs simultaneously. Elbows pull toward toes. Not passive." },
+    { id:"ab_rkc","ab_captains", name:"RKC Plank", sets:"3", reps:"20–25s", note:"Squeeze glutes + quads + abs simultaneously. Elbows pull toward toes. Not passive." },
     { id:"ab_bird_dog", name:"Bird Dog", sets:"3", reps:"8 each side", note:"Opposite arm and leg. 3s hold. No hip rotation. Back flat." },
     { id:"ab_side_plank", name:"Side Plank (from knees)", sets:"2", reps:"20s each", note:"Elbow under shoulder. Hips stacked. Don't sag." },
     { id:"ab_reverse_crunch", name:"Reverse Crunch", sets:"3", reps:"12–15", note:"Lie on back. Knees bent. Curl hips up toward chest — not legs swinging up. Slow lower. Hip flexion not spinal flexion." },
@@ -55,7 +55,7 @@ const PHYSIO_CATEGORIES = [
 const GYM_SESSIONS = [
   {
     id:"mon", day:"Monday", label:"Upper A — Back & Biceps", accent:"#1565c0", hasGluteFinisher:true,
-    abPair:["ab_pallof","ab_dead_bug"],
+    abPair:["ab_pallof","ab_woodchop"],
     exercises:[
       { id:"lat_pull_mon", name:"Narrow Neutral Grip Lat Pulldown", type:"compound",
         note:"SETUP: use close-grip neutral attachment (palms facing each other). Thighs under pads, sit tall. BEFORE YOU PULL: depress shoulder blades — tuck them into your back pockets. Hold that position. MOVEMENT: pull bar to upper chest with slight 10° lean back only. Slow return — 4 seconds up, let shoulder blades rise naturally. HYPERMOBILITY: neutral grip protects your shoulder joint — do not switch to wide overhand grip. COMMON MISTAKE: pulling with arms only without engaging lats. THINK: lead with elbows, not hands. FEEL: wide stretch in lats at top, contraction across mid-back at bottom. RIGHT SCAPULA: keep it depressed throughout every rep.",
@@ -102,10 +102,10 @@ const GYM_SESSIONS = [
         note:"DB VERSION: sit against bench, DB held horizontally across hip creases with both hands. Drive through heels. At top: glutes HARD + ribs DOWN — no lower back arch. 1s hold. Aim 10–12 reps. SMITH VERSION: bar at mid-scapula. Same cues. WARM UP: 10 bodyweight glute bridges before first set — ensures glutes fire before loading. COMMON MISTAKE: lower back arching at the top instead of glutes contracting. FEEL: glutes only at the top — if you feel lower back, reset your rib position.",
         warmup:{ note:"Bodyweight glute bridge × 10 — feel glutes fire before loading", defaultKg:0, defaultReps:10 },
         sets:[{range:"8–12"},{range:"8–12"},{range:"8–12"}] },
-      { id:"step_up_thu", name:"Step-Up (High Box)", type:"compound",
-        note:"SETUP: box or bench at approximately knee height. Hold DBs at sides or hands free to start. MOVEMENT: step entire foot onto box, drive through the heel of the working leg to stand up. Do NOT push off the back foot — all the work comes from the front leg. Control the lowering back down. GLUTE CUE: at the top, squeeze the glute of the working leg before stepping back down. COMMON MISTAKE: pushing off the back foot (takes glute out of the movement) or letting knee cave inward on the way up. FEEL: glute and quad of the front leg doing all the work. Higher box = more glute. Lower box = more quad.",
-        warmup:{ note:"Bodyweight × 8 each side — find the balance and drive pattern", defaultKg:0, defaultReps:8 },
-        sets:[{range:"8–10"},{range:"8–10"},{range:"8–10"}] },
+      { id:"heel_split_thu", name:"Heel Elevated Split Squat [PHYSIO]", type:"compound",
+        note:"SETUP: front foot heel on plate or block, rear foot flat on floor. All weight through front foot. MOVEMENT: lower STRAIGHT DOWN — not leaning forward. VMO (inner quad) should fire hard. STOP before knee goes to end range — hypermobility. Both legs. COMMON MISTAKE: leaning forward or letting front knee cave inward. PHYSIO: prescribed for VMO activation and knee stability correction. FEEL: front thigh (VMO) working hard, knee tracking straight throughout.",
+        warmup:{ note:"Bodyweight × 6 each side — feel VMO load", defaultKg:0, defaultReps:6 },
+        sets:[{range:"8–12"},{range:"8–12"},{range:"8–12"}] },
       { id:"cable_row_thu", name:"Seated Cable Row", type:"compound",
         note:"SETUP: wide neutral grip attachment. Sit tall, slight knee bend, arms extended. BEFORE YOU PULL: retract shoulder blades — pinch them together and DOWN. Hold that. MOVEMENT: pull elbows to sides, pause 1 second at chest. SLOW return — 4 seconds, let arms extend fully. COMMON MISTAKE: pulling with biceps and letting shoulder blades wing forward. RIGHT SCAPULA: consciously press it down and back every single rep. FEEL: rhomboids and mid-trapezius contracting between shoulder blades.",
         warmup:{ note:"50% weight × 10 reps", defaultKg:null, defaultReps:10 },
@@ -140,12 +140,12 @@ const GYM_SESSIONS = [
       { id:"hip_abd_sat", name:"Cable Hip Abduction", type:"isolation",
         note:"SETUP: cable at ankle, stand side-on to machine. Hold machine lightly for balance only. MOVEMENT: leg moves directly out to the side — not forward, not back. Pelvis stays completely level — no leaning away from the cable. Slow return. COMMON MISTAKE: leaning your whole body away. FEEL: burning on the outside of the hip (glute med). Second hit this week — critical for IT band management.",
         warmup:{ note:"Light × 12 reps each side", defaultKg:null, defaultReps:12 },
-        sets:[{range:"12–15"},{range:"12–15"}] },
+        sets:[{range:"12–15"},{range:"12–15"},{range:"12–15"}] },
     ],
   },
   {
     id:"sun", day:"Sunday", label:"Upper B — Shoulders & Triceps", accent:"#0891b2", hasGluteFinisher:true,
-    abPair:["ab_pallof","ab_kb_worlds"],
+    abPair:["ab_march","ab_pallof"],
     exercises:[
       { id:"lat_pull_sun", name:"Narrow Neutral Grip Lat Pulldown", type:"compound",
         note:"SETUP: close-grip neutral attachment (palms facing each other). Thighs under pads, sit tall. BEFORE YOU PULL: depress shoulder blades — tuck them into your back pockets. MOVEMENT: pull to upper chest, slight 10° lean back. Slow return — 4 seconds. HYPERMOBILITY: neutral grip keeps shoulder in safest position. RIGHT SCAPULA: extra attention to keeping it depressed. FEEL: lats contracting, wide stretch at top.",
@@ -180,6 +180,14 @@ const HOME_SESSIONS = [
   {
     id:"wed", day:"Wednesday", label:"Active Rest — Walk + Run", accent:"#10b981", type:"active_rest",
     canRun: true,
+    coreOptions:[
+      { id:"ab_dead_bug", name:"Dead Bug", reps:"3×8 each side", note:"Back flat into floor. Arms reach back as legs alternate. Breathe out on extension." },
+      { id:"ab_bird_dog", name:"Bird Dog", reps:"3×8 each side", note:"Opposite arm and leg. 3s hold. No hip rotation. Back flat." },
+      { id:"ab_side_plank", name:"Side Plank", reps:"3×20s each side", note:"Elbow under shoulder. Hips stacked. Don't sag." },
+      { id:"ab_reverse_crunch", name:"Reverse Crunch", reps:"3×12", note:"Curl hips up toward chest. Slow lower. Hip flexion not spinal flexion." },
+      { id:"ab_tabletop_tap", name:"Tabletop Toe Tap", reps:"3×10 each side", note:"Both legs at 90°. Lower one heel slowly to tap floor. Back stays flat. Alternate sides." },
+      { id:"ab_rkc", name:"RKC Plank", reps:"3×20s", note:"Squeeze glutes + quads + abs simultaneously. Elbows pull toward toes. Not passive." },
+    ],
     walkNote:"40+ min brisk walk. HR 100–125. Outside preferred. This is your run day if you feel up to it.",
     runProtocol:[
       { weeks:"Wk 1–2", structure:"Walk only", detail:"40 min brisk walk. No running yet — connective tissue base.", icon:"🚶" },
@@ -194,6 +202,14 @@ const HOME_SESSIONS = [
   {
     id:"fri", day:"Friday", label:"Active Rest — Walk Only", accent:"#6b7280", type:"active_rest",
     canRun: false,
+    coreOptions:[
+      { id:"ab_dead_bug", name:"Dead Bug", reps:"3×8 each side", note:"Back flat into floor. Arms reach back as legs alternate. Breathe out on extension." },
+      { id:"ab_bird_dog", name:"Bird Dog", reps:"3×8 each side", note:"Opposite arm and leg. 3s hold. No hip rotation. Back flat." },
+      { id:"ab_side_plank", name:"Side Plank", reps:"3×20s each side", note:"Elbow under shoulder. Hips stacked. Don't sag." },
+      { id:"ab_reverse_crunch", name:"Reverse Crunch", reps:"3×12", note:"Curl hips up toward chest. Slow lower. Hip flexion not spinal flexion." },
+      { id:"ab_tabletop_tap", name:"Tabletop Toe Tap", reps:"3×10 each side", note:"Both legs at 90°. Lower one heel slowly to tap floor. Back stays flat. Alternate sides." },
+      { id:"ab_rkc", name:"RKC Plank", reps:"3×20s", note:"Squeeze glutes + quads + abs simultaneously. Elbows pull toward toes. Not passive." },
+    ],
     walkNote:"40+ min easy walk. Walk only today — protects Saturday legs. HR 100–120. No running.",
     runProtocol: null,
   },
@@ -557,10 +573,16 @@ function AbBlock({ done, setDone, accent, abLogs, setAbLogs, abNotes, onAbNoteSa
           {showSwaps?"Hide swaps":"Swap options"}
         </button>
       </div>
-      <div style={{fontSize:11,color:"#2a2a4a",marginBottom:12,fontStyle:"italic"}}>Today's planned exercises · 3 sets each · tap to log</div>
+      <div style={{fontSize:11,color:"#2a2a4a",marginBottom:8,fontStyle:"italic"}}>First exercise is compulsory · second is optional if you have time</div>
 
       {/* Planned exercises */}
-      {plannedExercises.map(ex => renderExercise(ex))}
+      {plannedExercises.map((ex,i) => (
+        <div key={ex.id}>
+          {i===0&&<div style={{fontSize:9,color:accent,fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:6}}>Compulsory</div>}
+          {i===1&&<div style={{fontSize:9,color:"#3a3a5a",fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:6}}>Optional — if time</div>}
+          {renderExercise(ex)}
+        </div>
+      ))}
 
       {/* Swap groups dropdown */}
       {showSwaps&&(
@@ -800,35 +822,35 @@ function getOverloadSuggestion(ex, prevLogs) {
   const allDone = sets.every(s => s.reps != null);
   if (!allDone) return null;
 
-  const allHitTop = sets.every(s => s.reps >= hi);
-  const anyBelowBottom = sets.some(s => s.reps < lo);
-  const kg = sets[0]?.kg;
-
-  // Determine increment by exercise type
+  // Use last set (heaviest, ascending pyramid) as the progression trigger
+  const lastSet = sets[sets.length - 1];
+  const lastHitTop = lastSet?.reps >= hi;
+  const lastBelowBottom = lastSet?.reps < lo;
+  const lastKg = lastSet?.kg;
   const increment = ex.type === "compound" ? 2.5 : 1;
 
-  if (anyBelowBottom) {
-    const suggested = kg ? Math.round((kg * 0.9) * 2) / 2 : null;
+  if (lastBelowBottom) {
+    const suggested = lastKg ? Math.round((lastKg * 0.9) * 2) / 2 : null;
     return {
       type: "drop",
       text: `Last: ${sets.map(s=>`${s.kg??'—'}kg×${s.reps??'—'}`).join(", ")}`,
-      suggestion: suggested ? `Drop to ${suggested}kg — below target range` : "Drop weight — check form",
+      suggestion: suggested ? `Drop to ${suggested}kg — last set below target range` : "Drop weight — check form",
       color: "#ef4444"
     };
   }
-  if (allHitTop) {
-    const suggested = kg ? kg + increment : null;
+  if (lastHitTop) {
+    const suggested = lastKg ? lastKg + increment : null;
     return {
       type: "increase",
       text: `Last: ${sets.map(s=>`${s.kg??'—'}kg×${s.reps??'—'}`).join(", ")}`,
-      suggestion: suggested ? `Try ${suggested}kg today — you hit all ${hi} reps last session` : "Increase weight today",
+      suggestion: suggested ? `Try ${suggested}kg today — your heaviest set hit ${hi} reps last session` : "Increase weight today",
       color: "#10b981"
     };
   }
   return {
     type: "same",
     text: `Last: ${sets.map(s=>`${s.kg??'—'}kg×${s.reps??'—'}`).join(", ")}`,
-    suggestion: `Same weight — aim for more reps this session`,
+    suggestion: `Same weight — aim for more reps on your heaviest set`,
     color: "#f59e0b"
   };
 }
@@ -1293,6 +1315,7 @@ function RunSession({ session, history, onSave, onBack }) {
 // ── Rest Day (Friday) ─────────────────────────────────────────────────────────
 function RestDay({ session, history, onSave, onBack }) {
   const [walkDone, setWalkDone] = useState(false);
+  const [walkCoreDone, setWalkCoreDone] = useState({});
   const [phase, setPhase] = useState("main");
 
   const finish = () => {
@@ -1455,6 +1478,27 @@ function ActiveRestScreen({ session, history, onSave, onBack }) {
                 <ITick s={20}/>
               </button>
             </div>
+          </div>
+        )}
+
+        {session.coreOptions&&(
+          <div style={{background:"#10102a",borderRadius:20,padding:"16px 16px",marginBottom:12,border:"1px solid #1e1e38"}}>
+            <div style={{fontSize:10,color:session.accent,fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:4}}>Core — pick any, all bodyweight</div>
+            <div style={{fontSize:11,color:"#2a2a4a",marginBottom:12,fontStyle:"italic"}}>No equipment needed · do as many as you like · tap to tick off</div>
+            {session.coreOptions.map(ex=>{
+              const done = walkCoreDone[ex.id]||false;
+              return (
+                <div key={ex.id} onClick={()=>setWalkCoreDone(p=>({...p,[ex.id]:!p[ex.id]}))} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 12px",background:done?session.accent+"18":"#080814",borderRadius:12,border:`1px solid ${done?session.accent+"50":"#1e1e38"}`,marginBottom:8,cursor:"pointer",transition:"all 0.2s"}}>
+                  <div style={{width:20,height:20,borderRadius:6,background:done?session.accent:"#1a1a30",border:`1.5px solid ${done?session.accent:"#2a2a4a"}`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
+                    {done&&<ITick s={11}/>}
+                  </div>
+                  <div style={{flex:1}}>
+                    <div style={{fontSize:13,fontWeight:700,color:done?session.accent:"#ccc"}}>{ex.name}</div>
+                    <div style={{fontSize:11,color:"#2a2a4a",marginTop:1}}>{ex.reps}</div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         )}
 
