@@ -254,6 +254,25 @@ async function fetchHistory() {
 }
 
 // Calendar-based week tracking — set once, calculates automatically forever
+async function saveSetLog(sessionId, exerciseId, setType, setIndex, kg, reps) {
+  const today = new Date().toISOString().split('T')[0];
+  await supabase.from('workout_logs').upsert(
+    { session_id: sessionId, session_date: today, exercise_id: exerciseId, set_type: setType, set_index: setIndex, kg, reps },
+    { onConflict: 'session_id,session_date,exercise_id,set_type,set_index' }
+  );
+}
+
+async function loadSessionDraft(sessionId) {
+  const today = new Date().toISOString().split('T')[0];
+  try {
+    const { data } = await supabase.from('workout_logs')
+      .select('*')
+      .eq('session_id', sessionId)
+      .eq('session_date', today);
+    return data || [];
+  } catch { return []; }
+}
+
 async function loadProgramStartDate() {
   try {
     const { data } = await supabase.from('app_settings').select('value').eq('key','program_start_date').single();
@@ -337,7 +356,7 @@ const IInfo = () => <svg width="15" height="15" viewBox="0 0 24 24" fill="none" 
 
 // ── Numpad ────────────────────────────────────────────────────────────────────
 function Numpad({ label, sublabel, initial, onSave, onClose }) {
-  const [val, setVal] = useState(initial != null ? String(initial) : "");
+  const [val, setVal] = useState(""); // always starts empty — clear on tap behaviour
   const press = d => {
     if (d === "⌫") { setVal(v => v.slice(0,-1)); return; }
     if (d === "." && val.includes(".")) return;
@@ -348,7 +367,8 @@ function Numpad({ label, sublabel, initial, onSave, onClose }) {
     <div style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.85)",display:"flex",alignItems:"flex-end",justifyContent:"center",zIndex:300,backdropFilter:"blur(8px)"}} onClick={onClose}>
       <div style={{background:"#10102a",borderRadius:"24px 24px 0 0",width:"100%",maxWidth:480,padding:"22px 20px 44px"}} onClick={e=>e.stopPropagation()}>
         <div style={{textAlign:"center",color:"#555",fontSize:11,letterSpacing:"0.14em",textTransform:"uppercase",marginBottom:2}}>{label}</div>
-        {sublabel&&<div style={{textAlign:"center",color:"#e91e8c",fontSize:11,marginBottom:6,fontWeight:600}}>{sublabel}</div>}
+        {sublabel&&<div style={{textAlign:"center",color:"#e91e8c",fontSize:11,marginBottom:2,fontWeight:600}}>{sublabel}</div>}
+        {initial!=null&&<div style={{textAlign:"center",color:"#3a3a5a",fontSize:11,marginBottom:6}}>previously: {initial}</div>}
         <div style={{textAlign:"center",fontSize:52,fontWeight:900,color:"#fff",minHeight:64,letterSpacing:"-0.04em"}}>
           {val||<span style={{color:"#2a2a3a"}}>0</span>}
         </div>
@@ -724,17 +744,68 @@ function HomeScreen({ onSelect, history, travelWeek, setTravelWeek, currentWeek,
 }
 
 // ── Gym Session ───────────────────────────────────────────────────────────────
+
+// ── Progressive overload suggestion ──────────────────────────────────────────
+function getOverloadSuggestion(ex, prevLogs) {
+  if (!prevLogs) return null;
+  const sets = prevLogs.sets;
+  if (!sets || sets.length === 0) return null;
+
+  const range = ex.sets[0]?.range || "8-12";
+  const [lo, hi] = range.split("–").map(Number);
+  if (!lo || !hi) return null;
+
+  const allDone = sets.every(s => s.reps != null);
+  if (!allDone) return null;
+
+  const allHitTop = sets.every(s => s.reps >= hi);
+  const anyBelowBottom = sets.some(s => s.reps < lo);
+  const kg = sets[0]?.kg;
+
+  // Determine increment by exercise type
+  const increment = ex.type === "compound" ? 2.5 : 1;
+
+  if (anyBelowBottom) {
+    const suggested = kg ? Math.round((kg * 0.9) * 2) / 2 : null;
+    return {
+      type: "drop",
+      text: `Last: ${sets.map(s=>`${s.kg??'—'}kg×${s.reps??'—'}`).join(", ")}`,
+      suggestion: suggested ? `Drop to ${suggested}kg — below target range` : "Drop weight — check form",
+      color: "#ef4444"
+    };
+  }
+  if (allHitTop) {
+    const suggested = kg ? kg + increment : null;
+    return {
+      type: "increase",
+      text: `Last: ${sets.map(s=>`${s.kg??'—'}kg×${s.reps??'—'}`).join(", ")}`,
+      suggestion: suggested ? `Try ${suggested}kg today — you hit all ${hi} reps last session` : "Increase weight today",
+      color: "#10b981"
+    };
+  }
+  return {
+    type: "same",
+    text: `Last: ${sets.map(s=>`${s.kg??'—'}kg×${s.reps??'—'}`).join(", ")}`,
+    suggestion: `Same weight — aim for more reps this session`,
+    color: "#f59e0b"
+  };
+}
+
 function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNoteSave }) {
+  const [draftLoaded, setDraftLoaded] = useState(false);
   const prev = history[session.id]||{};
   const initDP = ()=>{ const d={}; DAILY_PHYSIO.forEach(e=>{d[e.id]=false;}); return d; };
   const initAbs = ()=>{ const d={}; [...AB_OPTIONS.floor,...AB_OPTIONS.standing].forEach(e=>{d[e.id]=false;}); return d; };
-  const initLogs = ()=>{
+  const initLogs = (draft=[])=>{
     const logs={};
     session.exercises.forEach(ex=>{
       const p=prev?.logs?.[ex.id];
       logs[ex.id]={
         warmup:{ kg:p?.warmup?.kg??ex.warmup.defaultKg, reps:p?.warmup?.reps??ex.warmup.defaultReps, done:false },
-        sets:ex.sets.map((_,si)=>({ kg:p?.sets?.[si]?.kg??null, reps:p?.sets?.[si]?.reps??null, done:false })),
+        sets:ex.sets.map((_,si)=>{
+          const draftSet = draft.find(d=>d.exercise_id===ex.id && d.set_type==='working' && d.set_index===si);
+          return { kg:draftSet?.kg??p?.sets?.[si]?.kg??null, reps:draftSet?.reps??p?.sets?.[si]?.reps??null, done:!!draftSet };
+        }),
       };
     });
     return logs;
@@ -759,6 +830,17 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
   const [expanded,setExpanded]=useState(null);
   const [phase,setPhase]=useState("main");
 
+  // Load today's draft on mount for resume
+  useEffect(()=>{
+    if(draftLoaded) return;
+    loadSessionDraft(session.id).then(draft=>{
+      if(draft.length>0){
+        setLogs(initLogs(draft));
+      }
+      setDraftLoaded(true);
+    });
+  },[]);
+
   const allDPDone=Object.values(dpDone).every(Boolean);
   const totalSets=session.exercises.reduce((a,e)=>a+e.sets.length,0);
   const doneSets=Object.values(logs).reduce((a,ex)=>a+ex.sets.filter(s=>s.done).length,0);
@@ -772,12 +854,29 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
     setLogs(p=>{
       const ex={...p[exId]};
       if(setType==="warmup"){ex.warmup={...ex.warmup,[field]:val};}
-      else{ex.sets=ex.sets.map((s,i)=>i===si?{...s,[field]:val}:s);}
+      else{
+        ex.sets=ex.sets.map((s,i)=>{
+          if(i!==si) return s;
+          const updated={...s,[field]:val};
+          // Auto-save if set is already ticked
+          if(updated.done) saveSetLog(session.id, exId, 'working', si, updated.kg, updated.reps);
+          return updated;
+        });
+      }
       return{...p,[exId]:ex};
     });
   },[modal]);
 
-  const toggleDone=(exId,si)=>setLogs(p=>({...p,[exId]:{...p[exId],sets:p[exId].sets.map((s,i)=>i===si?{...s,done:!s.done}:s)}}));
+  const toggleDone=(exId,si)=>setLogs(p=>{
+    const updated={...p,[exId]:{...p[exId],sets:p[exId].sets.map((s,i)=>{
+      if(i!==si) return s;
+      const newDone=!s.done;
+      // Auto-save immediately when ticked
+      if(newDone) saveSetLog(session.id, exId, 'working', si, s.kg, s.reps);
+      return {...s,done:newDone};
+    })}};
+    return updated;
+  });
   const toggleWarmup=exId=>setLogs(p=>({...p,[exId]:{...p[exId],warmup:{...p[exId].warmup,done:!p[exId].warmup.done}}}));
   const markAll=exId=>setLogs(p=>({...p,[exId]:{...p[exId],sets:p[exId].sets.map(s=>({...s,done:true}))}}));
 
@@ -865,8 +964,18 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
           const allDone=exLog.sets.every(s=>s.done);
           const isOpen=expanded===ex.id;
           const isCompound=ex.type==="compound";
+          const overload = getOverloadSuggestion(ex, prev?.logs?.[ex.id]);
           return (
             <div key={ex.id} style={{background:"#10102a",borderRadius:20,padding:"15px 13px",marginBottom:12,border:`1px solid ${allDone?session.accent+"60":"#1e1e38"}`,transition:"border-color 0.3s"}}>
+              {overload&&(
+                <div style={{background:overload.color+"15",borderRadius:10,padding:"8px 12px",marginBottom:10,border:`1px solid ${overload.color}35`}}>
+                  <div style={{fontSize:10,color:overload.color,fontWeight:700,letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:2}}>
+                    {overload.type==="increase"?"📈 Increase weight":overload.type==="drop"?"⬇️ Drop weight":"💪 Keep going"}
+                  </div>
+                  <div style={{fontSize:11,color:"#666",marginBottom:2}}>{overload.text}</div>
+                  <div style={{fontSize:12,color:overload.color,fontWeight:600}}>{overload.suggestion}</div>
+                </div>
+              )}
               <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:10}}>
                 <div style={{flex:1,marginRight:8}}>
                   <div style={{display:"flex",alignItems:"center",gap:7,marginBottom:3}}>
