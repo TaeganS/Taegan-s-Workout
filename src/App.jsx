@@ -110,8 +110,8 @@ const GYM_SESSIONS = [
         note:"SETUP: wide neutral grip attachment. Sit tall, slight knee bend, arms extended. BEFORE YOU PULL: retract shoulder blades — pinch them together and DOWN. Hold that. MOVEMENT: pull elbows to sides, pause 1 second at chest. SLOW return — 4 seconds, let arms extend fully. COMMON MISTAKE: pulling with biceps and letting shoulder blades wing forward. RIGHT SCAPULA: consciously press it down and back every single rep. FEEL: rhomboids and mid-trapezius contracting between shoulder blades.",
         warmup:{ note:"50% weight × 10 reps", defaultKg:null, defaultReps:10 },
         sets:[{range:"8–12"},{range:"8–12"},{range:"8–12"}] },
-      { id:"tricep_ext_thu", name:"Overhead Cable Tricep Extension", type:"isolation",
-        note:"SETUP: rope attachment at low pulley. Face away from machine. Hold rope behind head with both hands, elbows pointing forward. MOVEMENT: extend arms overhead — push rope up and slightly forward. STOP 5° before full lockout — elbow hypermobility. Slow return — 3 seconds. Elbows stay pointing forward throughout, do not let them flare out wide. COMMON MISTAKE: elbows flaring out to the sides (reduces tricep isolation) or overextending at lockout. FEEL: long head of tricep — the largest portion, gives the arm thickness from the back.",
+      { id:"tricep_bar_thu", name:"Straight Bar Tricep Pushdown", type:"isolation",
+        note:"SETUP: straight bar attachment at high cable. Stand close to the stack, overhand grip shoulder-width. MOVEMENT: elbows pinned completely at sides — they must not move at all. Push bar straight down. STOP 5° before full lockout — never snap to full extension (elbow hypermobility). SLOW return — 3 seconds up. COMMON MISTAKE: elbows drifting forward or away from sides, turning this into a shoulder exercise. No overhead position — shoulder-safe for hypermobility. FEEL: only the back of the upper arm. Different grip angle to Sunday rope pushdown — hits lateral tricep head.",
         warmup:{ note:"Light × 12 reps", defaultKg:null, defaultReps:12 },
         sets:[{range:"10–12"},{range:"10–12"},{range:"10–12"}] },
       { id:"lat_raise_thu", name:"Lateral Raise (DB or plate)", type:"isolation",
@@ -125,6 +125,10 @@ const GYM_SESSIONS = [
     warmupNote:"BEFORE YOU START: (1) Foam roll outer quad/TFL — 60 seconds each side, avoid rolling directly on the IT band at the knee. (2) Lateral band walk — band at ankles, semi-squat, 2×15 steps each direction. Do not skip this — it directly addresses your IT band tightness by activating glute med before heavy loading.",
     abPair:["ab_tabletop_tap","ab_rkc"],
     exercises:[
+      { id:"hip_thrust_sat", name:"Hip Thrust (Smith or banded floor)", type:"compound",
+        note:"SMITH: bar at mid-scapula, drive through heels, ribs down, 1s hold at top. BANDED FLOOR: band above knees, feet flat, drive hips up from floor. Both: glutes hard at top. This is your heaviest hip thrust session — go heavy, track progression every week.",
+        warmup:{ note:"Bodyweight glute bridge × 15 — feel glutes fire before loading", defaultKg:0, defaultReps:15 },
+        sets:[{range:"8–12"},{range:"8–12"},{range:"8–12"}] },
       { id:"goblet_sat", name:"Heel Elevated Goblet Squat [PHYSIO]", type:"compound",
         note:"SETUP: heels elevated on plate or block, feet hip-width. DB held vertically at chest, elbows pointing down. MOVEMENT: squat STRAIGHT DOWN — hips go down, not back. Think of lowering yourself between your heels. STOP before pelvis tucks under. SLOW lowering — 4 seconds down. COMMON MISTAKE: sending bum backwards and leaning forward — your physio specifically corrected this pattern. FEEL: quads working hard. If mostly glutes, feet are too wide or you are sitting back.",
         warmup:{ note:"Bodyweight tripod squat × 8 — straight down, groove the pattern", defaultKg:0, defaultReps:8 },
@@ -1576,6 +1580,32 @@ function PhysioScreen({ physioDone, onToggle, onBack, currentWeek }) {
           );
         })}
       </div>
+    </div>
+  );
+}
+
+
+// ── Start Date Prompt ─────────────────────────────────────────────────────────
+function StartDatePrompt({ onConfirm }) {
+  const today = (()=>{ const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; })();
+  const [selectedDate, setSelectedDate] = useState(today);
+  return (
+    <div style={{minHeight:"100vh",background:"#080814",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:24,fontFamily:"'DM Sans',sans-serif"}}>
+      <div style={{fontSize:50,marginBottom:16}}>📅</div>
+      <h2 style={{color:"#fff",fontSize:22,fontWeight:900,textAlign:"center",margin:"0 0 8px"}}>When did Week 1 start?</h2>
+      <p style={{color:"#555",fontSize:13,textAlign:"center",margin:"0 0 28px",maxWidth:280,lineHeight:1.5}}>This sets your program clock. The app calculates your current week automatically from here — you will never need to update it manually.</p>
+      <input
+        type="date"
+        value={selectedDate}
+        onChange={e=>setSelectedDate(e.target.value)}
+        style={{background:"#10102a",border:"1px solid #2a2a4a",borderRadius:12,padding:"14px 16px",color:"#fff",fontSize:16,fontFamily:"inherit",marginBottom:20,width:240,textAlign:"center"}}
+      />
+      <button
+        onClick={()=>{ if(selectedDate) onConfirm(selectedDate); }}
+        style={{background:"linear-gradient(135deg,#e91e8c,#9c27b0)",border:"none",borderRadius:16,padding:"16px 48px",color:"#fff",fontSize:16,fontWeight:900,cursor:"pointer",fontFamily:"inherit"}}
+      >
+        Start tracking
+      </button>
     </div>
   );
 }
