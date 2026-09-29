@@ -61,7 +61,7 @@ const GYM_SESSIONS = [
   {
     id:"tue", day:"Tuesday", label:"Lower A — Posterior Chain", accent:"#059669", hasGluteFinisher:true,
     warmupNote:"BEFORE YOU START: Lateral band walk — band at ankles, semi-squat, 2x15 steps each direction. Activates glute med and primes hip stabilisers. Takes 3 minutes.",
-    abPair:["ab_rkc","ab_captains"],
+    abPair:["ab_dead_bug","ab_captains"],
     exercises:[
       { id:"leg_press_tue", name:"Leg Press", type:"compound",
         note:"SETUP: feet hip-width on platform, toes slightly out. Back flat against pad throughout. MOVEMENT: lower slowly — 4 seconds down. Stop when knees reach 90°. Press through heels. STOP 5-10° before full knee extension at top — never lock knees (hypermobility). STARTING WEIGHT: 30-40kg. FEEL: quads and glutes working through the full press.",
@@ -216,6 +216,7 @@ const HOME_SESSIONS = [
     id:"mon", day:"Monday", label:"Active Rest — Walk", accent:"#6b7280", type:"active_rest",
     canRun: false,
     walkNote:"40+ min easy walk. Recovery day after Saturday and Sunday. Keep it gentle — HR 100-120. No running today.",
+    clamshellNote:"🏠 Home add-on: Banded clamshells — 2×15 each direction. Side-lying, band just above knees, feet together. Open top knee without rolling hips back. Feel glute med. IT band + glute med frequency — do these before or after your walk.",
     coreOptions:[
       { id:"ab_dead_bug", name:"Dead Bug", reps:"3x8 each side", note:"Back flat. Arms reach back as legs alternate." },
       { id:"ab_bird_dog", name:"Bird Dog", reps:"3x8 each side", note:"Opposite arm and leg. 3s hold. No hip rotation." },
@@ -1477,6 +1478,15 @@ function ActiveRestScreen({ session, history, onSave, onBack }) {
             </button>
           </div>
         </div>
+
+        {/* Banded clamshells note — Monday only */}
+        {session.clamshellNote && (
+          <div style={{background:"#10102a",borderRadius:20,padding:"16px 16px",marginBottom:12,border:"1px solid #0891b230"}}>
+            <div style={{fontSize:10,color:"#0891b2",fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:4}}>Home Add-on · Glute Med</div>
+            <div style={{fontSize:15,fontWeight:800,color:"#fff",marginBottom:4}}>Banded Clamshells</div>
+            <div style={{fontSize:12,color:"#3a3a5a",lineHeight:1.6}}>{session.clamshellNote}</div>
+          </div>
+        )}
 
         {/* Run protocol — only on Wednesday */}
         {session.canRun && session.runProtocol && (
