@@ -54,11 +54,6 @@ const PHYSIO_CATEGORIES = [
 
 const GYM_SESSIONS = [
   {
-    id:"mon", day:"Monday", label:"Active Rest", accent:"#6b7280", type:"active_rest_gym",
-    abPair:["ab_dead_bug","ab_bird_dog"],
-    exercises:[],
-  },
-  {
     id:"tue", day:"Tuesday", label:"Lower A — Posterior Chain", accent:"#059669", hasGluteFinisher:true,
     warmupNote:"BEFORE YOU START: Lateral band walk — band at ankles, semi-squat, 2x15 steps each direction. Activates glute med and primes hip stabilisers. Takes 3 minutes.",
     abPair:["ab_dead_bug","ab_captains"],
@@ -66,13 +61,13 @@ const GYM_SESSIONS = [
       { id:"leg_press_tue", name:"Leg Press", type:"compound",
         note:"SETUP: feet hip-width on platform, toes slightly out. Back flat against pad throughout. MOVEMENT: lower slowly — 4 seconds down. Stop when knees reach 90°. Press through heels. STOP 5-10° before full knee extension at top — never lock knees (hypermobility). STARTING WEIGHT: 30-40kg. FEEL: quads and glutes working through the full press.",
         warmup:{ note:"50% weight x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"10–15",defaultKg:35},{range:"10–15",defaultKg:35},{range:"10–15",defaultKg:35}] },
+        sets:[{range:"10–15",defaultKg:42.5},{range:"10–15",defaultKg:42.5},{range:"10–15",defaultKg:42.5}] },
       { id:"kickstand_rdl_tue", name:"Kickstand Single-Leg RDL", type:"compound",
         note:"SETUP: working leg big toe on small plate. All weight on working leg. Non-working foot lightly touches floor for balance only. DB in opposite hand to working leg. MOVEMENT: hinge at hips — push hips back as DB travels down close to shin. Soft bend in working knee throughout. STOP at first point of hamstring tension — do not push to end range (hypermobility). Drive back up through working heel. STARTING WEIGHT: 6-8kg DB. FEEL: hamstring and glute of working leg.",
         warmup:{ note:"Bodyweight x 8 each side — feel the hip hinge", defaultKg:0, defaultReps:8 },
         sets:[{range:"8–10",defaultKg:7},{range:"8–10",defaultKg:7},{range:"8–10",defaultKg:7}] },
       { id:"hip_abd_tue", name:"Cable Hip Abduction", type:"isolation",
-        note:"SETUP: cable at ankle, stand side-on to machine. Hold machine lightly for balance only. MOVEMENT: leg moves directly out to side — not forward, not back. Pelvis stays completely level. Slow return. COMMON MISTAKE: leaning away from cable — this completely removes glute med from the movement. STARTING WEIGHT: 4-5kg. FEEL: burning on outside of hip (glute med). Primary IT band prevention exercise.",
+        note:"SETUP: cable at ankle, stand side-on to machine. Hold machine lightly for balance only. MOVEMENT: leg moves directly out to side — not forward, not back. Pelvis stays completely level. Slow return. COMMON MISTAKE: leaning away from cable — this completely removes glute med from the movement. STARTING WEIGHT: 4-5kg. FEEL: burning on outside of hip (glute med). Primary IT band prevention exercise. TIME CHECK: if running short before 7:35am, skip this — you'll do it Thursday after yoga instead.",
         warmup:{ note:"Light x 12 reps each side", defaultKg:null, defaultReps:12 },
         sets:[{range:"12–15",defaultKg:5},{range:"12–15",defaultKg:5},{range:"12–15",defaultKg:5}] },
     ],
@@ -84,63 +79,32 @@ const GYM_SESSIONS = [
       { id:"lat_pull_wed", name:"Narrow Neutral Grip Lat Pulldown", type:"compound",
         note:"SETUP: close-grip neutral attachment (palms facing each other). Thighs under pads. BEFORE YOU PULL: depress shoulder blades — tuck them into your back pockets. MOVEMENT: pull to upper chest, 10° lean back only. Slow return — 4 seconds. HYPERMOBILITY: neutral grip protects your shoulder joint. RIGHT SCAPULA: keep it depressed throughout. STARTING WEIGHT: 15-20kg. FEEL: wide stretch in lats at top, contraction across mid-back at bottom.",
         warmup:{ note:"50% weight x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"8–12",defaultKg:18},{range:"8–12",defaultKg:18},{range:"8–12",defaultKg:18}] },
+        sets:[{range:"8–12",defaultKg:21.5},{range:"8–12",defaultKg:21.5},{range:"8–12",defaultKg:21.5}] },
       { id:"single_row_wed", name:"Single-Arm Cable Row", type:"compound",
         note:"SETUP: same-side knee AND hand on flat bench. Back completely flat, parallel to floor. MOVEMENT: pull handle toward lower hip. Trunk must not rotate. RIGHT SIDE: extra attention every set — scapular winging correction. SLOW return — 4 seconds. STARTING WEIGHT: 6-8kg. FEEL: mid-back contracting, never bicep.",
         warmup:{ note:"Light x 10 reps each side", defaultKg:null, defaultReps:10 },
-        sets:[{range:"8–12",defaultKg:7},{range:"8–12",defaultKg:7},{range:"8–12",defaultKg:7}] },
+        sets:[{range:"8–12",defaultKg:10},{range:"8–12",defaultKg:10},{range:"8–12",defaultKg:10}] },
       { id:"face_pull_wed", name:"Face Pulls", type:"isolation",
-        note:"SETUP: rope at eye height. MOVEMENT: pull to forehead, elbows HIGH and wide above shoulder height. Rotate hands outward at end — thumbs point behind you. WEIGHT: always light — joint health not strength. STARTING WEIGHT: 5-7.5kg. FEEL: rear delt and rotator cuff.",
+        note:"SETUP: rope at eye height. MOVEMENT: pull to forehead, elbows HIGH and wide above shoulder height. Rotate hands outward at end — thumbs point behind you. WEIGHT: always light — joint health not strength. Current working weight: ~13.75kg. FEEL: rear delt and rotator cuff.",
         warmup:{ note:"Very light x 15 reps", defaultKg:null, defaultReps:15 },
-        sets:[{range:"12–15",defaultKg:6},{range:"12–15",defaultKg:6},{range:"12–15",defaultKg:6}] },
+        sets:[{range:"12–15",defaultKg:13.75},{range:"12–15",defaultKg:13.75},{range:"12–15",defaultKg:13.75}] },
       { id:"cable_curl_wed", name:"Cable Bicep Curl", type:"isolation",
         note:"SETUP: straight bar at low pulley. Stand close to stack. MOVEMENT: elbows pinned at sides throughout. Curl up. Pause 1 second at top. SLOW return — 3 seconds. STOP 10-15° before full extension at bottom — elbow hypermobility. STARTING WEIGHT: 6-8kg. FEEL: full bicep tension throughout.",
         warmup:{ note:"Light x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"10–12",defaultKg:7},{range:"10–12",defaultKg:7},{range:"10–12",defaultKg:7}] },
+        sets:[{range:"10–12",defaultKg:6.25},{range:"10–12",defaultKg:6.25},{range:"10–12",defaultKg:6.25}] },
       { id:"tricep_bar_wed", name:"Straight Bar Tricep Pushdown", type:"isolation",
         note:"SETUP: straight bar at high cable. Overhand grip shoulder-width. MOVEMENT: elbows pinned completely at sides — they must not move. Push bar straight down. STOP 5° before lockout — elbow hypermobility. SLOW return — 3 seconds. STARTING WEIGHT: 8-10kg. FEEL: only the back of the upper arm.",
         warmup:{ note:"Light x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"10–12",defaultKg:9},{range:"10–12",defaultKg:9},{range:"10–12",defaultKg:9}] },
+        sets:[{range:"10–12",defaultKg:11.25},{range:"10–12",defaultKg:11.25},{range:"10–12",defaultKg:11.25}] },
     ],
   },
   {
-    id:"thu", day:"Thursday", label:"Full Body", accent:"#e91e8c", hasGluteFinisher:false,
-    abPair:["ab_kb_worlds","ab_captains"],
+    id:"thu", day:"Thursday", label:"Hot Yoga + Hip Work", accent:"#e91e8c",
+    warmupNote:"Hot yoga 6:20am (45 min) — prep clothes the night before. Class ends ~7:05am. Quick cable hip abduction straight after — only if you didn't do it Tuesday. Must leave by 7:35am.",
     exercises:[
-      { id:"hip_thrust_thu", name:"DB Hip Thrust", type:"compound",
-        note:"SETUP: sit against bench, DB held horizontally across hip creases with both hands. Drive through heels. At top: glutes HARD + ribs DOWN — no lower back arch. 1s hold. WARM UP: 10 bodyweight glute bridges first. STARTING WEIGHT: 10-12kg DB. FEEL: glutes only at top. If you feel lower back, reset rib position.",
-        warmup:{ note:"Bodyweight glute bridge x 10 — feel glutes fire before loading", defaultKg:0, defaultReps:10 },
-        sets:[{range:"8–12",defaultKg:11},{range:"8–12",defaultKg:11},{range:"8–12",defaultKg:11}] },
-      { id:"heel_split_thu", name:"Heel Elevated Split Squat [PHYSIO]", type:"compound",
-        note:"SETUP: front foot heel on plate or block. All weight through front foot. Rear foot lightly on floor. MOVEMENT: lower STRAIGHT DOWN — not leaning forward. VMO (inner quad) fires hard. STOP before knee goes to end range. STARTING WEIGHT: 4-6kg DBs. FEEL: front thigh (VMO) working hard, knee tracking straight.",
-        warmup:{ note:"Bodyweight x 6 each side — feel VMO load", defaultKg:0, defaultReps:6 },
-        sets:[{range:"8–12",defaultKg:5},{range:"8–12",defaultKg:5},{range:"8–12",defaultKg:5}] },
-      { id:"cable_row_thu", name:"Seated Cable Row", type:"compound",
-        note:"SETUP: wide neutral grip, sit tall. BEFORE YOU PULL: retract shoulder blades — pinch together and DOWN. MOVEMENT: pull elbows to sides, pause 1s at chest. SLOW return — 4 seconds. RIGHT SCAPULA: press down and back every rep. STARTING WEIGHT: 15-20kg. FEEL: rhomboids and mid-trap between shoulder blades.",
-        warmup:{ note:"50% weight x 10 reps", defaultKg:null, defaultReps:10 },
-        sets:[{range:"8–12",defaultKg:18},{range:"8–12",defaultKg:18},{range:"8–12",defaultKg:18}] },
-    ],
-  },
-  {
-    id:"fri", day:"Friday", label:"Upper B — Shoulders & Triceps", accent:"#7b1fa2", hasGluteFinisher:true,
-    abPair:["ab_march","ab_pallof"],
-    exercises:[
-      { id:"lat_raise_fri", name:"Lateral Raise (DB or plate)", type:"isolation",
-        note:"SETUP: seated, back supported. Lead with elbow — imagine pouring water sideways. STOP at shoulder height exactly. SLOW return — 3 seconds. STARTING WEIGHT: 3-4kg. COMMON MISTAKE: shrugging neck or upper trap. FEEL: side of shoulder only.",
-        warmup:{ note:"Very light x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"12–15",defaultKg:3},{range:"12–15",defaultKg:3},{range:"12–15",defaultKg:3}] },
-      { id:"rear_delt_fri", name:"Rear Delt Machine", type:"isolation",
-        note:"SETUP: seat adjusted so handles at shoulder height. Arms slightly bent throughout. MOVEMENT: drive elbows back and out in wide arc. Slow return. STARTING WEIGHT: 8-10kg. FEEL: squeeze behind shoulder at end of each rep.",
-        warmup:{ note:"Light x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"12–15",defaultKg:9},{range:"12–15",defaultKg:9},{range:"12–15",defaultKg:9}] },
-      { id:"tricep_rope_fri", name:"Rope Tricep Pushdown", type:"isolation",
-        note:"SETUP: rope at high cable. Step back slightly. MOVEMENT: elbows pinned at sides — completely fixed. Push rope down and slightly apart at bottom. STOP 5° before lockout. SLOW return — 3 seconds. STARTING WEIGHT: 8-10kg. FEEL: only the back of the upper arm.",
-        warmup:{ note:"Light x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"10–12",defaultKg:9},{range:"10–12",defaultKg:9},{range:"10–12",defaultKg:9}] },
-      { id:"hammer_curl_fri", name:"DB Hammer Curl", type:"isolation",
-        note:"SETUP: neutral grip (thumbs up). Elbows pinned at sides throughout. MOVEMENT: curl smoothly. SLOW return — 3 seconds. STOP 10-15° before full extension at bottom — elbow hypermobility. STARTING WEIGHT: 6-8kg. FEEL: outer upper arm (brachialis) and forearm.",
-        warmup:{ note:"Light x 10 reps", defaultKg:null, defaultReps:10 },
-        sets:[{range:"10–12",defaultKg:7},{range:"10–12",defaultKg:7},{range:"10–12",defaultKg:7}] },
+      { id:"cable_hip_abd_thu", name:"Cable Hip Abduction", type:"isolation",
+        note:"SETUP: cable at ankle, stand side-on to machine. Hold machine lightly for balance only. MOVEMENT: leg directly out to side — not forward, not back. Pelvis stays completely level. Slow return. No leaning. STARTING WEIGHT: 4-5kg. FEEL: burning on outside of hip (glute med). SKIP THIS if you already did it on Tuesday.",
+        sets:[{range:"12–15",defaultKg:5},{range:"12–15",defaultKg:5},{range:"12–15",defaultKg:5}] },
     ],
   },
   {
@@ -152,44 +116,36 @@ const GYM_SESSIONS = [
         note:"SMITH: bar at mid-scapula, drive through heels, ribs down, 1s hold at top. BANDED FLOOR: band above knees, feet flat, drive hips up. Both: glutes hard at top. This is your heaviest hip thrust session — go heavier than Thursday. STARTING WEIGHT: 15-20kg total. Track progression every week.",
         warmup:{ note:"Bodyweight glute bridge x 15 — feel glutes fire", defaultKg:0, defaultReps:15 },
         sets:[{range:"8–12",defaultKg:17},{range:"8–12",defaultKg:17},{range:"8–12",defaultKg:17}] },
+      { id:"bulgarian_sat", name:"Bulgarian Split Squat (DB)", type:"compound",
+        note:"SETUP: rear foot on bench, front foot far enough forward that shin stays vertical. DBs at sides. MOVEMENT: lower straight down — front knee tracks over 2nd toe. STOP 3-4cm before back knee touches floor. Push through front heel. STARTING WEIGHT: 6-8kg DBs. COMMON MISTAKE: knee caving inward — drop weight immediately if this happens.",
+        warmup:{ note:"Bodyweight x 6 each side — track the knee", defaultKg:0, defaultReps:6 },
+        sets:[{range:"8–10",defaultKg:6},{range:"8–10",defaultKg:6},{range:"8–10",defaultKg:6}] },
       { id:"goblet_sat", name:"Heel Elevated Goblet Squat [PHYSIO]", type:"compound",
         note:"SETUP: heels on plate or block, feet hip-width. DB vertical at chest. MOVEMENT: squat STRAIGHT DOWN — hips go down not back. STOP before pelvis tucks. SLOW lowering — 4 seconds. STARTING WEIGHT: 8-10kg. FEEL: quads working hard. If mostly glutes, you are sitting back too much.",
         warmup:{ note:"Bodyweight tripod squat x 8 — straight down", defaultKg:0, defaultReps:8 },
         sets:[{range:"8–12",defaultKg:9},{range:"8–12",defaultKg:9},{range:"8–12",defaultKg:9}] },
-      { id:"bulgarian_sat", name:"Bulgarian Split Squat (DB)", type:"compound",
-        note:"SETUP: rear foot on bench, front foot far enough forward that shin stays vertical. DBs at sides. MOVEMENT: lower straight down — front knee tracks over 2nd toe. STOP 3-4cm before back knee touches floor. Push through front heel. STARTING WEIGHT: 6-8kg DBs. COMMON MISTAKE: knee caving inward — drop weight immediately if this happens.",
-        warmup:{ note:"Bodyweight x 6 each side — track the knee", defaultKg:0, defaultReps:6 },
-        sets:[{range:"8–10",defaultKg:7},{range:"8–10",defaultKg:7},{range:"8–10",defaultKg:7}] },
-      { id:"ham_curl_sat", name:"Seated Hamstring Curl", type:"isolation",
-        note:"SETUP: knee joint aligned with machine pivot. Ankle pad just above heel. MOVEMENT: curl up smoothly. Pause 1s at top. SLOW lowering — 4 seconds. STOP 10° before full extension — knee hypermobility. STARTING WEIGHT: 10-15kg. FEEL: hamstring tension throughout, especially on slow lowering.",
+      { id:"lying_ham_curl_sat", name:"Lying Hamstring Curl (face-down machine)", type:"isolation",
+        note:"SETUP: lie face-down on machine. Ankle pads sit just above heels. Hips flat against pad throughout — don't let them rise. MOVEMENT: curl smoothly toward glutes. Pause 1s at top. SLOW lowering — 4 seconds. STOP 10° before full extension — knee hypermobility. STARTING WEIGHT: 12kg. FEEL: full hamstring under load, especially on the slow lowering phase.",
         warmup:{ note:"Light x 12 reps", defaultKg:null, defaultReps:12 },
         sets:[{range:"12–15",defaultKg:12},{range:"12–15",defaultKg:12},{range:"12–15",defaultKg:12}] },
-      { id:"adductor_sat", name:"Adductor Machine", type:"isolation",
-        note:"SETUP: pads just above knees. Start at MID-RANGE — not fully open. MOVEMENT: press legs together smoothly. Hold 1s at full contraction. SLOW return — stop before fully open. Do NOT push to end range — hip hypermobility. STARTING WEIGHT: 15-20kg. FEEL: inner thigh contraction.",
-        warmup:{ note:"Light x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"12–15",defaultKg:17},{range:"12–15",defaultKg:17},{range:"12–15",defaultKg:17}] },
-      { id:"hip_abd_sat", name:"Cable Hip Abduction", type:"isolation",
-        note:"SETUP: cable at ankle, stand side-on. Hold machine lightly. MOVEMENT: leg directly out to side. Pelvis stays level — no leaning. Slow return. STARTING WEIGHT: 4-5kg. FEEL: outer hip (glute med). Second hit this week — critical for IT band.",
-        warmup:{ note:"Light x 12 reps each side", defaultKg:null, defaultReps:12 },
-        sets:[{range:"12–15",defaultKg:5},{range:"12–15",defaultKg:5},{range:"12–15",defaultKg:5}] },
     ],
   },
   {
-    id:"sun", day:"Sunday", label:"Upper Heavy — Back & Shoulders", accent:"#0891b2", hasGluteFinisher:true,
+    id:"sun", day:"Sunday", label:"Upper B — Back & Shoulders", accent:"#0891b2", hasGluteFinisher:true,
     abPair:["ab_pallof","ab_march"],
     exercises:[
       { id:"lat_pull_sun", name:"Narrow Neutral Grip Lat Pulldown", type:"compound",
         note:"SETUP: close-grip neutral attachment. BEFORE YOU PULL: depress shoulder blades. MOVEMENT: pull to upper chest, 10° lean back. Slow return. This is your heavier pulldown session — aim slightly more than Wednesday. STARTING WEIGHT: 20-25kg. FEEL: lats contracting, wide stretch at top.",
         warmup:{ note:"50% weight x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"8–12",defaultKg:22},{range:"8–12",defaultKg:22},{range:"8–12",defaultKg:22}] },
+        sets:[{range:"8–12",defaultKg:21.5},{range:"8–12",defaultKg:21.5},{range:"8–12",defaultKg:21.5}] },
       { id:"cable_row_sun", name:"Seated Cable Row", type:"compound",
         note:"SETUP: wide neutral grip, sit tall. Retract shoulder blades before pulling. Pull elbows to sides, pause 1s. SLOW return — 4 seconds. Heavier than Thursday. STARTING WEIGHT: 20-25kg. RIGHT SCAPULA: press down and back every rep.",
         warmup:{ note:"50% weight x 10 reps", defaultKg:null, defaultReps:10 },
-        sets:[{range:"8–12",defaultKg:22},{range:"8–12",defaultKg:22},{range:"8–12",defaultKg:22}] },
+        sets:[{range:"8–12",defaultKg:19},{range:"8–12",defaultKg:19},{range:"8–12",defaultKg:19}] },
       { id:"face_pull_sun", name:"Face Pulls", type:"isolation",
-        note:"SETUP: rope at eye height. Elbows HIGH and wide throughout. Pull to forehead. Thumbs point back at end position. Always light. STARTING WEIGHT: 5-7.5kg. FEEL: rear delt and rotator cuff.",
+        note:"SETUP: rope at eye height. Elbows HIGH and wide throughout. Pull to forehead. Thumbs point back at end position. Always light. Current working weight: ~13.75kg. FEEL: rear delt and rotator cuff.",
         warmup:{ note:"Very light x 15 reps", defaultKg:null, defaultReps:15 },
-        sets:[{range:"12–15",defaultKg:6},{range:"12–15",defaultKg:6},{range:"12–15",defaultKg:6}] },
+        sets:[{range:"12–15",defaultKg:13.75},{range:"12–15",defaultKg:13.75},{range:"12–15",defaultKg:13.75}] },
       { id:"ytw_sun", name:"Y/T/W Raises [PHYSIO]", type:"compound",
         note:"SETUP: face down on incline bench, arms hanging. Y: raise arms diagonally, thumbs up. T: raise arms straight to sides. W: elbows bent 90°, raise to shoulder height. Hold 1s at top each letter. WEIGHT: 1-2kg maximum — neurological retraining. RIGHT SIDE: extra focus — scapular winging correction. FEEL: between and below shoulder blades, never neck.",
         warmup:{ note:"Bodyweight — feel the scapular movement", defaultKg:0, defaultReps:8 },
@@ -197,15 +153,7 @@ const GYM_SESSIONS = [
       { id:"lat_raise_sun", name:"Lateral Raise (DB or plate)", type:"isolation",
         note:"SETUP: seated, back supported. Lead with elbow. STOP at shoulder height. SLOW return — 3 seconds. STARTING WEIGHT: 3-4kg. FEEL: side of shoulder only.",
         warmup:{ note:"Very light x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"12–15",defaultKg:3},{range:"12–15",defaultKg:3},{range:"12–15",defaultKg:3}] },
-      { id:"rear_delt_sun", name:"Rear Delt Machine", type:"isolation",
-        note:"SETUP: handles at shoulder height. Arms slightly bent. MOVEMENT: drive elbows back and out. Slow return. STARTING WEIGHT: 8-10kg. FEEL: squeeze behind shoulder each rep.",
-        warmup:{ note:"Light x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"12–15",defaultKg:9},{range:"12–15",defaultKg:9},{range:"12–15",defaultKg:9}] },
-      { id:"hammer_curl_sun", name:"DB Hammer Curl", type:"isolation",
-        note:"SETUP: neutral grip (thumbs up). Elbows pinned at sides. SLOW return — 3 seconds. STOP 10-15° before full extension at bottom. STARTING WEIGHT: 6-8kg. FEEL: outer upper arm and forearm.",
-        warmup:{ note:"Light x 10 reps", defaultKg:null, defaultReps:10 },
-        sets:[{range:"10–12",defaultKg:7},{range:"10–12",defaultKg:7},{range:"10–12",defaultKg:7}] },
+        sets:[{range:"12–15",defaultKg:2.5},{range:"12–15",defaultKg:2.5},{range:"12–15",defaultKg:2.5}] },
     ],
   },
 ];
@@ -664,15 +612,16 @@ function HomeScreen({ onSelect, history, travelWeek, setTravelWeek, currentWeek,
   // Normal week order
   const normalOrder = [...GYM_SESSIONS,...HOME_SESSIONS].sort((a,b)=>dayOrder.indexOf(a.id)-dayOrder.indexOf(b.id));
 
-  // Travel week: Mon Shoulders, Tue LoUpper A, Tue Lower A, Wed Full Body, Thu Upper B, Fri Lower B — Sat/Sun away
-  const travelSessionIds = ["mon","tue","thu","sun","sat"];
+  // Travel week: normal Mon–Thu, then Sat+Sun sessions moved to Fri+Sat, Sunday away
+  const travelSessionIds = ["mon","tue","wed","thu","sat","sun"];
   const travelSchedule = [
-    { ...GYM_SESSIONS.find(s=>s.id==="mon"), travelDay:"Monday — Upper A" },
+    { ...HOME_SESSIONS.find(s=>s.id==="mon"), travelDay:"Monday — Active Rest (walk)" },
     { ...GYM_SESSIONS.find(s=>s.id==="tue"), travelDay:"Tuesday — Lower A" },
-    { ...GYM_SESSIONS.find(s=>s.id==="thu"), travelDay:"Wednesday — Full Body (moved from Thu)" },
-    { ...GYM_SESSIONS.find(s=>s.id==="sun"), travelDay:"Thursday — Upper B (moved from Sun)" },
+    { ...GYM_SESSIONS.find(s=>s.id==="wed"), travelDay:"Wednesday — Upper A" },
+    { ...GYM_SESSIONS.find(s=>s.id==="thu"), travelDay:"Thursday — Hot Yoga + Light Gym" },
     { ...GYM_SESSIONS.find(s=>s.id==="sat"), travelDay:"Friday — Lower B (moved from Sat)" },
-    { id:"weekend_away", day:"Saturday + Sunday", label:"Away — rest and recover 🌍", accent:"#6b7280", type:"travel_rest", travelDay:"Weekend away" },
+    { ...GYM_SESSIONS.find(s=>s.id==="sun"), travelDay:"Saturday — Upper B (moved from Sun)" },
+    { id:"weekend_away", day:"Sunday", label:"Away — rest and recover 🌍", accent:"#6b7280", type:"travel_rest", travelDay:"Sunday away" },
   ];
 
   return (
@@ -722,7 +671,7 @@ function HomeScreen({ onSelect, history, travelWeek, setTravelWeek, currentWeek,
               {travelWeek?"✈️ Travel Week Mode ON":"✈️ Away this weekend?"}
             </div>
             <div style={{fontSize:12,color:travelWeek?"#aaa":"#3a3a5a"}}>
-              {travelWeek?"Sat + Sun sessions moved to Thu + Fri":"Tap to shift weekend sessions to weekdays"}
+              {travelWeek?"Sat + Sun sessions moved to Fri + Sat":"Tap to shift weekend sessions to weekdays"}
             </div>
           </div>
           <div style={{width:44,height:26,borderRadius:13,background:travelWeek?"#f59e0b":"#1e1e38",position:"relative",transition:"background 0.2s",flexShrink:0}}>
@@ -732,7 +681,7 @@ function HomeScreen({ onSelect, history, travelWeek, setTravelWeek, currentWeek,
         {travelWeek&&(
           <div style={{marginTop:12,background:"#0a0a00",borderRadius:12,padding:"10px 12px",border:"1px solid #f59e0b30"}}>
             <div style={{fontSize:10,color:"#f59e0b",fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:8}}>This week's schedule</div>
-            {[["Mon","Upper A — Back & Biceps"],["Tue","Lower A — Posterior Chain"],["Wed","Full Body (moved from Thu)"],["Thu","Upper B (moved from Sun)"],["Fri","Lower B (moved from Sat)"],["Sat + Sun","Away — rest and recover 🌍"]].map(([day,sess])=>(
+            {[["Mon","Active Rest (walk)"],["Tue","Lower A — Posterior Chain"],["Wed","Upper A — Back & Biceps"],["Thu","Hot Yoga + Light Gym"],["Fri","Lower B (moved from Sat)"],["Sat","Upper B (moved from Sun)"],["Sun","Away — rest and recover 🌍"]].map(([day,sess])=>(
               <div key={day} style={{display:"flex",gap:12,marginBottom:5,alignItems:"center"}}>
                 <div style={{fontSize:10,color:"#f59e0b",fontWeight:700,width:32,flexShrink:0}}>{day}</div>
                 <div style={{fontSize:11,color:"#888"}}>{sess}</div>
@@ -820,8 +769,9 @@ function HomeScreen({ onSelect, history, travelWeek, setTravelWeek, currentWeek,
 // ── Legacy exercise ID fallback map ──────────────────────────────────────────
 // When an exercise ID has no previous data, check these legacy IDs from older program versions
 const LEGACY_ID_MAP = {
-  "kickstand_rdl_tue": ["rdl_tue"],
-  "leg_press_tue":     ["heel_split_tue"],
+  "kickstand_rdl_tue":   ["rdl_tue"],
+  "leg_press_tue":       ["heel_split_tue"],
+  "lying_ham_curl_sat":  ["ham_curl_sat"],
   "hip_abd_tue":       ["hip_abd_tue"],
   "lat_pull_mon":      ["lat_pull_wed","lat_pull_sun"],
   "single_row_mon":    ["single_row_wed","chest_row_wed"],
