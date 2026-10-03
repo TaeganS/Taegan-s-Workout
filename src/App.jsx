@@ -289,10 +289,16 @@ async function loadSessionDraft(sessionId) {
 async function loadProgramStartDate() {
   try {
     const { data } = await supabase.from('app_settings').select('value').eq('key','program_start_date').single();
-    return data ? data.value : null;
-  } catch { return null; }
+    if (data?.value) {
+      try { localStorage.setItem('program_start_date', data.value); } catch {}
+      return data.value;
+    }
+  } catch {}
+  // Fallback to localStorage if Supabase unavailable
+  try { return localStorage.getItem('program_start_date') || null; } catch { return null; }
 }
 async function saveProgramStartDate(dateStr) {
+  try { localStorage.setItem('program_start_date', dateStr); } catch {}
   await supabase.from('app_settings').upsert({ key:'program_start_date', value:dateStr }, { onConflict:'key' });
 }
 async function loadWeekOverride() {
@@ -344,6 +350,13 @@ async function savePhysioCompletion(exerciseId, isDone) {
   } else {
     await supabase.from('physio_completions').delete().eq('exercise_id', exerciseId).eq('week_start', weekStart);
   }
+}
+
+async function saveExerciseNote(exerciseId, noteText) {
+  await supabase.from('exercise_notes').upsert(
+    { exercise_id: exerciseId, note_text: noteText },
+    { onConflict: 'exercise_id' }
+  );
 }
 
 async function persistSession(sessionId, data) {
@@ -864,7 +877,7 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
     session.exercises.forEach(ex=>{
       const p=getPrevLogs(history, session.id, ex.id);
       logs[ex.id]={
-        warmup:{ kg:p?.warmup?.kg??ex.warmup.defaultKg, reps:p?.warmup?.reps??ex.warmup.defaultReps, done:false },
+        warmup:ex.warmup ? { kg:p?.warmup?.kg??ex.warmup.defaultKg, reps:p?.warmup?.reps??ex.warmup.defaultReps, done:false } : { kg:null, reps:null, done:false },
         sets:ex.sets.map((setDef,si)=>{
           const draftSet = draft.find(d=>d.exercise_id===ex.id && d.set_type==='working' && d.set_index===si);
           return { kg:draftSet?.kg??p?.sets?.[si]?.kg??setDef.defaultKg??null, reps:draftSet?.reps??p?.sets?.[si]?.reps??null, done:!!draftSet };
