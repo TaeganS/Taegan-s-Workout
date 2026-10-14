@@ -19,7 +19,7 @@ const AB_OPTIONS = {
     { id:"ab_tabletop_tap", name:"Tabletop Toe Tap", sets:"3", reps:"10 each side", note:"Lie on back. Both legs at 90° tabletop. Lower one heel slowly to tap floor. Back stays flat. Alternate sides. Dead bug variation — good for APT." },
   ],
   standing:[
-    { id:"ab_pallof", name:"Pallof Press", sets:"3", reps:"10 each side", note:"Cable or band at chest. Press straight out. Hold 2s. Resist rotation. Anti-rotation core." },
+    { id:"ab_pallof", name:"Pallof Press", sets:"3", reps:"10 each side", defaultKg:6.25, note:"Cable or band at chest. Press straight out. Hold 2s. Resist rotation. Anti-rotation core." },
     { id:"ab_march", name:"DB March", sets:"3", reps:"20 steps", note:"Hold DB at sides. March on spot driving knees up. Core resists rotation. Dynamic anti-rotation." },
     { id:"ab_kb_worlds", name:"KB Around the Worlds", sets:"3", reps:"8 each direction", note:"Light KB. Pass around body in circle. Controlled — no swinging. Keep light given hypermobile shoulder." },
     { id:"ab_suitcase", name:"Suitcase Carry", sets:"3", reps:"20m each side", note:"Heavy-ish DB one hand. Walk without leaning. QL and oblique anti-lateral flexion." },
@@ -73,29 +73,29 @@ const GYM_SESSIONS = [
     ],
   },
   {
-    id:"wed", day:"Wednesday", label:"Upper A — Back & Biceps", accent:"#1565c0",
-    abPair:["ab_pallof","ab_woodchop"],
+    id:"wed", day:"Wednesday", label:"Upper B — Back & Shoulders", accent:"#0891b2", hasGluteFinisher:true,
+    abPair:["ab_pallof","ab_march"],
     exercises:[
       { id:"lat_pull_wed", name:"Narrow Neutral Grip Lat Pulldown", type:"compound",
-        note:"SETUP: close-grip neutral attachment (palms facing each other). Thighs under pads. BEFORE YOU PULL: depress shoulder blades — tuck them into your back pockets. MOVEMENT: pull to upper chest, 10° lean back only. Slow return — 4 seconds. HYPERMOBILITY: neutral grip protects your shoulder joint. RIGHT SCAPULA: keep it depressed throughout. STARTING WEIGHT: 15-20kg. FEEL: wide stretch in lats at top, contraction across mid-back at bottom.",
+        note:"SETUP: close-grip neutral attachment. BEFORE YOU PULL: depress shoulder blades. MOVEMENT: pull to upper chest, 10° lean back. Slow return. This is your heavier pulldown session — aim slightly more than Sunday. STARTING WEIGHT: 20-25kg. FEEL: lats contracting, wide stretch at top.",
         warmup:{ note:"50% weight x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"8–12",defaultKg:21.5},{range:"8–12",defaultKg:21.5},{range:"8–12",defaultKg:21.5}] },
-      { id:"single_row_wed", name:"Single-Arm Cable Row", type:"compound",
-        note:"SETUP: same-side knee AND hand on flat bench. Back completely flat, parallel to floor. MOVEMENT: pull handle toward lower hip. Trunk must not rotate. RIGHT SIDE: extra attention every set — scapular winging correction. SLOW return — 4 seconds. STARTING WEIGHT: 6-8kg. FEEL: mid-back contracting, never bicep.",
-        warmup:{ note:"Light x 10 reps each side", defaultKg:null, defaultReps:10 },
-        sets:[{range:"8–12",defaultKg:10},{range:"8–12",defaultKg:10},{range:"8–12",defaultKg:10}] },
+        sets:[{range:"8–12",defaultKg:24},{range:"8–12",defaultKg:24},{range:"8–12",defaultKg:24}] },
+      { id:"cable_row_wed", name:"Seated Cable Row", type:"compound",
+        note:"SETUP: wide neutral grip, sit tall. Retract shoulder blades before pulling. Pull elbows to sides, pause 1s. SLOW return — 4 seconds. Heavier than Sunday. STARTING WEIGHT: 20-25kg. RIGHT SCAPULA: press down and back every rep.",
+        warmup:{ note:"50% weight x 10 reps", defaultKg:null, defaultReps:10 },
+        sets:[{range:"8–12",defaultKg:19},{range:"8–12",defaultKg:19},{range:"8–12",defaultKg:19}] },
       { id:"face_pull_wed", name:"Face Pulls", type:"isolation",
-        note:"SETUP: rope at eye height. MOVEMENT: pull to forehead, elbows HIGH and wide above shoulder height. Rotate hands outward at end — thumbs point behind you. WEIGHT: always light — joint health not strength. Current working weight: ~13.75kg. FEEL: rear delt and rotator cuff.",
+        note:"SETUP: rope at eye height. Elbows HIGH and wide throughout. Pull to forehead. Thumbs point back at end position. Always light — joint health not strength. FEEL: rear delt and rotator cuff.",
         warmup:{ note:"Very light x 15 reps", defaultKg:null, defaultReps:15 },
-        sets:[{range:"12–15",defaultKg:13.75},{range:"12–15",defaultKg:13.75},{range:"12–15",defaultKg:13.75}] },
-      { id:"cable_curl_wed", name:"Cable Bicep Curl", type:"isolation",
-        note:"SETUP: straight bar at low pulley. Stand close to stack. MOVEMENT: elbows pinned at sides throughout. Curl up. Pause 1 second at top. SLOW return — 3 seconds. STOP 10-15° before full extension at bottom — elbow hypermobility. STARTING WEIGHT: 6-8kg. FEEL: full bicep tension throughout.",
-        warmup:{ note:"Light x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"10–12",defaultKg:6.25},{range:"10–12",defaultKg:6.25},{range:"10–12",defaultKg:6.25}] },
+        sets:[{range:"12–15",defaultKg:10},{range:"12–15",defaultKg:10},{range:"12–15",defaultKg:10}] },
       { id:"tricep_bar_wed", name:"Straight Bar Tricep Pushdown", type:"isolation",
         note:"SETUP: straight bar at high cable. Overhand grip shoulder-width. MOVEMENT: elbows pinned completely at sides — they must not move. Push bar straight down. STOP 5° before lockout — elbow hypermobility. SLOW return — 3 seconds. STARTING WEIGHT: 8-10kg. FEEL: only the back of the upper arm.",
         warmup:{ note:"Light x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"10–12",defaultKg:11.25},{range:"10–12",defaultKg:11.25},{range:"10–12",defaultKg:11.25}] },
+        sets:[{range:"10–12",defaultKg:10},{range:"10–12",defaultKg:10},{range:"10–12",defaultKg:10}] },
+      { id:"lat_raise_wed", name:"Lateral Raise (DB or plate)", type:"isolation",
+        note:"SETUP: seated, back supported. Lead with elbow. STOP at shoulder height. SLOW return — 3 seconds. STARTING WEIGHT: 3-4kg. FEEL: side of shoulder only.",
+        warmup:{ note:"Very light x 12 reps", defaultKg:null, defaultReps:12 },
+        sets:[{range:"12–15",defaultKg:2.5},{range:"12–15",defaultKg:2.5},{range:"12–15",defaultKg:2.5}] },
     ],
   },
   {
@@ -131,29 +131,29 @@ const GYM_SESSIONS = [
     ],
   },
   {
-    id:"sun", day:"Sunday", label:"Upper B — Back & Shoulders", accent:"#0891b2", hasGluteFinisher:true,
-    abPair:["ab_pallof","ab_march"],
+    id:"sun", day:"Sunday", label:"Upper A — Back & Biceps", accent:"#1565c0",
+    abPair:["ab_pallof","ab_woodchop"],
     exercises:[
       { id:"lat_pull_sun", name:"Narrow Neutral Grip Lat Pulldown", type:"compound",
-        note:"SETUP: close-grip neutral attachment. BEFORE YOU PULL: depress shoulder blades. MOVEMENT: pull to upper chest, 10° lean back. Slow return. This is your heavier pulldown session — aim slightly more than Wednesday. STARTING WEIGHT: 20-25kg. FEEL: lats contracting, wide stretch at top.",
+        note:"SETUP: close-grip neutral attachment (palms facing each other). Thighs under pads. BEFORE YOU PULL: depress shoulder blades — tuck them into your back pockets. MOVEMENT: pull to upper chest, 10° lean back only. Slow return — 4 seconds. HYPERMOBILITY: neutral grip protects your shoulder joint. RIGHT SCAPULA: keep it depressed throughout. STARTING WEIGHT: 15-20kg. FEEL: wide stretch in lats at top, contraction across mid-back at bottom.",
         warmup:{ note:"50% weight x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"8–12",defaultKg:21.5},{range:"8–12",defaultKg:21.5},{range:"8–12",defaultKg:21.5}] },
-      { id:"cable_row_sun", name:"Seated Cable Row", type:"compound",
-        note:"SETUP: wide neutral grip, sit tall. Retract shoulder blades before pulling. Pull elbows to sides, pause 1s. SLOW return — 4 seconds. Heavier than Thursday. STARTING WEIGHT: 20-25kg. RIGHT SCAPULA: press down and back every rep.",
-        warmup:{ note:"50% weight x 10 reps", defaultKg:null, defaultReps:10 },
-        sets:[{range:"8–12",defaultKg:19},{range:"8–12",defaultKg:19},{range:"8–12",defaultKg:19}] },
+        sets:[{range:"8–12",defaultKg:24},{range:"8–12",defaultKg:24},{range:"8–12",defaultKg:24}] },
+      { id:"single_row_sun", name:"Single-Arm Cable Row", type:"compound",
+        note:"SETUP: same-side knee AND hand on flat bench. Back completely flat, parallel to floor. MOVEMENT: pull handle toward lower hip. Trunk must not rotate. RIGHT SIDE: extra attention every set — scapular winging correction. SLOW return — 4 seconds. STARTING WEIGHT: 6-8kg. FEEL: mid-back contracting, never bicep.",
+        warmup:{ note:"Light x 10 reps each side", defaultKg:null, defaultReps:10 },
+        sets:[{range:"8–12",defaultKg:10},{range:"8–12",defaultKg:10},{range:"8–12",defaultKg:10}] },
       { id:"face_pull_sun", name:"Face Pulls", type:"isolation",
-        note:"SETUP: rope at eye height. Elbows HIGH and wide throughout. Pull to forehead. Thumbs point back at end position. Always light. Current working weight: ~13.75kg. FEEL: rear delt and rotator cuff.",
+        note:"SETUP: rope at eye height. MOVEMENT: pull to forehead, elbows HIGH and wide above shoulder height. Rotate hands outward at end — thumbs point behind you. WEIGHT: always light — joint health not strength. FEEL: rear delt and rotator cuff.",
         warmup:{ note:"Very light x 15 reps", defaultKg:null, defaultReps:15 },
-        sets:[{range:"12–15",defaultKg:13.75},{range:"12–15",defaultKg:13.75},{range:"12–15",defaultKg:13.75}] },
+        sets:[{range:"12–15",defaultKg:10},{range:"12–15",defaultKg:10},{range:"12–15",defaultKg:10}] },
+      { id:"cable_curl_sun", name:"Cable Bicep Curl", type:"isolation",
+        note:"SETUP: straight bar at low pulley. Stand close to stack. MOVEMENT: elbows pulled back behind hips — imagine tucking them into the back of your waistband. Not at your sides, not in front — behind. Curl up. Pause 1 second at top. SLOW return — 3 seconds. STOP 10-15° before full extension at bottom — elbow hypermobility. STARTING WEIGHT: 6-8kg. FEEL: full bicep tension throughout, zero chest or front delt.",
+        warmup:{ note:"Light x 12 reps", defaultKg:null, defaultReps:12 },
+        sets:[{range:"10–12",defaultKg:6.25},{range:"10–12",defaultKg:6.25},{range:"10–12",defaultKg:6.25}] },
       { id:"ytw_sun", name:"Y/T/W Raises [PHYSIO]", type:"compound",
         note:"SETUP: face down on incline bench, arms hanging. Y: raise arms diagonally, thumbs up. T: raise arms straight to sides. W: elbows bent 90°, raise to shoulder height. Hold 1s at top each letter. WEIGHT: 1-2kg maximum — neurological retraining. RIGHT SIDE: extra focus — scapular winging correction. FEEL: between and below shoulder blades, never neck.",
         warmup:{ note:"Bodyweight — feel the scapular movement", defaultKg:0, defaultReps:8 },
         sets:[{range:"10",defaultKg:1},{range:"10",defaultKg:1}] },
-      { id:"lat_raise_sun", name:"Lateral Raise (DB or plate)", type:"isolation",
-        note:"SETUP: seated, back supported. Lead with elbow. STOP at shoulder height. SLOW return — 3 seconds. STARTING WEIGHT: 3-4kg. FEEL: side of shoulder only.",
-        warmup:{ note:"Very light x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"12–15",defaultKg:2.5},{range:"12–15",defaultKg:2.5},{range:"12–15",defaultKg:2.5}] },
     ],
   },
 ];
@@ -269,10 +269,10 @@ async function fetchHistory() {
 // Calendar-based week tracking — set once, calculates automatically forever
 async function saveSetLog(sessionId, exerciseId, setType, setIndex, kg, reps) {
   const today = (()=>{ const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; })();
-  await supabase.from('workout_logs').upsert(
+  try { await supabase.from('workout_logs').upsert(
     { session_id: sessionId, session_date: today, exercise_id: exerciseId, set_type: setType, set_index: setIndex, kg, reps },
     { onConflict: 'session_id,session_date,exercise_id,set_type,set_index' }
-  );
+  ); } catch {}
 }
 
 async function loadSessionDraft(sessionId) {
@@ -287,19 +287,26 @@ async function loadSessionDraft(sessionId) {
 }
 
 async function loadProgramStartDate() {
+  // Try localStorage first — fastest and works offline
+  let local = null;
+  try { local = localStorage.getItem('program_start_date') || null; } catch {}
+  if (local) return local;
+  // Fallback to Supabase (use maybeSingle so 0 rows returns null, not an error)
   try {
-    const { data } = await supabase.from('app_settings').select('value').eq('key','program_start_date').single();
+    const { data } = await supabase.from('app_settings').select('value').eq('key','program_start_date').maybeSingle();
     if (data?.value) {
       try { localStorage.setItem('program_start_date', data.value); } catch {}
       return data.value;
     }
   } catch {}
-  // Fallback to localStorage if Supabase unavailable
-  try { return localStorage.getItem('program_start_date') || null; } catch { return null; }
+  return null;
 }
 async function saveProgramStartDate(dateStr) {
+  // Always write to localStorage first so it survives Supabase failures
   try { localStorage.setItem('program_start_date', dateStr); } catch {}
-  await supabase.from('app_settings').upsert({ key:'program_start_date', value:dateStr }, { onConflict:'key' });
+  try {
+    await supabase.from('app_settings').upsert({ key:'program_start_date', value:dateStr }, { onConflict:'key' });
+  } catch {}
 }
 async function loadWeekOverride() {
   try {
@@ -353,10 +360,10 @@ async function savePhysioCompletion(exerciseId, isDone) {
 }
 
 async function saveExerciseNote(exerciseId, noteText) {
-  await supabase.from('exercise_notes').upsert(
+  try { await supabase.from('exercise_notes').upsert(
     { exercise_id: exerciseId, note_text: noteText },
     { onConflict: 'exercise_id' }
-  );
+  ); } catch {}
 }
 
 async function persistSession(sessionId, data) {
@@ -892,7 +899,7 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
   const [logs,setLogs]=useState(initLogs);
   const [modal,setModal]=useState(null);
   const [editingNote,setEditingNote]=useState(null);
-  const [abLogs,setAbLogs]=useState(()=>{ const d={}; [...AB_OPTIONS.floor,...AB_OPTIONS.standing].forEach(e=>{d[e.id]={kg:null,reps:null,sets:null};}); return d; });
+  const [abLogs,setAbLogs]=useState(()=>{ const d={}; [...AB_OPTIONS.floor,...AB_OPTIONS.standing].forEach(e=>{d[e.id]={kg:e.defaultKg??null,reps:null,sets:null};}); return d; });
   const [abNotes,setAbNotes]=useState({});
   const [abModal,setAbModal]=useState(null);
   const [finisherLogs,setFinisherLogs]=useState(()=>{
@@ -912,6 +919,11 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
     loadSessionDraft(session.id).then(draft=>{
       if(draft.length>0){
         setLogs(initLogs(draft));
+        // Restore ab weights from draft
+        const abRows = draft.filter(r=>r.set_type==='ab');
+        if(abRows.length>0){
+          setAbLogs(p=>{ const d={...p}; abRows.forEach(r=>{ if(d[r.exercise_id]) d[r.exercise_id]={...d[r.exercise_id],kg:r.kg,reps:r.reps}; }); return d; });
+        }
       }
       setDraftLoaded(true);
     });
@@ -1183,7 +1195,7 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
         label={abModal.field==="kg"?"Weight (kg)":"Reps / Time"}
         sublabel={null}
         initial={abLogs[abModal.exId]?.[abModal.field]}
-        onSave={val=>setAbLogs(p=>({...p,[abModal.exId]:{...p[abModal.exId],[abModal.field]:val}}))}
+        onSave={val=>{ setAbLogs(p=>{ const updated={...p,[abModal.exId]:{...p[abModal.exId],[abModal.field]:val}}; if(abModal.field==="kg") saveSetLog(session.id, abModal.exId, 'ab', 0, val, updated[abModal.exId].reps); return updated; }); }}
         onClose={()=>setAbModal(null)}
       />}
       {finisherModal&&<Numpad
