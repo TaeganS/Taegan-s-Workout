@@ -54,106 +54,161 @@ const PHYSIO_CATEGORIES = [
 
 const GYM_SESSIONS = [
   {
-    id:"tue", day:"Tuesday", label:"Lower A — Posterior Chain", accent:"#059669", hasGluteFinisher:true,
-    warmupNote:"BEFORE YOU START: Lateral band walk — band at ankles, semi-squat, 2x15 steps each direction. Activates glute med and primes hip stabilisers. Takes 3 minutes.",
-    abPair:["ab_dead_bug","ab_captains"],
+    id:"tue", day:"Tuesday", label:"Lower A: Quad + Hamstring + Glute Med", accent:"#059669",
+    warmupNote:"WARMUP (3 min):\n• Glute bridges 2x15 bodyweight (drive through heels, squeeze at top)\n• Banded lateral walk 2x15 each direction (semi-squat, band at ankles, primes glute med)\n• Calf and toe raises on yoga block 1x10 (physio drill, slow eccentric)",
     exercises:[
       { id:"leg_press_tue", name:"Leg Press", type:"compound",
-        note:"SETUP: feet hip-width on platform, toes slightly out. Back flat against pad throughout. MOVEMENT: lower slowly — 4 seconds down. Stop when knees reach 90°. Press through heels. STOP 5-10° before full knee extension at top — never lock knees (hypermobility). STARTING WEIGHT: 30-40kg. FEEL: quads and glutes working through the full press.",
-        warmup:{ note:"50% weight x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"10–15",defaultKg:42.5},{range:"10–15",defaultKg:42.5},{range:"10–15",defaultKg:42.5}] },
-      { id:"kickstand_rdl_tue", name:"Kickstand Single-Leg RDL", type:"compound",
-        note:"SETUP: working leg big toe on small plate. All weight on working leg. Non-working foot lightly touches floor for balance only. DB in opposite hand to working leg. MOVEMENT: hinge at hips — push hips back as DB travels down close to shin. Soft bend in working knee throughout. STOP at first point of hamstring tension — do not push to end range (hypermobility). Drive back up through working heel. STARTING WEIGHT: 6-8kg DB. FEEL: hamstring and glute of working leg.",
-        warmup:{ note:"Bodyweight x 8 each side — feel the hip hinge", defaultKg:0, defaultReps:8 },
-        sets:[{range:"8–10",defaultKg:7},{range:"8–10",defaultKg:7},{range:"8–10",defaultKg:7}] },
-      { id:"hip_abd_tue", name:"Cable Hip Abduction", type:"isolation",
-        note:"SETUP: cable at ankle, stand side-on to machine. Hold machine lightly for balance only. MOVEMENT: leg moves directly out to side — not forward, not back. Pelvis stays completely level. Slow return. COMMON MISTAKE: leaning away from cable — this completely removes glute med from the movement. STARTING WEIGHT: 4-5kg. FEEL: burning on outside of hip (glute med). Primary IT band prevention exercise. TIME CHECK: if running short before 7:35am, skip this — you'll do it Thursday after yoga instead.",
-        warmup:{ note:"Light x 12 reps each side", defaultKg:null, defaultReps:12 },
-        sets:[{range:"12–15",defaultKg:5},{range:"12–15",defaultKg:5},{range:"12–15",defaultKg:5}] },
+        videoUrl:"https://www.youtube.com/results?search_query=leg+press+form+jeff+nippard",
+        note:"SETUP: feet shoulder-width mid to slightly high on platform, toes turned out 10-15 degrees. Back flat against pad throughout.\n\nMOVEMENT: 4 seconds down. Stop at 90 degree knee bend. Press through heels. STOP 5 to 10 degrees before full knee extension at top. Never lock knees (hypermobility rule).\n\nSTARTING WEIGHT: 42.5kg.\n\nFEEL: quads and glutes working together.",
+        warmup:{ note:"50% weight x 10-12 reps", defaultKg:null, defaultReps:12 },
+        sets:[{range:"10-12",defaultKg:42.5},{range:"10-12",defaultKg:42.5},{range:"10-12",defaultKg:42.5}] },
+      { id:"calf_press_tue", name:"Calf Press (superset with leg press)", type:"isolation",
+        videoUrl:"https://www.youtube.com/results?search_query=calf+press+leg+press+form",
+        note:"SUPERSET WITH LEG PRESS. Stay on the leg press machine between leg press sets.\n\nSETUP: slide feet so only balls of feet contact platform. Drop heels BELOW platform line for full stretch.\n\nMOVEMENT: press up through balls of feet. Hold 1s at top. Slow return.\n\nFULL RANGE OF MOTION is the point. Load same stack as leg press or lighter.",
+        warmup:null,
+        sets:[{range:"15-20",defaultKg:42.5},{range:"15-20",defaultKg:42.5},{range:"15-20",defaultKg:42.5}] },
+      { id:"hack_squat_tue", name:"Hack Squat Machine", type:"compound",
+        videoUrl:"https://www.youtube.com/results?search_query=hack+squat+form+jeff+nippard",
+        note:"SETUP: back fully supported against pad. Feet shoulder-width mid-platform, toes slightly out.\n\nMOVEMENT: 4 seconds down. Stop before pelvis tucks under (butt wink). Push through full foot, emphasis on heels. STOP 5 to 10 degrees before full knee extension.\n\nSTARTING WEIGHT: start light, build up over sessions.\n\nFEEL: quads working hard, back supported, zero lower back strain.",
+        warmup:{ note:"50% weight x 10 reps", defaultKg:null, defaultReps:10 },
+        sets:[{range:"8-12",defaultKg:20},{range:"8-12",defaultKg:20},{range:"8-12",defaultKg:20}] },
+      { id:"seated_ham_curl_tue", name:"Seated Hamstring Curl (machine)", type:"isolation",
+        videoUrl:"https://www.youtube.com/results?search_query=seated+hamstring+curl+form+jeff+nippard",
+        note:"SETUP: adjust seat so knees align with the machine pivot. Thigh pad just above your knees. Sit tall, hips fully against back pad.\n\nWHY SEATED: this position stretches hamstrings at the hip, producing more growth than lying curl (Maeo et al. 2021, ~55% more growth).\n\nMOVEMENT: curl smoothly down. Pause 1s at full contraction. 4 second return. STOP 10 degrees before full extension (knee hypermobility).\n\nSTARTING WEIGHT: 14kg.\n\nFEEL: full hamstring under load from a lengthened position.",
+        warmup:{ note:"Light x 12 reps", defaultKg:null, defaultReps:12 },
+        sets:[{range:"10-12",defaultKg:14},{range:"10-12",defaultKg:14},{range:"10-12",defaultKg:14}] },
+      { id:"seated_abd_tue", name:"Seated Abduction Machine", type:"isolation",
+        videoUrl:"https://www.youtube.com/results?search_query=seated+hip+abduction+machine+form",
+        note:"SETUP: sit tall, back against pad, knees against the outer pads. Lean slightly forward for glute med emphasis.\n\nMOVEMENT: push knees apart with control. Pause 1s at full contraction. 3 second return.\n\nSTARTING WEIGHT: start moderate.\n\nFEEL: burning on outside of hips (glute med). Keep form strict, this is isolation not strength.",
+        warmup:{ note:"Light x 12 reps", defaultKg:null, defaultReps:12 },
+        sets:[{range:"12-15",defaultKg:20},{range:"12-15",defaultKg:20},{range:"12-15",defaultKg:20}] },
     ],
   },
   {
-    id:"wed", day:"Wednesday", label:"Upper B — Back & Shoulders", accent:"#0891b2", hasGluteFinisher:true,
-    abPair:["ab_pallof","ab_march"],
+    id:"wed", day:"Wednesday", label:"Upper A: Back + Rear Delt + Biceps", accent:"#0891b2",
+    warmupNote:"WARMUP (3 min):\n• Wall pushups hands at hip height 2x10 (protract at top, serratus activation)\n• Band pull-aparts 2x15 (rear delt prep)\n• Banded external rotations 2x10 each side (rotator cuff)\n• Y raise prone on floor 2x10 hold 1s (lower trap activation)",
+    cooldownNote:"COOLDOWN (90 sec, same cable as bicep curl):\n• Half-kneeling Pallof press 1x10 each side at 6.25kg. Anti-rotation core work.",
     exercises:[
       { id:"lat_pull_wed", name:"Narrow Neutral Grip Lat Pulldown", type:"compound",
-        note:"SETUP: close-grip neutral attachment. BEFORE YOU PULL: depress shoulder blades. MOVEMENT: pull to upper chest, 10° lean back. Slow return. This is your heavier pulldown session — aim slightly more than Sunday. STARTING WEIGHT: 20-25kg. FEEL: lats contracting, wide stretch at top.",
+        videoUrl:"https://www.youtube.com/results?search_query=neutral+grip+lat+pulldown+form+jeff+nippard",
+        note:"SETUP: close-grip neutral attachment (palms facing each other). Thighs under pads.\n\nBEFORE YOU PULL: depress shoulder blades, tuck them into your back pockets.\n\nMOVEMENT: pull to upper chest, 10 degree lean back only. 4 second return.\n\nHYPERMOBILITY: neutral grip protects the shoulder joint.\n\nRIGHT SCAPULA: keep it depressed throughout.\n\nSTARTING WEIGHT: 24kg.\n\nFEEL: wide stretch in lats at top, contraction across mid-back at bottom.",
         warmup:{ note:"50% weight x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"8–12",defaultKg:24},{range:"8–12",defaultKg:24},{range:"8–12",defaultKg:24}] },
-      { id:"cable_row_wed", name:"Seated Cable Row", type:"compound",
-        note:"SETUP: wide neutral grip, sit tall. Retract shoulder blades before pulling. Pull elbows to sides, pause 1s. SLOW return — 4 seconds. Heavier than Sunday. STARTING WEIGHT: 20-25kg. RIGHT SCAPULA: press down and back every rep.",
+        sets:[{range:"8-12",defaultKg:24},{range:"8-12",defaultKg:24},{range:"8-12",defaultKg:24}] },
+      { id:"chest_row_wed", name:"Chest-Supported Row (machine)", type:"compound",
+        videoUrl:"https://www.youtube.com/results?search_query=chest+supported+row+machine+form",
+        note:"SETUP: chest glued to the pad, this is the whole point. It removes your spine from the equation. Grip neutral or slightly wider than shoulder-width.\n\nBEFORE YOU PULL: depress shoulder blades DOWN into the pad first.\n\nMOVEMENT: pull elbows back and slightly out. Pause 1s at full contraction, squeeze mid-back. 4 second return.\n\nRIGHT SCAPULA: focus extra attention every rep, press it down and back.\n\nSTARTING WEIGHT: 20kg.\n\nFEEL: mid-back and rhomboids only, zero lower back involvement.",
         warmup:{ note:"50% weight x 10 reps", defaultKg:null, defaultReps:10 },
-        sets:[{range:"8–12",defaultKg:19},{range:"8–12",defaultKg:19},{range:"8–12",defaultKg:19}] },
-      { id:"face_pull_wed", name:"Face Pulls", type:"isolation",
-        note:"SETUP: rope at eye height. Elbows HIGH and wide throughout. Pull to forehead. Thumbs point back at end position. Always light — joint health not strength. FEEL: rear delt and rotator cuff.",
-        warmup:{ note:"Very light x 15 reps", defaultKg:null, defaultReps:15 },
-        sets:[{range:"12–15",defaultKg:10},{range:"12–15",defaultKg:10},{range:"12–15",defaultKg:10}] },
-      { id:"tricep_bar_wed", name:"Straight Bar Tricep Pushdown", type:"isolation",
-        note:"SETUP: straight bar at high cable. Overhand grip shoulder-width. MOVEMENT: elbows pinned completely at sides — they must not move. Push bar straight down. STOP 5° before lockout — elbow hypermobility. SLOW return — 3 seconds. STARTING WEIGHT: 8-10kg. FEEL: only the back of the upper arm.",
-        warmup:{ note:"Light x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"10–12",defaultKg:10},{range:"10–12",defaultKg:10},{range:"10–12",defaultKg:10}] },
-      { id:"lat_raise_wed", name:"Lateral Raise (DB or plate)", type:"isolation",
-        note:"SETUP: seated, back supported. Lead with elbow. STOP at shoulder height. SLOW return — 3 seconds. STARTING WEIGHT: 3-4kg. FEEL: side of shoulder only.",
+        sets:[{range:"8-12",defaultKg:20},{range:"8-12",defaultKg:20},{range:"8-12",defaultKg:20}] },
+      { id:"rear_delt_wed", name:"Rear Delt Machine", type:"isolation",
+        videoUrl:"https://www.youtube.com/results?search_query=rear+delt+machine+reverse+pec+deck+form",
+        note:"SETUP: reverse pec deck (machine faces you). Chest against pad. Neutral grip or thumbs up on the handles.\n\nMOVEMENT: lead with elbows, not hands. Pull handles out and back until arms are in line with shoulders. Pause 1s at full contraction. Slow return.\n\nSTARTING WEIGHT: light, build up.\n\nFEEL: rear delts only, no bicep involvement.",
         warmup:{ note:"Very light x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"12–15",defaultKg:2.5},{range:"12–15",defaultKg:2.5},{range:"12–15",defaultKg:2.5}] },
-    ],
-  },
-  {
-    id:"thu", day:"Thursday", label:"Hot Yoga + Hip Work", accent:"#e91e8c",
-    warmupNote:"Hot yoga 6:20am (45 min) — prep clothes the night before. Class ends ~7:05am. Quick cable hip abduction straight after — only if you didn't do it Tuesday. Must leave by 7:35am.",
-    exercises:[
-      { id:"cable_hip_abd_thu", name:"Cable Hip Abduction", type:"isolation",
-        note:"SETUP: cable at ankle, stand side-on to machine. Hold machine lightly for balance only. MOVEMENT: leg directly out to side — not forward, not back. Pelvis stays completely level. Slow return. No leaning. STARTING WEIGHT: 4-5kg. FEEL: burning on outside of hip (glute med). SKIP THIS if you already did it on Tuesday.",
-        sets:[{range:"12–15",defaultKg:5},{range:"12–15",defaultKg:5},{range:"12–15",defaultKg:5}] },
-    ],
-  },
-  {
-    id:"sat", day:"Saturday", label:"Lower B — Glute & Quad", accent:"#7b1fa2",
-    warmupNote:"BEFORE YOU START: (1) Foam roll outer quad/TFL — 60 seconds each side. (2) Lateral band walk — band at ankles, semi-squat, 2x15 steps each direction. Do not skip this — directly addresses IT band tightness.",
-    abPair:["ab_tabletop_tap","ab_rkc"],
-    exercises:[
-      { id:"hip_thrust_sat", name:"Hip Thrust (Smith or banded floor)", type:"compound",
-        note:"SMITH: bar at mid-scapula, drive through heels, ribs down, 1s hold at top. BANDED FLOOR: band above knees, feet flat, drive hips up. Both: glutes hard at top. This is your heaviest hip thrust session — go heavier than Thursday. STARTING WEIGHT: 15-20kg total. Track progression every week.",
-        warmup:{ note:"Bodyweight glute bridge x 15 — feel glutes fire", defaultKg:0, defaultReps:15 },
-        sets:[{range:"8–12",defaultKg:17},{range:"8–12",defaultKg:17},{range:"8–12",defaultKg:17}] },
-      { id:"bulgarian_sat", name:"Bulgarian Split Squat (DB)", type:"compound",
-        note:"SETUP: rear foot on bench, front foot far enough forward that shin stays vertical. DBs at sides. MOVEMENT: lower straight down — front knee tracks over 2nd toe. STOP 3-4cm before back knee touches floor. Push through front heel. STARTING WEIGHT: 6-8kg DBs. COMMON MISTAKE: knee caving inward — drop weight immediately if this happens.",
-        warmup:{ note:"Bodyweight x 6 each side — track the knee", defaultKg:0, defaultReps:6 },
-        sets:[{range:"8–10",defaultKg:6},{range:"8–10",defaultKg:6},{range:"8–10",defaultKg:6}] },
-      { id:"goblet_sat", name:"Heel Elevated Goblet Squat [PHYSIO]", type:"compound",
-        note:"SETUP: heels on plate or block, feet hip-width. DB vertical at chest. MOVEMENT: squat STRAIGHT DOWN — hips go down not back. STOP before pelvis tucks. SLOW lowering — 4 seconds. STARTING WEIGHT: 8-10kg. FEEL: quads working hard. If mostly glutes, you are sitting back too much.",
-        warmup:{ note:"Bodyweight tripod squat x 8 — straight down", defaultKg:0, defaultReps:8 },
-        sets:[{range:"8–12",defaultKg:9},{range:"8–12",defaultKg:9},{range:"8–12",defaultKg:9}] },
-      { id:"lying_ham_curl_sat", name:"Lying Hamstring Curl (face-down machine)", type:"isolation",
-        note:"SETUP: lie face-down on machine. Ankle pads sit just above heels. Hips flat against pad throughout — don't let them rise. MOVEMENT: curl smoothly toward glutes. Pause 1s at top. SLOW lowering — 4 seconds. STOP 10° before full extension — knee hypermobility. STARTING WEIGHT: 12kg. FEEL: full hamstring under load, especially on the slow lowering phase.",
+        sets:[{range:"12-15",defaultKg:10},{range:"12-15",defaultKg:10},{range:"12-15",defaultKg:10}] },
+      { id:"cable_curl_wed", name:"Cable Bicep Curl", type:"isolation",
+        videoUrl:"https://www.youtube.com/results?search_query=cable+bicep+curl+form+jeff+nippard",
+        note:"SETUP: straight bar at low pulley. Stand close to the stack.\n\nMOVEMENT: elbows pulled back BEHIND hips, tuck them into the back of your waistband. Not at your sides, not in front, behind.\n\nCurl up. Pause 1 second at top. 3 second return. STOP 10 to 15 degrees before full extension at bottom (elbow hypermobility).\n\nSTARTING WEIGHT: 6.25kg.\n\nFEEL: full bicep tension throughout, zero chest or front delt.\n\nAFTER FINAL SET: do cooldown Pallof press at the same cable.",
         warmup:{ note:"Light x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"12–15",defaultKg:12},{range:"12–15",defaultKg:12},{range:"12–15",defaultKg:12}] },
+        sets:[{range:"10-12",defaultKg:6.25},{range:"10-12",defaultKg:6.25},{range:"10-12",defaultKg:6.25}] },
     ],
   },
   {
-    id:"sun", day:"Sunday", label:"Upper A — Back & Biceps", accent:"#1565c0",
-    abPair:["ab_pallof","ab_woodchop"],
+    id:"thu", day:"Thursday", label:"Full Body + Arms + Abs", accent:"#e91e8c",
+    warmupNote:"WARMUP (2 min):\n• Banded clamshells 2x12 each side (glute med)\n• Band pull-aparts 2x15 (scapular prep for pressing)",
+    abCircuitRotation:[
+      [
+        { id:"ab_dead_bug_together", name:"Double Arm Dead Bug (together)", sets:"3", reps:"10", note:"Lie on back, both arms straight up, both legs 90 degrees bent (tabletop). EXTEND BOTH LEGS at once while BOTH ARMS reach overhead. Back GLUED to floor the whole time (if back arches, legs too low, raise them). Return. Start bodyweight. Progress with 1-2kg DB in each hand at chest, then overhead. Together version works anti-extension harder, which is exactly what APT needs." },
+        { id:"ab_pallof_press", name:"Pallof Press", sets:"3", reps:"10 each side", defaultKg:6.25, note:"Cable at chest height. Stand side-on. Press handle straight out, hold 2s. RESIST rotation the entire time. Pelvis stays square. Anti-rotation core." },
+        { id:"ab_copenhagen", name:"Copenhagen Plank", sets:"2", reps:"20-25s each side", note:"Side-lying. Top foot on bench. Bottom leg hangs or rests lightly. Lift hips, body in a straight line. FEEL: inner thigh of top leg and lateral core. Start with 15s if new to this." },
+      ],
+      [
+        { id:"ab_prone_arm_leg", name:"Prone Alternate Arm-Leg Lift", sets:"3", reps:"20", note:"Lie face down on mat. Lift opposite arm and leg together (right arm + left leg, then switch). Keep neck neutral. Squeeze glute of the lifted leg. Physio-prescribed, hits posterior chain and core." },
+        { id:"ab_cable_woodchop", name:"Cable Woodchop", sets:"3", reps:"10 each side", defaultKg:6.25, note:"Cable at high position. Stand side-on. Pull diagonally across body from high to low. Rotate through trunk, keep hips square." },
+        { id:"ab_side_plank_dip", name:"Side Plank with Hip Dip", sets:"2", reps:"10 each side", note:"Side plank position. Lower hips toward floor and return to straight line. Controlled. FEEL: lateral core (QL and obliques)." },
+      ],
+      [
+        { id:"ab_dead_bug_db", name:"Double Arm Dead Bug with DB", sets:"3", reps:"10", note:"Same as weeks 1-2 but hold a 1-2kg DB in each hand. Keep back glued to floor. If back arches, drop the weight.", defaultKg:1 },
+        { id:"ab_pallof_hk", name:"Half-kneeling Pallof Press", sets:"3", reps:"10 each side", defaultKg:6.25, note:"Half-kneeling position (inside knee up, outside knee down). Press handle out, resist rotation. Harder than standing because base is narrower." },
+        { id:"ab_suitcase_carry", name:"Suitcase Carry", sets:"2", reps:"20m each side", note:"Hold moderate DB in one hand. Walk 20m without leaning. Core resists lateral flexion. Shoulders level the whole time." },
+      ],
+    ],
+    exercises:[
+      { id:"hip_thrust_thu", name:"Hip Thrust DB (light, form focus)", type:"compound",
+        videoUrl:"https://www.youtube.com/results?search_query=dumbbell+hip+thrust+form",
+        note:"SETUP: upper back on bench, feet flat hip-width on floor. DB across hip crease (use a towel pad to protect hips).\n\nBEFORE YOU PUSH: ribs DOWN, don't flare them. Drive through HEELS.\n\nMOVEMENT: hips rise until body is a straight line from knees to shoulders. Squeeze glutes hard at top, 1s hold. 4 second lowering. STOP before hips touch floor.\n\nRIGHT GLUTE: extra squeeze each rep (left tends to dominate).\n\nSTARTING WEIGHT: 10kg DB.\n\nTHIS IS THE ACTIVATION AND FORM SESSION, not the heavy day. Saturday is heavy.",
+        warmup:{ note:"Bodyweight glute bridge x 15, feel both glutes fire equally", defaultKg:0, defaultReps:15 },
+        sets:[{range:"10-12",defaultKg:10},{range:"10-12",defaultKg:10},{range:"10-12",defaultKg:10}] },
+      { id:"bstance_rdl_thu", name:"B-stance RDL", type:"compound",
+        videoUrl:"https://www.youtube.com/results?search_query=b+stance+rdl+form+jeff+nippard",
+        note:"SETUP: stagger stance, back foot FULL on floor but offset slightly behind front foot. About 70 percent weight on front leg. DBs in both hands at sides.\n\nMOVEMENT: hinge at hips, push hips BACK as DBs travel down close to shins. Soft bend in front knee throughout. STOP at first point of hamstring tension, do not push to end range.\n\nDrive back up through front heel.\n\nSTARTING WEIGHT: 7kg DBs.\n\nFEEL: hamstring and glute of front leg.\n\nWHY B-STANCE OVER KICKSTAND: back foot flat gives more stable base, allows heavier loading for better hamstring stimulus.",
+        warmup:{ note:"Bodyweight x 8 each side, feel the hip hinge", defaultKg:0, defaultReps:8 },
+        sets:[{range:"8-10",defaultKg:7},{range:"8-10",defaultKg:7},{range:"8-10",defaultKg:7}] },
+      { id:"skull_crush_thu", name:"Skull Crushers", type:"isolation",
+        videoUrl:"https://www.youtube.com/results?search_query=skull+crushers+ez+bar+form+jeff+nippard",
+        note:"SETUP: lie flat on bench with EZ bar or DBs. Grip overhand, slightly narrower than shoulder-width. Elbows point straight up at start.\n\nMOVEMENT: lower bar/DBs to just above forehead, elbows stay pinned (don't flare out). Press back up. STOP 5 degrees before full lockout (elbow hypermobility). Only forearms move.\n\nSTARTING WEIGHT: start light with EZ bar or 3-4kg DBs, build up.\n\nFEEL: back of upper arms (triceps) only.",
+        warmup:{ note:"Light x 10 reps", defaultKg:null, defaultReps:10 },
+        sets:[{range:"10-12",defaultKg:7.5},{range:"10-12",defaultKg:7.5},{range:"10-12",defaultKg:7.5}] },
+      { id:"lat_raise_thu", name:"Lateral Raise (seated DB)", type:"isolation",
+        videoUrl:"https://www.youtube.com/results?search_query=lateral+raise+form+jeff+nippard",
+        note:"SETUP: seated, back supported against bench. DBs at sides.\n\nMOVEMENT: lead with elbow, raise arms straight out to sides. STOP at shoulder height, no higher. 3 second return.\n\nSTARTING WEIGHT: 2.5kg.\n\nFEEL: side of shoulder only.",
+        warmup:{ note:"Very light x 12 reps", defaultKg:null, defaultReps:12 },
+        sets:[{range:"12-15",defaultKg:2.5},{range:"12-15",defaultKg:2.5},{range:"12-15",defaultKg:2.5}] },
+    ],
+  },
+  {
+    id:"sat", day:"Saturday", label:"Lower B: Heavy Glute + Quad", accent:"#7b1fa2",
+    warmupNote:"WARMUP (3 min):\n• Glute bridges 2x15 bodyweight or light DB\n• Banded lateral walk 2x15 each direction\n• Calf and toe raises on yoga block 1x10\n• T raise prone on floor 2x10 hold 1s (mid trap and rhomboid activation)",
+    exercises:[
+      { id:"hip_thrust_sat", name:"Hip Thrust Smith (heavy)", type:"compound",
+        videoUrl:"https://www.youtube.com/results?search_query=smith+machine+hip+thrust+form",
+        note:"SETUP: upper back on bench, Smith bar across hip crease (pad required). Feet flat hip-width on floor.\n\nBEFORE YOU PUSH: ribs DOWN. Drive through HEELS.\n\nMOVEMENT: hips rise until body is a straight line from knees to shoulders. Squeeze glutes hard at top, 1s hold. 4 second lowering. STOP before hips touch floor.\n\nRIGHT GLUTE: extra squeeze each rep.\n\nSTARTING WEIGHT: 17kg, progress every week.\n\nTHIS IS YOUR HEAVIEST HIP THRUST SESSION, go heavier than Thursday.",
+        warmup:{ note:"Bodyweight glute bridge x 15, then build-up set at 50%", defaultKg:0, defaultReps:15 },
+        sets:[{range:"8-12",defaultKg:17},{range:"8-12",defaultKg:17},{range:"8-12",defaultKg:17}] },
+      { id:"bss_sat", name:"Bulgarian Split Squat (glute focused)", type:"compound",
+        videoUrl:"https://www.youtube.com/results?search_query=glute+focused+bulgarian+split+squat+form",
+        note:"SETUP: rear foot ELEVATED to hip height on bench. Front foot FURTHER FORWARD than normal so shin stays vertical. DBs at sides.\n\nMOVEMENT: lean torso FORWARD 30-40 degrees (hinge at hips). Lower straight down. STOP 3-4cm before back knee touches floor. Push through FRONT HEEL.\n\nFEEL IT IN GLUTE of front leg, not quad.\n\nSTARTING WEIGHT: 6kg DBs.\n\nCOMMON MISTAKE: knee caving inward, drop weight immediately if this happens.",
+        warmup:{ note:"Bodyweight x 6 each side, track the knee", defaultKg:0, defaultReps:6 },
+        sets:[{range:"8-10",defaultKg:6},{range:"8-10",defaultKg:6},{range:"8-10",defaultKg:6}] },
+      { id:"pull_through_sat", name:"Cable Pull-through", type:"compound",
+        videoUrl:"https://www.youtube.com/results?search_query=cable+pull+through+form+jeff+nippard",
+        note:"SETUP: face AWAY from low cable. Rope attachment between legs, hold rope between thighs. Wide stance, soft knees.\n\nMOVEMENT: hinge hips BACK, let rope travel down between legs. Drive hips FORWARD using glutes to return. Squeeze at top.\n\nLOWER BACK STAYS NEUTRAL throughout, never overextend.\n\nSTARTING WEIGHT: 10-12kg.\n\nFEEL: glutes and hamstrings. This replaces back extensions, zero lower back strain.",
+        warmup:{ note:"Light x 10 reps, feel the hinge", defaultKg:null, defaultReps:10 },
+        sets:[{range:"10-12",defaultKg:12},{range:"10-12",defaultKg:12},{range:"10-12",defaultKg:12}] },
+      { id:"cable_abd_sat", name:"Cable Hip Abduction", type:"isolation",
+        videoUrl:"https://www.youtube.com/results?search_query=cable+hip+abduction+form",
+        note:"SETUP: cable at ankle, stand side-on to machine. Hold machine lightly for balance only, do NOT lean.\n\nMOVEMENT: leg moves directly out to side, pelvis stays level. 3 second return.\n\nCOMMON MISTAKE: leaning away from cable removes glute med entirely.\n\nSTARTING WEIGHT: 5kg.\n\nFEEL: outside of hip burning (glute med).",
+        warmup:{ note:"Light x 12 reps each side", defaultKg:null, defaultReps:12 },
+        sets:[{range:"12-15",defaultKg:5},{range:"12-15",defaultKg:5},{range:"12-15",defaultKg:5}] },
+    ],
+  },
+  {
+    id:"sun", day:"Sunday", label:"Upper B: Back + Triceps + Biceps", accent:"#1565c0",
+    warmupNote:"WARMUP (3 min):\n• Wall pushups hands at hip height 2x10 (protract at top)\n• Band pull-aparts 2x15\n• W raise prone on floor 2x10 (lower trap and rotator cuff)",
     exercises:[
       { id:"lat_pull_sun", name:"Narrow Neutral Grip Lat Pulldown", type:"compound",
-        note:"SETUP: close-grip neutral attachment (palms facing each other). Thighs under pads. BEFORE YOU PULL: depress shoulder blades — tuck them into your back pockets. MOVEMENT: pull to upper chest, 10° lean back only. Slow return — 4 seconds. HYPERMOBILITY: neutral grip protects your shoulder joint. RIGHT SCAPULA: keep it depressed throughout. STARTING WEIGHT: 15-20kg. FEEL: wide stretch in lats at top, contraction across mid-back at bottom.",
+        videoUrl:"https://www.youtube.com/results?search_query=neutral+grip+lat+pulldown+form+jeff+nippard",
+        note:"SETUP: close-grip neutral attachment. Thighs under pads.\n\nBEFORE YOU PULL: depress shoulder blades, tuck them into back pockets.\n\nMOVEMENT: pull to upper chest, 10 degree lean back. 4 second return.\n\nSTARTING WEIGHT: 24kg (heavier target than Wednesday).\n\nPUSH 1-2 reps harder each set, this is your heavier pulldown day.",
         warmup:{ note:"50% weight x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"8–12",defaultKg:24},{range:"8–12",defaultKg:24},{range:"8–12",defaultKg:24}] },
+        sets:[{range:"8-12",defaultKg:24},{range:"8-12",defaultKg:24},{range:"8-12",defaultKg:24}] },
       { id:"single_row_sun", name:"Single-Arm Cable Row", type:"compound",
-        note:"SETUP: same-side knee AND hand on flat bench. Back completely flat, parallel to floor. MOVEMENT: pull handle toward lower hip. Trunk must not rotate. RIGHT SIDE: extra attention every set — scapular winging correction. SLOW return — 4 seconds. STARTING WEIGHT: 6-8kg. FEEL: mid-back contracting, never bicep.",
+        videoUrl:"https://www.youtube.com/results?search_query=single+arm+cable+row+form",
+        note:"SETUP: same-side knee AND hand on flat bench. Back completely flat, parallel to floor.\n\nMOVEMENT: pull handle toward lower hip. Trunk must NOT rotate. 4 second return.\n\nRIGHT SIDE: extra attention every set (scapular winging correction).\n\nSTARTING WEIGHT: 10kg.\n\nFEEL: mid-back contracting, never bicep.",
         warmup:{ note:"Light x 10 reps each side", defaultKg:null, defaultReps:10 },
-        sets:[{range:"8–12",defaultKg:10},{range:"8–12",defaultKg:10},{range:"8–12",defaultKg:10}] },
-      { id:"face_pull_sun", name:"Face Pulls", type:"isolation",
-        note:"SETUP: rope at eye height. MOVEMENT: pull to forehead, elbows HIGH and wide above shoulder height. Rotate hands outward at end — thumbs point behind you. WEIGHT: always light — joint health not strength. FEEL: rear delt and rotator cuff.",
+        sets:[{range:"8-12",defaultKg:10},{range:"8-12",defaultKg:10},{range:"8-12",defaultKg:10}] },
+      { id:"face_pull_sun", name:"Face Pulls Seated", type:"isolation",
+        videoUrl:"https://www.youtube.com/results?search_query=face+pulls+seated+form+jeff+nippard",
+        note:"SETUP: seated, rope at eye height.\n\nMOVEMENT: pull to forehead, elbows HIGH and wide above shoulder height. Rotate hands outward at end, thumbs point behind you.\n\nWEIGHT: always light, joint health not strength.\n\nSTARTING WEIGHT: 10kg.\n\nFEEL: rear delt and rotator cuff.",
         warmup:{ note:"Very light x 15 reps", defaultKg:null, defaultReps:15 },
-        sets:[{range:"12–15",defaultKg:10},{range:"12–15",defaultKg:10},{range:"12–15",defaultKg:10}] },
-      { id:"cable_curl_sun", name:"Cable Bicep Curl", type:"isolation",
-        note:"SETUP: straight bar at low pulley. Stand close to stack. MOVEMENT: elbows pulled back behind hips — imagine tucking them into the back of your waistband. Not at your sides, not in front — behind. Curl up. Pause 1 second at top. SLOW return — 3 seconds. STOP 10-15° before full extension at bottom — elbow hypermobility. STARTING WEIGHT: 6-8kg. FEEL: full bicep tension throughout, zero chest or front delt.",
+        sets:[{range:"12-15",defaultKg:10},{range:"12-15",defaultKg:10},{range:"12-15",defaultKg:10}] },
+      { id:"tricep_push_sun", name:"Tricep Pushdown (straight bar)", type:"isolation",
+        videoUrl:"https://www.youtube.com/results?search_query=tricep+pushdown+form+jeff+nippard",
+        note:"SETUP: straight bar at high cable. Overhand grip shoulder-width.\n\nMOVEMENT: elbows pinned completely at sides, they must not move. Push bar straight down. STOP 5 degrees before lockout (elbow hypermobility). 3 second return.\n\nSTARTING WEIGHT: 10kg.\n\nFEEL: back of upper arm only.",
         warmup:{ note:"Light x 12 reps", defaultKg:null, defaultReps:12 },
-        sets:[{range:"10–12",defaultKg:6.25},{range:"10–12",defaultKg:6.25},{range:"10–12",defaultKg:6.25}] },
-      { id:"ytw_sun", name:"Y/T/W Raises [PHYSIO]", type:"compound",
-        note:"SETUP: face down on incline bench, arms hanging. Y: raise arms diagonally, thumbs up. T: raise arms straight to sides. W: elbows bent 90°, raise to shoulder height. Hold 1s at top each letter. WEIGHT: 1-2kg maximum — neurological retraining. RIGHT SIDE: extra focus — scapular winging correction. FEEL: between and below shoulder blades, never neck.",
-        warmup:{ note:"Bodyweight — feel the scapular movement", defaultKg:0, defaultReps:8 },
-        sets:[{range:"10",defaultKg:1},{range:"10",defaultKg:1}] },
+        sets:[{range:"10-12",defaultKg:10},{range:"10-12",defaultKg:10},{range:"10-12",defaultKg:10}] },
+      { id:"hammer_curl_sun", name:"Hammer Curl DB", type:"isolation",
+        videoUrl:"https://www.youtube.com/results?search_query=hammer+curl+form+jeff+nippard",
+        note:"SETUP: standing, DBs at sides, neutral grip (thumbs up, palms face each other).\n\nMOVEMENT: curl up keeping neutral grip, elbows pinned at sides. Pause 1s at top. 3 second return. STOP 10 to 15 degrees before full extension at bottom (elbow hypermobility).\n\nSTARTING WEIGHT: start light, build up.\n\nFEEL: brachialis and brachioradialis (adds arm thickness).",
+        warmup:{ note:"Light x 10 reps", defaultKg:null, defaultReps:10 },
+        sets:[{range:"10-12",defaultKg:5},{range:"10-12",defaultKg:5},{range:"10-12",defaultKg:5}] },
     ],
   },
 ];
@@ -172,28 +227,6 @@ const HOME_SESSIONS = [
       { id:"ab_reverse_crunch", name:"Reverse Crunch", reps:"3x12", note:"Curl hips toward chest. Slow lower." },
       { id:"ab_tabletop_tap", name:"Tabletop Toe Tap", reps:"3x10 each side", note:"Both legs at 90 degrees. Lower one heel to tap floor." },
       { id:"ab_rkc", name:"RKC Plank", reps:"3x20s", note:"Squeeze glutes + quads + abs. Elbows toward toes." },
-    ],
-  },
-  {
-    id:"wed", day:"Wednesday", label:"Active Rest — Walk + Run", accent:"#10b981", type:"active_rest",
-    canRun: true,
-    coreOptions:[
-      { id:"ab_dead_bug", name:"Dead Bug", reps:"3×8 each side", note:"Back flat into floor. Arms reach back as legs alternate. Breathe out on extension." },
-      { id:"ab_bird_dog", name:"Bird Dog", reps:"3×8 each side", note:"Opposite arm and leg. 3s hold. No hip rotation. Back flat." },
-      { id:"ab_side_plank", name:"Side Plank", reps:"3×20s each side", note:"Elbow under shoulder. Hips stacked. Don't sag." },
-      { id:"ab_reverse_crunch", name:"Reverse Crunch", reps:"3×12", note:"Curl hips up toward chest. Slow lower. Hip flexion not spinal flexion." },
-      { id:"ab_tabletop_tap", name:"Tabletop Toe Tap", reps:"3×10 each side", note:"Both legs at 90°. Lower one heel slowly to tap floor. Back stays flat. Alternate sides." },
-      { id:"ab_rkc", name:"RKC Plank", reps:"3×20s", note:"Squeeze glutes + quads + abs simultaneously. Elbows pull toward toes. Not passive." },
-    ],
-    walkNote:"40+ min brisk walk. HR 100–125. Outside preferred. This is your run day if you feel up to it.",
-    runProtocol:[
-      { weeks:"Wk 1–2", structure:"Walk only", detail:"40 min brisk walk. No running yet — connective tissue base.", icon:"🚶" },
-      { weeks:"Wk 3–4", structure:"1 min jog / 4 min walk", detail:"× 5 intervals. Slow jog — hold a full sentence. Joints must feel fine next day.", icon:"🏃" },
-      { weeks:"Wk 5–6", structure:"2 min jog / 3 min walk", detail:"× 5 intervals. Same slow pace — extend time, don't speed up.", icon:"🏃" },
-      { weeks:"Wk 7–8", structure:"3 min jog / 2 min walk", detail:"× 5 intervals. More jogging than walking.", icon:"🏃" },
-      { weeks:"Wk 9–10", structure:"5 min jog / 2 min walk", detail:"× 4 intervals. Joints should feel comfortable.", icon:"🏃" },
-      { weeks:"Wk 11–12", structure:"8 min jog / 2 min walk", detail:"× 3 intervals. Nearly continuous.", icon:"🏃" },
-      { weeks:"Post Phase 1", structure:"Build to 30 min continuous", detail:"Add 1–2 min per session. JOINT RULE: if aching the next day, repeat that week before progressing.", icon:"🏅" },
     ],
   },
   {
@@ -622,6 +655,61 @@ function AbBlock({ done, setDone, accent, abLogs, setAbLogs, abNotes, onAbNoteSa
 }
 
 
+// ── Ab Circuit Block (Thursday dedicated circuit) ─────────────────────────────
+function AbCircuitBlock({ circuit, done, setDone, accent, abLogs, setAbLogs, onAbModal }) {
+  const [expanded, setExpanded] = useState(null);
+  const allDone = circuit.every(ex => done[ex.id]);
+
+  return (
+    <div style={{background:"#10102a",borderRadius:20,padding:"15px 14px",marginBottom:12,border:`1px solid ${allDone?accent+"40":"#1e1e38"}`}}>
+      <div style={{fontSize:10,color:accent,fontWeight:700,letterSpacing:"0.14em",textTransform:"uppercase",marginBottom:4}}>Ab Circuit — complete all 4</div>
+      <div style={{fontSize:11,color:"#2a2a4a",marginBottom:10,fontStyle:"italic"}}>Anti-extension · anti-rotation · lateral stability · full anterior chain</div>
+      {circuit.map((ex)=>{
+        const isDone = done[ex.id];
+        const log = abLogs[ex.id] || { kg:null, reps:null };
+        const isOpen = expanded === ex.id;
+        return (
+          <div key={ex.id} style={{marginBottom:10}}>
+            <div style={{display:"flex",alignItems:"center",gap:10,padding:"10px 12px",
+              background:isDone?(accent+"18"):"#080814",borderRadius:12,
+              border:`1px solid ${isDone?accent+"50":"#1e1e38"}`,cursor:"pointer"}}
+              onClick={()=>setDone(p=>({...p,[ex.id]:!p[ex.id]}))}>
+              <div style={{width:20,height:20,borderRadius:6,background:isDone?accent:"#1a1a30",
+                border:`1.5px solid ${isDone?accent:"#2a2a4a"}`,display:"flex",alignItems:"center",
+                justifyContent:"center",flexShrink:0}}>
+                {isDone&&<ITick s={11}/>}
+              </div>
+              <div style={{flex:1}}>
+                <div style={{fontSize:13,fontWeight:700,color:isDone?accent:"#ccc"}}>{ex.name}</div>
+                <div style={{fontSize:11,color:"#2a2a4a",marginTop:1}}>{ex.sets} sets · {ex.reps}</div>
+              </div>
+              <button onClick={e=>{e.stopPropagation();setExpanded(isOpen?null:ex.id);}} style={{background:"#1a1a30",border:"none",borderRadius:8,width:28,height:28,display:"flex",alignItems:"center",justifyContent:"center",color:isOpen?accent:"#3a3a5a",cursor:"pointer"}}>
+                <IInfo/>
+              </button>
+            </div>
+            {isOpen&&<div style={{background:"#080814",borderRadius:"0 0 10px 10px",padding:"8px 12px",fontSize:11,color:"#666",lineHeight:1.6,borderLeft:`3px solid ${accent}`,marginTop:-4}}>{ex.note}</div>}
+            {isDone&&ex.defaultKg!=null&&(
+              <div style={{background:"#080814",borderRadius:"0 0 12px 12px",padding:"10px 12px",marginTop:-4,border:`1px solid ${accent}20`,borderTop:"none"}}>
+                <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6,marginBottom:4}}>
+                  <div style={{fontSize:9,color:"#2a2a4a",textAlign:"center"}}>KG</div>
+                  <div style={{fontSize:9,color:"#2a2a4a",textAlign:"center"}}>REPS / TIME</div>
+                </div>
+                <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+                  {["kg","reps"].map(field=>(
+                    <button key={field} onClick={()=>onAbModal({exId:ex.id,field})} style={{background:"#10102a",border:`1px solid ${log[field]!=null?"#252540":"#1e1e38"}`,borderRadius:10,height:44,color:log[field]!=null?"#fff":"#2a2a4a",fontSize:15,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>
+                      {log[field]!=null?`${log[field]}`:"—"}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 // ── Home Screen ───────────────────────────────────────────────────────────────
 function HomeScreen({ onSelect, history, travelWeek, setTravelWeek, currentWeek, onRepeatWeek, onPhysioTab, physioDone }) {
   const weekAgo = new Date(Date.now()-7*86400000);
@@ -638,7 +726,7 @@ function HomeScreen({ onSelect, history, travelWeek, setTravelWeek, currentWeek,
     { ...HOME_SESSIONS.find(s=>s.id==="mon"), travelDay:"Monday — Active Rest (walk)" },
     { ...GYM_SESSIONS.find(s=>s.id==="tue"), travelDay:"Tuesday — Lower A" },
     { ...GYM_SESSIONS.find(s=>s.id==="wed"), travelDay:"Wednesday — Upper A" },
-    { ...GYM_SESSIONS.find(s=>s.id==="thu"), travelDay:"Thursday — Hot Yoga + Light Gym" },
+    { ...GYM_SESSIONS.find(s=>s.id==="thu"), travelDay:"Thursday — Full Body + Abs" },
     { ...GYM_SESSIONS.find(s=>s.id==="sat"), travelDay:"Friday — Lower B (moved from Sat)" },
     { ...GYM_SESSIONS.find(s=>s.id==="sun"), travelDay:"Saturday — Upper B (moved from Sun)" },
     { id:"weekend_away", day:"Sunday", label:"Away — rest and recover 🌍", accent:"#6b7280", type:"travel_rest", travelDay:"Sunday away" },
@@ -874,14 +962,28 @@ function getOverloadSuggestion(ex, prevLogs) {
   };
 }
 
-function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNoteSave }) {
+function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNoteSave, currentWeek=1 }) {
   const [draftLoaded, setDraftLoaded] = useState(false);
   const prev = history[session.id]||{};
+  // Week A = odd weeks, Week B = even weeks. Resolve alt exercises for Week B.
+  const isWeekB = currentWeek % 2 === 0;
+  const resolvedExercises = session.exercises.map(ex => {
+    if (isWeekB && ex.altId) {
+      return { ...ex, id: ex.altId, name: ex.altName, note: ex.altNote, _weekLabel:"B" };
+    }
+    return ex.altId ? { ...ex, _weekLabel:"A" } : ex;
+  });
+  // Ab circuit rotation: 3 circuits, each lasts 2 weeks. Weeks 1-2 = circuit 0, 3-4 = circuit 1, 5-6 = circuit 2, then repeats.
+  const abCircuitIndex = Math.floor((currentWeek - 1) / 2) % 3;
+  const effectiveAbCircuit = session.abCircuitRotation
+    ? session.abCircuitRotation[abCircuitIndex]
+    : (session.abCircuit || null);
+  const abCircuitWeekLabel = session.abCircuitRotation ? `Weeks ${abCircuitIndex*2+1}-${abCircuitIndex*2+2}` : null;
   const initDP = ()=>{ const d={}; DAILY_PHYSIO.forEach(e=>{d[e.id]=false;}); return d; };
-  const initAbs = ()=>{ const d={}; [...AB_OPTIONS.floor,...AB_OPTIONS.standing].forEach(e=>{d[e.id]=false;}); return d; };
+  const initAbs = ()=>{ const d={}; [...AB_OPTIONS.floor,...AB_OPTIONS.standing].forEach(e=>{d[e.id]=false;}); if(effectiveAbCircuit) effectiveAbCircuit.forEach(e=>{d[e.id]=false;}); return d; };
   const initLogs = (draft=[])=>{
     const logs={};
-    session.exercises.forEach(ex=>{
+    resolvedExercises.forEach(ex=>{
       const p=getPrevLogs(history, session.id, ex.id);
       logs[ex.id]={
         warmup:ex.warmup ? { kg:p?.warmup?.kg??ex.warmup.defaultKg, reps:p?.warmup?.reps??ex.warmup.defaultReps, done:false } : { kg:null, reps:null, done:false },
@@ -899,7 +1001,13 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
   const [logs,setLogs]=useState(initLogs);
   const [modal,setModal]=useState(null);
   const [editingNote,setEditingNote]=useState(null);
-  const [abLogs,setAbLogs]=useState(()=>{ const d={}; [...AB_OPTIONS.floor,...AB_OPTIONS.standing].forEach(e=>{d[e.id]={kg:e.defaultKg??null,reps:null,sets:null};}); return d; });
+  const [abLogs,setAbLogs]=useState(()=>{
+    const d={};
+    [...AB_OPTIONS.floor,...AB_OPTIONS.standing].forEach(e=>{d[e.id]={kg:e.defaultKg??null,reps:null,sets:null};});
+    // Also initialise ab circuit exercises (Thursday rotation)
+    if(effectiveAbCircuit) effectiveAbCircuit.forEach(e=>{d[e.id]={kg:e.defaultKg??null,reps:null,sets:null};});
+    return d;
+  });
   const [abNotes,setAbNotes]=useState({});
   const [abModal,setAbModal]=useState(null);
   const [finisherLogs,setFinisherLogs]=useState(()=>{
@@ -930,10 +1038,10 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
   },[]);
 
   const allDPDone=Object.values(dpDone).every(Boolean);
-  const totalSets=session.exercises.reduce((a,e)=>a+e.sets.length,0);
+  const totalSets=resolvedExercises.reduce((a,e)=>a+e.sets.length,0);
   const doneSets=Object.values(logs).reduce((a,ex)=>a+ex.sets.filter(s=>s.done).length,0);
   const allMainDone=doneSets===totalSets;
-  const suggestedAbsDone=session.abPair.every(id=>abDone[id]);
+  const suggestedAbsDone=(session.abPair||[]).every(id=>abDone[id]);
   const canFinish=true;
 
   const handleSave=useCallback(val=>{
@@ -970,7 +1078,7 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
 
   const finish=()=>{
     const result={date:new Date().toISOString(),logs:{}};
-    session.exercises.forEach(ex=>{
+    resolvedExercises.forEach(ex=>{
       result.logs[ex.id]={
         warmup:{kg:logs[ex.id].warmup.kg,reps:logs[ex.id].warmup.reps},
         sets:logs[ex.id].sets.map(s=>({kg:s.kg,reps:s.reps})),
@@ -993,7 +1101,7 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
       </button>
       <div style={{background:"#10102a",borderRadius:20,padding:20,width:"100%",maxWidth:380,border:`1px solid ${session.accent}40`,marginBottom:24}}>
         <div style={{fontSize:10,color:session.accent,fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:12}}>What you lifted</div>
-        {session.exercises.map(ex=>(
+        {resolvedExercises.map(ex=>(
           <div key={ex.id} style={{marginBottom:10}}>
             <div style={{fontSize:11,fontWeight:700,color:"#666",marginBottom:4}}>{ex.name}</div>
             <div style={{display:"flex",gap:5,flexWrap:"wrap"}}>
@@ -1043,11 +1151,11 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
         {session.warmupNote&&(
           <div style={{background:"#0a1a0a",borderRadius:16,padding:"14px 16px",marginBottom:12,border:"1px solid #10b98140"}}>
             <div style={{fontSize:10,color:"#10b981",fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:6}}>⚡ Before you start</div>
-            <div style={{fontSize:12,color:"#555",lineHeight:1.6}}>{session.warmupNote}</div>
+            <div style={{fontSize:12,color:"#999",lineHeight:1.7,whiteSpace:"pre-line"}}>{session.warmupNote}</div>
           </div>
         )}
 
-        {session.exercises.map(ex=>{
+        {resolvedExercises.map(ex=>{
           const exLog=logs[ex.id];
           const allDone=exLog.sets.every(s=>s.done);
           const isOpen=expanded===ex.id;
@@ -1055,6 +1163,11 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
           const overload = getOverloadSuggestion(ex, getPrevLogs(history, session.id, ex.id));
           return (
             <div key={ex.id} style={{background:"#10102a",borderRadius:20,padding:"15px 13px",marginBottom:12,border:`1px solid ${allDone?session.accent+"60":"#1e1e38"}`,transition:"border-color 0.3s"}}>
+              {ex._weekLabel&&(
+                <div style={{fontSize:9,color:ex._weekLabel==="B"?"#f59e0b":session.accent,fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:8,background:ex._weekLabel==="B"?"#f59e0b18":session.accent+"18",borderRadius:6,padding:"3px 8px",display:"inline-block"}}>
+                  Week {ex._weekLabel} variation
+                </div>
+              )}
               {overload&&(
                 <div style={{background:overload.color+"15",borderRadius:10,padding:"8px 12px",marginBottom:10,border:`1px solid ${overload.color}35`}}>
                   <div style={{fontSize:10,color:overload.color,fontWeight:700,letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:2}}>
@@ -1077,7 +1190,18 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
                 </button>
               </div>
 
-              {isOpen&&<div style={{background:"#080814",borderRadius:10,padding:"10px 12px",marginBottom:12,fontSize:12,color:"#666",lineHeight:1.6,borderLeft:`3px solid ${session.accent}`}}>{ex.note}</div>}
+              {isOpen&&(
+                <div style={{background:"#080814",borderRadius:10,padding:"10px 12px",marginBottom:12,fontSize:12,color:"#999",lineHeight:1.7,borderLeft:`3px solid ${session.accent}`,whiteSpace:"pre-line"}}>
+                  {ex.note}
+                  {ex.videoUrl&&(
+                    <div style={{marginTop:10}}>
+                      <a href={ex.videoUrl} target="_blank" rel="noopener noreferrer" style={{color:session.accent,fontSize:12,fontWeight:700,textDecoration:"none",display:"inline-flex",alignItems:"center",gap:5}}>
+                        ▶ Watch form video
+                      </a>
+                    </div>
+                  )}
+                </div>
+              )}
 
               {prev?.logs?.[ex.id]&&(
                 <div style={{display:"flex",gap:5,marginBottom:10,flexWrap:"wrap"}}>
@@ -1183,7 +1307,27 @@ function GymSession({ session, history, onSave, onBack, exerciseNotes={}, onNote
           />
         )}
 
-        <AbBlock done={abDone} setDone={setAbDone} accent={session.accent} abLogs={abLogs} setAbLogs={setAbLogs} abNotes={abNotes} onAbNoteSave={async(exId,note)=>{ setAbNotes(p=>({...p,[exId]:note})); await saveExerciseNote("ab_"+exId, note); }} onAbModal={(m)=>setAbModal(m)} abPair={session.abPair||[]}/>
+        {session.cooldownNote&&(
+          <div style={{background:"#1a0a1a",borderRadius:16,padding:"14px 16px",marginBottom:12,border:"1px solid #a855f740"}}>
+            <div style={{fontSize:10,color:"#a855f7",fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:6}}>🧘 Cooldown</div>
+            <div style={{fontSize:12,color:"#999",lineHeight:1.7,whiteSpace:"pre-line"}}>{session.cooldownNote}</div>
+          </div>
+        )}
+
+        {effectiveAbCircuit
+          ? (
+            <div>
+              {abCircuitWeekLabel&&(
+                <div style={{fontSize:10,color:session.accent,fontWeight:700,letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:8,padding:"6px 12px",background:session.accent+"18",borderRadius:8,display:"inline-block"}}>
+                  Ab circuit: {abCircuitWeekLabel}
+                </div>
+              )}
+              <AbCircuitBlock circuit={effectiveAbCircuit} done={abDone} setDone={setAbDone} accent={session.accent} abLogs={abLogs} setAbLogs={setAbLogs} onAbModal={(m)=>setAbModal(m)}/>
+            </div>
+          )
+          : session.abPair ? <AbBlock done={abDone} setDone={setAbDone} accent={session.accent} abLogs={abLogs} setAbLogs={setAbLogs} abNotes={abNotes} onAbNoteSave={async(exId,note)=>{ setAbNotes(p=>({...p,[exId]:note})); await saveExerciseNote("ab_"+exId, note); }} onAbModal={(m)=>setAbModal(m)} abPair={session.abPair||[]}/>
+          : null
+        }
 
         {canFinish
           ?<button onClick={finish} style={{width:"100%",background:"linear-gradient(135deg,#e91e8c,#9c27b0)",border:"none",borderRadius:18,height:66,color:"#fff",fontSize:18,fontWeight:900,cursor:"pointer",fontFamily:"inherit",boxShadow:"0 8px 40px rgba(233,30,140,0.5)"}}>Complete Session 🎉</button>
@@ -1713,7 +1857,7 @@ export default function App() {
   if(active){
     const gym=GYM_SESSIONS.find(s=>s.id===active);
     const home=HOME_SESSIONS.find(s=>s.id===active);
-    if(gym) return <GymSession session={gym} history={history} exerciseNotes={exerciseNotes} onNoteSave={async(exId,note)=>{ setExerciseNotes(p=>({...p,[exId]:note})); await saveExerciseNote(exId,note); }} onSave={handleSave} onBack={()=>setActive(null)}/>;
+    if(gym) return <GymSession session={gym} history={history} exerciseNotes={exerciseNotes} onNoteSave={async(exId,note)=>{ setExerciseNotes(p=>({...p,[exId]:note})); await saveExerciseNote(exId,note); }} onSave={handleSave} onBack={()=>setActive(null)} currentWeek={currentWeek}/>;
     if(home&&home.type==="rest") return <RestDay session={home} history={history} onSave={handleSave} onBack={()=>setActive(null)}/>;
     if(home&&home.type==="home") return <RunSession session={home} history={history} onSave={handleSave} onBack={()=>setActive(null)}/>;
     if(home&&home.type==="active_rest") return <ActiveRestScreen session={home} history={history} onSave={handleSave} onBack={()=>setActive(null)}/>;
